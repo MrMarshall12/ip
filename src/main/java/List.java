@@ -1,10 +1,10 @@
 /** A class representing a list */
 public class List {
-    private String[] strings;
+    private Task[] tasks;
     private int index;
 
     public List() {
-        strings = new String[100];
+        tasks = new Task[100];
         index = 0;
     }
 
@@ -13,19 +13,20 @@ public class List {
      *
      * @return the added string
      */
-    public String add(String string) {
-        strings[index] = string;
+    public String add(String taskName) {
+        Task task = new Task(taskName);
+        tasks[index] = task;
         index++;
-        return string;
+        return taskName;
     }
 
     /** Prints non-empty elements of the list */
     public void display() {
-        for (int i = 0; i < strings.length; i++) {
-            if (strings[i] == null) {
+        for (int i = 0; i < tasks.length; i++) {
+            if (tasks[i] == null) {
                 break;
             }
-            System.out.println((i + 1) + ". " + strings[i]);
+            System.out.println((i + 1) + ". " + tasks[i]);
         }
     }
 }
