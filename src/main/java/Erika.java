@@ -36,7 +36,9 @@ public class Erika {
         if (message.strip().equalsIgnoreCase("list")) {
             list.display();
         } else {
-            list.add(message);
+            String response = list.add(message);
+            System.out.println("\n" + "Erika: I have added "
+                    + response + " to the list" + "\n");
         }
     }
 

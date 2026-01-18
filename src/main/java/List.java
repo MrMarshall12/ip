@@ -8,9 +8,10 @@ public class List {
         index = 0;
     }
 
-    public void add(String string) {
+    public String add(String string) {
         strings[index] = string;
         index++;
+        return string;
     }
 
     public void display() {
