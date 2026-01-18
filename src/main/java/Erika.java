@@ -87,7 +87,7 @@ public class Erika {
             System.out.println("\n" + "Got it. I have added this task:"
                     + "\n"
                     + "\t "
-                    + (task != null ? task.toString() : "")
+                    + task.toString()
                     + "\n");
         }
     }
