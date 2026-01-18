@@ -11,11 +11,12 @@ public class Erika {
 
     /** Prints farewell message for the user */
     public static void bidFarewell() {
-        String message = "Bye. Hope to see you again.";
+        String message = "Bye. Hope to see you again soon.";
         System.out.println(message);
     }
 
     public static void main(String[] args) {
-
+        greetUser();
+        bidFarewell();
     }
 }
