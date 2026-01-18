@@ -13,7 +13,9 @@ public class Erika {
 
     /** Prints farewell message for the user */
     public static void bidFarewell() {
-        String message = "Bye. Hope to see you again soon.";
+        String message = """
+                Bye. Hope to see you again.
+                """;
         System.out.println(message);
     }
 
