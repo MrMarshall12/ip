@@ -20,6 +20,10 @@ public class List {
         return taskName;
     }
 
+    public Task getTask(int index) {
+        return tasks[index];
+    }
+
     /** Marks the status of a task */
     public void mark(int taskIndex, boolean status) {
         tasks[taskIndex].setDone(status);
