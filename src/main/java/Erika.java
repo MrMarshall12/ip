@@ -19,7 +19,7 @@ public class Erika {
     /** Prints farewell message for the user */
     public void bidFarewell() {
         String message = """
-                Erika: Bye. Hope to see you again.
+                Erika: Bye. Hope to see you again soon!
                 """;
         System.out.println(message);
     }
