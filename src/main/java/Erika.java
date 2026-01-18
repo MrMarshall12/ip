@@ -19,6 +19,7 @@ public class Erika {
     /** Prints farewell message for the user */
     public void bidFarewell() {
         String message = """
+                
                 Erika: Bye. Hope to see you again soon!
                 """;
         System.out.println(message);
@@ -108,11 +109,12 @@ public class Erika {
     public void converse() {
         greetUser();
 
-        String message = "";
-        while (!message.equals("bye")) {
-            message = readUserInput();
+        while (true) {
+            String message = readUserInput();
+            if (message.equalsIgnoreCase("bye")) {
+                break;
+            }
             respondToUser(message);
-            message = message.toLowerCase().strip();
         }
 
         bidFarewell();
