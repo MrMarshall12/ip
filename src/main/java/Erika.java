@@ -35,7 +35,9 @@ public class Erika {
     public void respondToUser(String message) {
         String formattedMessage = message.strip().toLowerCase();
         if (formattedMessage.equals("list")) {
+            System.out.println("\n" + "Erika: Here are the tasks in your list: ");
             list.display();
+            System.out.println(); // To create line break
         } else if (formattedMessage.startsWith("mark") || formattedMessage.startsWith("unmark")) {
             String[] splitMessage = formattedMessage.split(" ");
             boolean mark = splitMessage[0].equals("mark");
@@ -47,7 +49,8 @@ public class Erika {
                     + status
                     + ": \n"
                     + "\t "
-                    + list.getTask(index - 1));
+                    + list.getTask(index - 1)
+                    + "\n");
         } else {
             String response = list.add(message);
             System.out.println("\n" + "Erika: I have added "
