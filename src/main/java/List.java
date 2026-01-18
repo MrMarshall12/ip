@@ -20,6 +20,11 @@ public class List {
         return taskName;
     }
 
+    /** Mark the status of a task */
+    public void mark(int taskIndex, boolean status) {
+        tasks[taskIndex].setDone(status);
+    }
+
     /** Prints non-empty elements of the list */
     public void display() {
         for (int i = 0; i < tasks.length; i++) {
