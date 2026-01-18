@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /** A class representing the chatbot named Erika */
 public class Erika {
     /** Prints greeting message for the user */
@@ -15,8 +17,20 @@ public class Erika {
         System.out.println(message);
     }
 
+    /** Returns string inputted by the user */
+    public static String readUserInput() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    /** Prints any message passed through the parameter */
+    public static void respondToUser(String message) {
+        System.out.println("\n" + message);
+    }
+
     public static void main(String[] args) {
         greetUser();
+        respondToUser(readUserInput());
         bidFarewell();
     }
 }
