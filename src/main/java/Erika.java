@@ -31,6 +31,13 @@ public class Erika {
         return scanner.nextLine();
     }
 
+    /** Displays items in the list */
+    public void displayList() {
+        System.out.println("\n" + "Erika: Here are the tasks in your list: ");
+        list.display();
+        System.out.println(); // To create line break
+    }
+
     /** Adds task to the list */
     public void addTask(String formattedMessage) {
         Task task = null;
@@ -68,9 +75,7 @@ public class Erika {
     public void respondToUser(String message) {
         String formattedMessage = message.strip().toLowerCase();
         if (formattedMessage.equals("list")) {
-            System.out.println("\n" + "Erika: Here are the tasks in your list: ");
-            list.display();
-            System.out.println(); // To create line break
+            displayList();
         } else if (formattedMessage.startsWith("mark") || formattedMessage.startsWith("unmark")) {
             String[] splitMessage = formattedMessage.split(" ");
             boolean mark = splitMessage[0].equals("mark");
