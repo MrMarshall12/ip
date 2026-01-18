@@ -41,6 +41,13 @@ public class Erika {
             boolean mark = splitMessage[0].equals("mark");
             int index = Integer.parseInt(splitMessage[1]);
             list.mark(index - 1, mark);
+
+            String status = mark ? "done" : "not done yet";
+            System.out.println("\n" + "Nice! I have marked this task as "
+                    + status
+                    + ": \n"
+                    + "\t "
+                    + list.getTask(index - 1));
         } else {
             String response = list.add(message);
             System.out.println("\n" + "Erika: I have added "
