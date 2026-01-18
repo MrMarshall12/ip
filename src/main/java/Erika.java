@@ -41,7 +41,7 @@ public class Erika {
     /** Marks the status of a task in the list */
     public void markTask(String formattedMessage) {
         String[] splitMessage = formattedMessage.split(" ");
-        boolean mark = splitMessage[0].equals("mark");
+        boolean mark = splitMessage[0].equalsIgnoreCase("mark");
         int index = Integer.parseInt(splitMessage[1]);
         list.mark(index - 1, mark);
 
@@ -57,20 +57,20 @@ public class Erika {
     /** Adds task to the list */
     public void addTask(String formattedMessage) {
         Task task = null;
-        if (formattedMessage.startsWith("todo")) {
-            String taskName = formattedMessage.replace("todo ", "");
+        if (formattedMessage.toLowerCase().startsWith("todo")) {
+            String taskName = formattedMessage.toLowerCase().replace("todo ", "");
             task = new ToDos(taskName);
-        } else if (formattedMessage.startsWith("deadline")) {
-            String deadlineContent = formattedMessage.replace("deadline ", "");
+        } else if (formattedMessage.toLowerCase().startsWith("deadline")) {
+            String deadlineContent = formattedMessage.toLowerCase().replace("deadline ", "");
             String[] splitMessage = deadlineContent.split(" /by ");
             String taskName = splitMessage[0];
-            String deadlineTime = splitMessage[1];
+            String deadlineTime = formattedMessage.split(" /by ")[1];
             task = new Deadlines(taskName, deadlineTime);
-        } else if (formattedMessage.startsWith("event")) {
-            String eventContent = formattedMessage.replace("event ", "");
+        } else if (formattedMessage.toLowerCase().startsWith("event")) {
+            String eventContent = formattedMessage.toLowerCase().replace("event ", "");
             String[] splitMessage = eventContent.split(" /from ");
             String eventName = splitMessage[0];
-            splitMessage = splitMessage[1].split(" /to ");
+            splitMessage = formattedMessage.split(" /from ")[1].split(" /to ");
             String startDate = splitMessage[0];
             String endDate = splitMessage[1];
             task = new Events(eventName, startDate, endDate);
@@ -89,10 +89,11 @@ public class Erika {
 
     /** Prints any message passed through the parameter */
     public void respondToUser(String message) {
-        String formattedMessage = message.strip().toLowerCase();
-        if (formattedMessage.equals("list")) {
+        String formattedMessage = message.strip();
+        if (formattedMessage.equalsIgnoreCase("list")) {
             displayList();
-        } else if (formattedMessage.startsWith("mark") || formattedMessage.startsWith("unmark")) {
+        } else if (formattedMessage.toLowerCase().startsWith("mark")
+                || formattedMessage.toLowerCase().startsWith("unmark")) {
             markTask(formattedMessage);
         } else {
             addTask(formattedMessage);
