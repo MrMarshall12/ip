@@ -33,8 +33,14 @@ public class Erika {
 
     /** Prints any message passed through the parameter */
     public void respondToUser(String message) {
-        if (message.strip().equalsIgnoreCase("list")) {
+        String formattedMessage = message.strip().toLowerCase();
+        if (formattedMessage.equals("list")) {
             list.display();
+        } else if (formattedMessage.startsWith("mark") || formattedMessage.startsWith("unmark")) {
+            String[] splitMessage = formattedMessage.split(" ");
+            boolean mark = splitMessage[0].equals("mark");
+            int index = Integer.parseInt(splitMessage[1]);
+            list.mark(index - 1, mark);
         } else {
             String response = list.add(message);
             System.out.println("\n" + "Erika: I have added "
