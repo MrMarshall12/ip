@@ -11,7 +11,7 @@ public class Events extends Task {
     @Override
     public String toString() {
         return "[E]" + super.toString()
-                + " (from: " + begin + ")"
-                + " (to: " + end + ")";
+                + " (from: " + begin
+                + " to: " + end + ")";
     }
 }
