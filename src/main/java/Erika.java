@@ -9,6 +9,12 @@ public class Erika {
         System.out.println(message);
     }
 
+    /** Prints farewell message for the user */
+    public static void bidFarewell() {
+        String message = "Bye. Hope to see you again.";
+        System.out.println(message);
+    }
+
     public static void main(String[] args) {
 
     }
