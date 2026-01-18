@@ -74,17 +74,21 @@ public class Erika {
             String startDate = splitMessage[0];
             String endDate = splitMessage[1];
             task = new Events(eventName, startDate, endDate);
-        } else {
-            System.out.println("Erika: Sorry, I can't understand you. Please try again.");
         }
 
-        list.add(task);
+        if (task == null) {
+            System.out.println( "\n"
+                    + "Erika: Sorry, I can't understand you. Please try again."
+                    + "\n");
+        } else {
+            list.add(task);
 
-        System.out.println("\n" + "Got it. I have added this task:"
-                + "\n"
-                + "\t "
-                + (task != null ? task.toString() : "")
-                + "\n");
+            System.out.println("\n" + "Got it. I have added this task:"
+                    + "\n"
+                    + "\t "
+                    + (task != null ? task.toString() : "")
+                    + "\n");
+        }
     }
 
     /** Prints any message passed through the parameter */
