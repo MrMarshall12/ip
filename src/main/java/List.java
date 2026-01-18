@@ -8,12 +8,18 @@ public class List {
         index = 0;
     }
 
+    /**
+     * Adds string to strings array
+     *
+     * @return the added string
+     */
     public String add(String string) {
         strings[index] = string;
         index++;
         return string;
     }
 
+    /** Prints non-empty elements of the list */
     public void display() {
         for (int i = 0; i < strings.length; i++) {
             if (strings[i] == null) {
