@@ -38,6 +38,22 @@ public class Erika {
         System.out.println(); // To create line break
     }
 
+    /** Marks the status of a task in the list */
+    public void markTask(String formattedMessage) {
+        String[] splitMessage = formattedMessage.split(" ");
+        boolean mark = splitMessage[0].equals("mark");
+        int index = Integer.parseInt(splitMessage[1]);
+        list.mark(index - 1, mark);
+
+        String status = mark ? "done" : "not done yet";
+        System.out.println("\n" + "Nice! I have marked this task as "
+                + status
+                + ": \n"
+                + "\t "
+                + list.getTask(index - 1)
+                + "\n");
+    }
+
     /** Adds task to the list */
     public void addTask(String formattedMessage) {
         Task task = null;
@@ -77,18 +93,7 @@ public class Erika {
         if (formattedMessage.equals("list")) {
             displayList();
         } else if (formattedMessage.startsWith("mark") || formattedMessage.startsWith("unmark")) {
-            String[] splitMessage = formattedMessage.split(" ");
-            boolean mark = splitMessage[0].equals("mark");
-            int index = Integer.parseInt(splitMessage[1]);
-            list.mark(index - 1, mark);
-
-            String status = mark ? "done" : "not done yet";
-            System.out.println("\n" + "Nice! I have marked this task as "
-                    + status
-                    + ": \n"
-                    + "\t "
-                    + list.getTask(index - 1)
-                    + "\n");
+            markTask(formattedMessage);
         } else {
             addTask(formattedMessage);
         }
