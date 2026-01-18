@@ -30,9 +30,21 @@ public class Erika {
         System.out.println("\n" + message);
     }
 
-    public static void main(String[] args) {
+    /** Maintain conversation until the user inputs "bye" */
+    public static void converse() {
         greetUser();
-        respondToUser(readUserInput());
+
+        String message = "";
+        while (!message.equals("bye")) {
+            message = readUserInput();
+            respondToUser(message);
+            message = message.toLowerCase().strip();
+        }
+
         bidFarewell();
+    }
+
+    public static void main(String[] args) {
+        converse();
     }
 }
