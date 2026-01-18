@@ -8,10 +8,6 @@ public class Task {
         this.isDone = false;
     }
 
-    public boolean isDone() {
-        return this.isDone;
-    }
-
     public void setDone(boolean isDone) {
         this.isDone = isDone;
     }
