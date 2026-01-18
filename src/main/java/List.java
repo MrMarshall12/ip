@@ -8,16 +8,11 @@ public class List {
         index = 0;
     }
 
-    /**
-     * Adds string to strings array
-     *
-     * @return the added string
-     */
-    public String add(String taskName) {
-        Task task = new Task(taskName);
+
+    /** Adds string to strings array */
+    public void add(Task task) {
         tasks[index] = task;
         index++;
-        return taskName;
     }
 
     public Task getTask(int index) {
