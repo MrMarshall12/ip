@@ -78,7 +78,7 @@ public class Erika {
 
         if (task == null) {
             System.out.println( "\n"
-                    + "Erika: Sorry, I can't understand you. Please try again."
+                    + "Erika: Hmm, sorry. Please use either todo, deadline, event, or list."
                     + "\n");
         } else {
             list.add(task);
