@@ -15,6 +15,9 @@ public class List {
 
     public void display() {
         for (int i = 0; i < strings.length; i++) {
+            if (strings[i] == null) {
+                break;
+            }
             System.out.println((i + 1) + ". " + strings[i]);
         }
     }
