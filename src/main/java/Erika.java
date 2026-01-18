@@ -2,6 +2,11 @@ import java.util.Scanner;
 
 /** A class representing the chatbot named Erika */
 public class Erika {
+    private List list;
+
+    public Erika() {
+        list = new List();
+    }
     /** Prints greeting message for the user */
     public void greetUser() {
         String message = """
@@ -28,7 +33,11 @@ public class Erika {
 
     /** Prints any message passed through the parameter */
     public void respondToUser(String message) {
-        System.out.println("\n" + "Erika: " + message + "\n");
+        if (message.strip().equalsIgnoreCase("list")) {
+            list.display();
+        } else {
+            list.add(message);
+        }
     }
 
     /** Maintain conversation until the user inputs "bye" */
