@@ -1,7 +1,63 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Erika: Hello! I'm Erika
+       What can I do for you?
+
+User:
+
+Got it. I have added this task:
+	 [T][ ] bring book
+
+User:
+
+Erika: Hmm, sorry. Please use either todo, deadline, event, or list.
+
+User:
+
+Got it. I have added this task:
+	 [D][ ] cs2103t ip (by: Sunday)
+
+User:
+
+Erika: Hmm, sorry. Please use either todo, deadline, event, or list.
+
+User:
+
+Got it. I have added this task:
+	 [E][ ] late talkshow (from: Mon 9pm to: /11pm)
+
+User:
+
+Erika: Hmm, sorry. Please use either todo, deadline, event, or list.
+
+User:
+
+Erika: Here are the tasks in your list:
+1. [T][ ] bring book
+2. [D][ ] cs2103t ip (by: Sunday)
+3. [E][ ] late talkshow (from: Mon 9pm to: /11pm)
+
+User:
+
+Nice! I have marked this task as done:
+	 [T][X] bring book
+
+User:
+
+Nice! I have marked this task as not done yet:
+	 [T][ ] bring book
+
+User:
+
+Nice! I have marked this task as done:
+	 [E][X] late talkshow (from: Mon 9pm to: /11pm)
+
+User:
+
+Erika: Here are the tasks in your list:
+1. [T][ ] bring book
+2. [D][ ] cs2103t ip (by: Sunday)
+3. [E][X] late talkshow (from: Mon 9pm to: /11pm)
+
+User:
+
+Erika: Bye. Hope to see you again soon!
 

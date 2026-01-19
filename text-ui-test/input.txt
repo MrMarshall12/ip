@@ -1,0 +1,12 @@
+todo bring book
+bring book
+deadline cs2103t ip /by Sunday
+cs2103t ip /by Sunday
+event late talkshow /from Mon 9pm /to /11pm
+late talkshow /from Mon 9pm /to /11pm
+list
+mark 1
+unmark 1
+mark 3
+list
+bye
