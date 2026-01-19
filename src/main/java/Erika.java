@@ -76,30 +76,48 @@ public class Erika {
         return formattedMessage.toLowerCase().startsWith("event");
     }
 
+    /** Adds todo task to the list */
+    public Task addTodo(String formattedMessage) {
+        String taskName = formattedMessage.toLowerCase().replace("todo ", "");
+        Task task = new ToDos(taskName);
+        list.add(task);
+        return task;
+    }
+
+    /** Adds deadline task to the list */
+    public Task addDeadline(String formattedMessage) {
+        String deadlineContent = formattedMessage.toLowerCase().replace("deadline ", "");
+        String[] splitMessage = deadlineContent.split(" /by ");
+        String taskName = splitMessage[0];
+        String deadlineTime = formattedMessage.split(" /by ")[1];
+        Task task = new Deadlines(taskName, deadlineTime);
+        list.add(task);
+        return task;
+    }
+
+    /** Adds event task to the list */
+    public Task addEvent(String formattedMessage) {
+        String eventContent = formattedMessage.toLowerCase().replace("event ", "");
+        String[] splitMessage = eventContent.split(" /from ");
+        String eventName = splitMessage[0];
+        splitMessage = formattedMessage.split(" /from ")[1].split(" /to ");
+        String startDate = splitMessage[0];
+        String endDate = splitMessage[1];
+        Task task = new Events(eventName, startDate, endDate);
+        list.add(task);
+        return task;
+    }
+
     /** Adds task to the list */
     public void addTask(String formattedMessage) {
         Task task = null;
         if (isToDo(formattedMessage)) {
-            String taskName = formattedMessage.toLowerCase().replace("todo ", "");
-            task = new ToDos(taskName);
+            task = addTodo(formattedMessage);
         } else if (isDeadline(formattedMessage)) {
-            String deadlineContent = formattedMessage.toLowerCase().replace("deadline ", "");
-            String[] splitMessage = deadlineContent.split(" /by ");
-            String taskName = splitMessage[0];
-            String deadlineTime = formattedMessage.split(" /by ")[1];
-            task = new Deadlines(taskName, deadlineTime);
+            task = addDeadline(formattedMessage);
         } else if (isEvent(formattedMessage)) {
-            String eventContent = formattedMessage.toLowerCase().replace("event ", "");
-            String[] splitMessage = eventContent.split(" /from ");
-            String eventName = splitMessage[0];
-            splitMessage = formattedMessage.split(" /from ")[1].split(" /to ");
-            String startDate = splitMessage[0];
-            String endDate = splitMessage[1];
-            task = new Events(eventName, startDate, endDate);
+            task = addEvent(formattedMessage);
         }
-
-
-        list.add(task);
 
         System.out.println("Got it. I have added this task:"
                 + "\n"
