@@ -14,6 +14,11 @@ public class List {
         tasks.add(task);
     }
 
+    /** Removes a task from the list */
+    public Task remove(int index) {
+        return tasks.remove(index);
+    }
+
     /** Checks if the list is empty */
     public boolean isEmpty() {
         return tasks.isEmpty();
