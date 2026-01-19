@@ -67,7 +67,7 @@ public class Erika {
         list.mark(index - 1, mark);
 
         String status = mark ? "done" : "not done yet";
-        System.out.println("Nice! I have marked this task as "
+        System.out.println("Erika: Nice! I have marked this task as "
                 + status
                 + ": \n"
                 + "\t "
@@ -165,7 +165,7 @@ public class Erika {
             task = addEvent(formattedMessage);
         }
 
-        System.out.println("Got it. I have added this task:"
+        System.out.println("Erika: Got it. I have added this task:"
                 + "\n"
                 + "\t "
                 + (task != null ? task.toString() : "")
@@ -194,7 +194,7 @@ public class Erika {
 
         Task task = list.remove(index - 1);
 
-        System.out.println("Noted. I have removed this task:"
+        System.out.println("Erika: Noted. I have removed this task:"
                 + "\n"
                 + "\t "
                 + task.toString()
