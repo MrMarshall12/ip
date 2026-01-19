@@ -46,8 +46,11 @@ public class Erika {
     }
 
     /** Marks the status of a task in the list */
-    public void markTask(String formattedMessage) {
+    public void markTask(String formattedMessage) throws InvalidMarkCommandException {
         String[] splitMessage = formattedMessage.split(" ");
+        if (splitMessage.length != 2) {
+            throw new InvalidMarkCommandException();
+        }
         boolean mark = splitMessage[0].equalsIgnoreCase("mark");
         int index = Integer.parseInt(splitMessage[1]);
         list.mark(index - 1, mark);
@@ -181,20 +184,20 @@ public class Erika {
     /** Prints any message passed through the parameter */
     public void respondToUser(String message) {
         String formattedMessage = message.strip();
-        if (isListCommand(formattedMessage)) {
-            displayList();
-        } else if (isMarkingCommand(formattedMessage)) {
-            markTask(formattedMessage);
-        } else if (isAddTaskCommand(formattedMessage)) {
-            try {
+        try {
+            if (isListCommand(formattedMessage)) {
+                displayList();
+            } else if (isMarkingCommand(formattedMessage)) {
+                markTask(formattedMessage);
+            } else if (isAddTaskCommand(formattedMessage)) {
                 addTask(formattedMessage);
-            } catch (ErikaException e) {
-                System.out.println("Erika: Hmm something went wrong. Please look at the message below:");
-                System.out.println(e.getMessage());
+            } else {
+                System.out.println("Erika: Hmm, sorry. Please use either todo, deadline, event, or list command."
+                        + "\n");
             }
-        } else {
-            System.out.println( "Erika: Hmm, sorry. Please use either todo, deadline, event, or list command."
-                    + "\n");
+        } catch (ErikaException e) {
+            System.out.println("Erika: Hmm something went wrong. Please look at the message below:");
+            System.out.println(e.getMessage());
         }
     }
 
