@@ -1,5 +1,5 @@
 public class InvalidDeleteCommandException extends ErikaException {
-    public InvalidDeleteCommandException(String message) {
+    public InvalidDeleteCommandException() {
         super("""
                 Invalid delete command!
                 
