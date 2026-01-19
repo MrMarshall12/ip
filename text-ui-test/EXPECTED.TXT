@@ -2,21 +2,21 @@ Erika: Hello! I'm Erika
        What can I do for you?
 
 User:
-Got it. I have added this task:
+Erika: Got it. I have added this task:
 	 [T][ ] bring book
 
 User:
 Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
 
 User:
-Got it. I have added this task:
+Erika: Got it. I have added this task:
 	 [D][ ] cs2103t ip (by: Sunday)
 
 User:
 Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
 
 User:
-Got it. I have added this task:
+Erika: Got it. I have added this task:
 	 [E][ ] late talkshow (from: Mon 9pm to: /11pm)
 
 User:
@@ -29,15 +29,15 @@ Erika: Here are the tasks in your list:
 3. [E][ ] late talkshow (from: Mon 9pm to: /11pm)
 
 User:
-Nice! I have marked this task as done:
+Erika: Nice! I have marked this task as done:
 	 [T][X] bring book
 
 User:
-Nice! I have marked this task as not done yet:
+Erika: Nice! I have marked this task as not done yet:
 	 [T][ ] bring book
 
 User:
-Nice! I have marked this task as done:
+Erika: Nice! I have marked this task as done:
 	 [E][X] late talkshow (from: Mon 9pm to: /11pm)
 
 User:
@@ -55,14 +55,14 @@ within boundary
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
-Deadline for deadline command cannot be empty
+Deadline for deadline command cannot be empty!
 
 Please ensure you follow the syntax below:
     deadline <description> /by <deadline>
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
-Description for todo, deadline, and event commands cannot be empty
+Description for todo, deadline, and event commands cannot be empty!
 
 Please ensure you follow either of the syntax below:
     a. todo <description>
@@ -74,7 +74,7 @@ Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or lis
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
-Description for todo, deadline, and event commands cannot be empty
+Description for todo, deadline, and event commands cannot be empty!
 
 Please ensure you follow either of the syntax below:
     a. todo <description>
@@ -83,7 +83,7 @@ Please ensure you follow either of the syntax below:
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
-Description for todo, deadline, and event commands cannot be empty
+Description for todo, deadline, and event commands cannot be empty!
 
 Please ensure you follow either of the syntax below:
     a. todo <description>
@@ -92,7 +92,7 @@ Please ensure you follow either of the syntax below:
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
-Description for todo, deadline, and event commands cannot be empty
+Description for todo, deadline, and event commands cannot be empty!
 
 Please ensure you follow either of the syntax below:
     a. todo <description>
@@ -106,6 +106,38 @@ Invalid mark command!
 Please ensure you follow either of the syntax below:
     a. mark <task_number>
     b. unmark <task_number>
+
+User:
+Erika: Noted. I have removed this task:
+	 [T][ ] bring book
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Invalid delete command!
+
+Please ensure you follow the syntax below:
+    delete <task_number>
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Invalid delete command!
+
+Please ensure you follow the syntax below:
+    delete <task_number>
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Task number out of bounds!
+
+Please ensure the specified task number is
+within boundary
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Task number out of bounds!
+
+Please ensure the specified task number is
+within boundary
 
 User:
 Erika: Bye. Hope to see you again soon!

@@ -17,4 +17,9 @@ deadline
 event
 event /from /to
 mark from
+delete 1
+delete
+delete from
+delete 1000
+delete -1
 bye
