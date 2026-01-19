@@ -79,7 +79,6 @@ public class Erika {
     /** Adds todo task to the list */
     public Task addTodo(String formattedMessage) throws EmptyDescriptionException {
         String taskName = formattedMessage.toLowerCase().replace("todo", "").strip();
-        System.out.println("task name: " + taskName);
         if  (taskName.isEmpty()) {
             throw new EmptyDescriptionException();
         }
