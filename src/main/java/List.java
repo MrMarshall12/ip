@@ -5,19 +5,23 @@ public class List {
 
     public List() {
         tasks = new Task[100];
-        index = 0;
+        index = -1;
     }
 
 
     /** Adds string to strings array */
     public void add(Task task) {
-        tasks[index] = task;
-        index++;
+        tasks[++index] = task;
     }
 
-    /** Check if the list is empty */
+    /** Checks if the list is empty */
     public boolean isEmpty() {
-        return index == 0;
+        return index == -1;
+    }
+
+    /** Checks the number of task contained */
+    public int numberOfTasks() {
+        return index + 1;
     }
 
     public Task getTask(int index) {
