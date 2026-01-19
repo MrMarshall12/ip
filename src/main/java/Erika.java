@@ -104,6 +104,14 @@ public class Erika {
                 || formattedMessage.toLowerCase().startsWith("unmark");
     }
 
+    /** Check if the user input is an add task command */
+    public boolean isAddTaskCommand(String formattedMessage) {
+        String lowerCase = formattedMessage.toLowerCase();
+        return lowerCase.startsWith("todo")
+                || lowerCase.startsWith("deadline")
+                || lowerCase.startsWith("event");
+    }
+
     /** Prints any message passed through the parameter */
     public void respondToUser(String message) {
         String formattedMessage = message.strip();
@@ -111,7 +119,7 @@ public class Erika {
             displayList();
         } else if (isMarkingCommand(formattedMessage)) {
             markTask(formattedMessage);
-        } else {
+        } else if (isAddTaskCommand(formattedMessage)) {
             addTask(formattedMessage);
         }
     }
