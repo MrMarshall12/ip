@@ -203,7 +203,7 @@ public class Erika {
             } else if (isAddTaskCommand(formattedMessage)) {
                 addTask(formattedMessage);
             } else {
-                System.out.println("Erika: Hmm, sorry. Please use either todo, deadline, event, or list command."
+                System.out.println("Erika: Hmm, sorry. Please use either todo, deadline, event, mark or list command."
                         + "\n");
             }
         } catch (ErikaException e) {
