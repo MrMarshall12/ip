@@ -47,7 +47,7 @@ public class Erika {
 
     /** Marks the status of a task in the list */
     public void markTask(String formattedMessage) throws InvalidMarkCommandException,
-            MarkOutOfBoundsException {
+            OutOfBoundsException {
         String[] splitMessage = formattedMessage.split(" ");
         if (splitMessage.length != 2) {
             throw new InvalidMarkCommandException();
@@ -61,7 +61,7 @@ public class Erika {
         }
 
         if (index > list.getNumberOfTasks() || index < 1) {
-            throw new MarkOutOfBoundsException();
+            throw new OutOfBoundsException();
         }
 
         list.mark(index - 1, mark);
@@ -173,6 +173,33 @@ public class Erika {
 
     }
 
+    public void deleteTask(String formattedMessage) throws InvalidDeleteCommandException,
+            OutOfBoundsException{
+        String[] splitMessage = formattedMessage.split(" ");
+        if (splitMessage.length != 2) {
+            throw new InvalidDeleteCommandException();
+        }
+        boolean mark = splitMessage[0].equalsIgnoreCase("delete");
+        int index = -1;
+        try {
+            index = Integer.parseInt(splitMessage[1]);
+        } catch (NumberFormatException e) {
+            throw new InvalidDeleteCommandException();
+        }
+
+        if (index > list.getNumberOfTasks() || index < 1) {
+            throw new OutOfBoundsException();
+        }
+
+        Task task = list.remove(index - 1);
+
+        System.out.println("Noted. I have removed this task:"
+                + "\n"
+                + "\t "
+                + task.toString()
+                + "\n");
+    }
+
     /** Check if the user input is a list command */
     public boolean isListCommand(String formattedMessage) {
         return formattedMessage.equalsIgnoreCase("list");
@@ -192,6 +219,12 @@ public class Erika {
                 || lowerCase.startsWith("event");
     }
 
+    /** Checks if the user input is a delete task command */
+    public boolean isDeleteTaskCommand(String formattedMessage) {
+        String lowerCase = formattedMessage.toLowerCase();
+        return lowerCase.startsWith("delete");
+    }
+
     /** Prints any message passed through the parameter */
     public void respondToUser(String message) {
         String formattedMessage = message.strip();
@@ -202,6 +235,8 @@ public class Erika {
                 markTask(formattedMessage);
             } else if (isAddTaskCommand(formattedMessage)) {
                 addTask(formattedMessage);
+            } else if (isDeleteTaskCommand(formattedMessage)) {
+                deleteTask(formattedMessage);
             } else {
                 System.out.println("Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, "
                         + "or list command."
