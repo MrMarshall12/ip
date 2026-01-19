@@ -1,5 +1,5 @@
-public class MarkOutOfBoundsException extends ErikaException{
-    public MarkOutOfBoundsException() {
+public class OutOfBoundsException extends ErikaException{
+    public OutOfBoundsException() {
         super("""
                 Task number out of bounds!
                 
