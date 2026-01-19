@@ -93,13 +93,23 @@ public class Erika {
         }
     }
 
+    /** Check if the user input is a list command */
+    public boolean isListCommand(String formattedMessage) {
+        return formattedMessage.equalsIgnoreCase("list");
+    }
+
+    /** Check if the user input is a marking command */
+    public boolean isMarkingCommand(String formattedMessage) {
+        return formattedMessage.toLowerCase().startsWith("mark")
+                || formattedMessage.toLowerCase().startsWith("unmark");
+    }
+
     /** Prints any message passed through the parameter */
     public void respondToUser(String message) {
         String formattedMessage = message.strip();
-        if (formattedMessage.equalsIgnoreCase("list")) {
+        if (isListCommand(formattedMessage)) {
             displayList();
-        } else if (formattedMessage.toLowerCase().startsWith("mark")
-                || formattedMessage.toLowerCase().startsWith("unmark")) {
+        } else if (isMarkingCommand(formattedMessage)) {
             markTask(formattedMessage);
         } else {
             addTask(formattedMessage);
