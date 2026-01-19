@@ -61,17 +61,17 @@ public class Erika {
                 + "\n");
     }
 
-    /** Check if the add command is a todo */
+    /** Checks if the add command is a todo */
     public boolean isToDo(String formattedMessage) {
         return formattedMessage.toLowerCase().startsWith("todo");
     }
 
-    /** Check if the add command is a deadline */
+    /** Checks if the add command is a deadline */
     public boolean isDeadline(String formattedMessage) {
         return formattedMessage.toLowerCase().startsWith("deadline");
     }
 
-    /** Check if the add command is an event */
+    /** Checks if the add command is an event */
     public boolean isEvent(String formattedMessage) {
         return formattedMessage.toLowerCase().startsWith("event");
     }
