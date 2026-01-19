@@ -53,7 +53,13 @@ public class Erika {
             throw new InvalidMarkCommandException();
         }
         boolean mark = splitMessage[0].equalsIgnoreCase("mark");
-        int index = Integer.parseInt(splitMessage[1]);
+        int index = -1;
+        try {
+            index = Integer.parseInt(splitMessage[0]);
+        } catch (NumberFormatException e) {
+            throw new InvalidMarkCommandException();
+        }
+
         if (index > list.getNumberOfTasks() || index < 1) {
             throw new MarkOutOfBoundsException();
         }
