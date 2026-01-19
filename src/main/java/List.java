@@ -1,45 +1,42 @@
+import java.util.ArrayList;
+
 /** A class representing a list */
 public class List {
-    private Task[] tasks;
-    private int index;
+    private ArrayList<Task> tasks;
 
     public List() {
-        tasks = new Task[100];
-        index = -1;
+        tasks = new ArrayList<>();
     }
 
 
     /** Adds string to strings array */
     public void add(Task task) {
-        tasks[++index] = task;
+        tasks.add(task);
     }
 
     /** Checks if the list is empty */
     public boolean isEmpty() {
-        return index == -1;
+        return tasks.isEmpty();
     }
 
     /** Checks the number of task contained */
     public int getNumberOfTasks() {
-        return index + 1;
+        return tasks.size();
     }
 
     public Task getTask(int index) {
-        return tasks[index];
+        return tasks.get(index);
     }
 
     /** Marks the status of a task */
     public void mark(int taskIndex, boolean status) {
-        tasks[taskIndex].setDone(status);
+        tasks.get(taskIndex).setDone(status);
     }
 
     /** Prints non-empty elements of the list */
     public void display() {
-        for (int i = 0; i < tasks.length; i++) {
-            if (tasks[i] == null) {
-                break;
-            }
-            System.out.println((i + 1) + ". " + tasks[i]);
+        for (Task task : tasks) {
+            System.out.println((tasks.indexOf(task) + 1) + ". " + task);
         }
     }
 }
