@@ -3,9 +3,11 @@ import java.util.Scanner;
 /** A class representing the chatbot named Erika */
 public class Erika {
     private List list;
+    private Scanner scanner;
 
     public Erika() {
         list = new List();
+        scanner = new Scanner(System.in);
     }
     /** Prints greeting message for the user */
     public void greetUser() {
@@ -27,7 +29,6 @@ public class Erika {
 
     /** Returns string inputted by the user */
     public String readUserInput() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("User: ");
         return scanner.nextLine();
     }
