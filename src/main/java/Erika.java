@@ -79,18 +79,15 @@ public class Erika {
             task = new Events(eventName, startDate, endDate);
         }
 
-        if (task == null) {
-            System.out.println( "Erika: Hmm, sorry. Please use either todo, deadline, event, or list."
-                    + "\n");
-        } else {
-            list.add(task);
 
-            System.out.println("Got it. I have added this task:"
-                    + "\n"
-                    + "\t "
-                    + task.toString()
-                    + "\n");
-        }
+        list.add(task);
+
+        System.out.println("Got it. I have added this task:"
+                + "\n"
+                + "\t "
+                + (task != null ? task.toString() : "")
+                + "\n");
+
     }
 
     /** Check if the user input is a list command */
@@ -121,6 +118,9 @@ public class Erika {
             markTask(formattedMessage);
         } else if (isAddTaskCommand(formattedMessage)) {
             addTask(formattedMessage);
+        } else {
+            System.out.println( "Erika: Hmm, sorry. Please use either todo, deadline, event, or list."
+                    + "\n");
         }
     }
 
