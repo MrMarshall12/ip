@@ -30,7 +30,7 @@ public class Erika {
     public String readUserInput() {
         System.out.print("User: ");
         String message = scanner.nextLine();
-        System.out.println("\n"); // To create line break
+        System.out.println(); // To create line break
         return message;
     }
 
