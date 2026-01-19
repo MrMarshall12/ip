@@ -113,21 +113,35 @@ public class Erika {
     }
 
     /** Adds event task to the list */
-    public Task addEvent(String formattedMessage) {
-        String eventContent = formattedMessage.toLowerCase().replace("event ", "");
-        String[] splitMessage = eventContent.split(" /from ");
-        String eventName = splitMessage[0];
-        splitMessage = formattedMessage.split(" /from ")[1].split(" /to ");
-        String startDate = splitMessage[0];
-        String endDate = splitMessage[1];
-        Task task = new Events(eventName, startDate, endDate);
+    public Task addEvent(String formattedMessage) throws EmptyDescriptionException,
+            EmptyStartEndException {
+        String eventContent = formattedMessage.toLowerCase().replace("event", "").strip();
+        String[] splitMessage = eventContent.split("/from ");
+        String taskName = splitMessage.length > 0
+                ? splitMessage[0].strip()
+                : "";
+        if  (taskName.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+
+        String[] splitAroundFrom = formattedMessage.split("/from ");
+        String[] splitAroundTo = splitAroundFrom.length > 1
+                ? splitAroundFrom[1].split("/to")
+                : new String[0];
+        if (splitAroundTo.length != 2) {
+            throw new EmptyStartEndException();
+        }
+
+        String startDate = splitAroundTo[0].strip();
+        String endDate = splitAroundTo[1].strip();
+        Task task = new Events(taskName, startDate, endDate);
         list.add(task);
         return task;
     }
 
     /** Adds task to the list */
     public void addTask(String formattedMessage) throws EmptyDescriptionException,
-            EmptyDeadlineException {
+            EmptyDeadlineException, EmptyStartEndException {
         Task task = null;
         if (isToDo(formattedMessage)) {
             task = addTodo(formattedMessage);
