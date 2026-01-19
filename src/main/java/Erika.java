@@ -46,13 +46,18 @@ public class Erika {
     }
 
     /** Marks the status of a task in the list */
-    public void markTask(String formattedMessage) throws InvalidMarkCommandException {
+    public void markTask(String formattedMessage) throws InvalidMarkCommandException,
+            MarkOutOfBoundsException {
         String[] splitMessage = formattedMessage.split(" ");
         if (splitMessage.length != 2) {
             throw new InvalidMarkCommandException();
         }
         boolean mark = splitMessage[0].equalsIgnoreCase("mark");
         int index = Integer.parseInt(splitMessage[1]);
+        if (index > list.getNumberOfTasks() || index < 1) {
+            throw new MarkOutOfBoundsException();
+        }
+
         list.mark(index - 1, mark);
 
         String status = mark ? "done" : "not done yet";
