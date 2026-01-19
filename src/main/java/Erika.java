@@ -55,7 +55,7 @@ public class Erika {
         boolean mark = splitMessage[0].equalsIgnoreCase("mark");
         int index = -1;
         try {
-            index = Integer.parseInt(splitMessage[0]);
+            index = Integer.parseInt(splitMessage[1]);
         } catch (NumberFormatException e) {
             throw new InvalidMarkCommandException();
         }
