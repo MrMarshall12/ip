@@ -61,19 +61,34 @@ public class Erika {
                 + "\n");
     }
 
+    /** Check if the add command is a todo */
+    public boolean isToDo(String formattedMessage) {
+        return formattedMessage.toLowerCase().startsWith("todo");
+    }
+
+    /** Check if the add command is a deadline */
+    public boolean isDeadline(String formattedMessage) {
+        return formattedMessage.toLowerCase().startsWith("deadline");
+    }
+
+    /** Check if the add command is an event */
+    public boolean isEvent(String formattedMessage) {
+        return formattedMessage.toLowerCase().startsWith("event");
+    }
+
     /** Adds task to the list */
     public void addTask(String formattedMessage) {
         Task task = null;
-        if (formattedMessage.toLowerCase().startsWith("todo")) {
+        if (isToDo(formattedMessage)) {
             String taskName = formattedMessage.toLowerCase().replace("todo ", "");
             task = new ToDos(taskName);
-        } else if (formattedMessage.toLowerCase().startsWith("deadline")) {
+        } else if (isDeadline(formattedMessage)) {
             String deadlineContent = formattedMessage.toLowerCase().replace("deadline ", "");
             String[] splitMessage = deadlineContent.split(" /by ");
             String taskName = splitMessage[0];
             String deadlineTime = formattedMessage.split(" /by ")[1];
             task = new Deadlines(taskName, deadlineTime);
-        } else if (formattedMessage.toLowerCase().startsWith("event")) {
+        } else if (isEvent(formattedMessage)) {
             String eventContent = formattedMessage.toLowerCase().replace("event ", "");
             String[] splitMessage = eventContent.split(" /from ");
             String eventName = splitMessage[0];
