@@ -60,7 +60,7 @@ public class Erika {
             throw new InvalidMarkCommandException();
         }
 
-        if (index > list.getNumberOfTasks() || index < 1) {
+        if (!list.isWithinBounds(index - 1)) {
             throw new OutOfBoundsException();
         }
 
@@ -188,7 +188,7 @@ public class Erika {
             throw new InvalidDeleteCommandException();
         }
 
-        if (index > list.getNumberOfTasks() || index < 1) {
+        if (!list.isWithinBounds(index - 1)) {
             throw new OutOfBoundsException();
         }
 
