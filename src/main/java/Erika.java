@@ -88,11 +88,25 @@ public class Erika {
     }
 
     /** Adds deadline task to the list */
-    public Task addDeadline(String formattedMessage) {
-        String deadlineContent = formattedMessage.toLowerCase().replace("deadline ", "");
-        String[] splitMessage = deadlineContent.split(" /by ");
-        String taskName = splitMessage[0];
-        String deadlineTime = formattedMessage.split(" /by ")[1];
+    public Task addDeadline(String formattedMessage) throws EmptyDescriptionException,
+            EmptyDeadlineException {
+        String deadlineContent = formattedMessage.toLowerCase().replace("deadline", "").strip();
+        String[] splitMessage = deadlineContent.split("/by");
+        String taskName = splitMessage.length > 0
+                ? splitMessage[0].strip()
+                : "";
+        if  (taskName.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+
+        String[] splitAroundBy = formattedMessage.split("/by");
+        String deadlineTime = splitAroundBy.length == 2
+                ? splitAroundBy[1].strip()
+                : "";
+        if (deadlineTime.isEmpty()) {
+            throw new EmptyDeadlineException();
+        }
+
         Task task = new Deadlines(taskName, deadlineTime);
         list.add(task);
         return task;
@@ -112,7 +126,8 @@ public class Erika {
     }
 
     /** Adds task to the list */
-    public void addTask(String formattedMessage) throws EmptyDescriptionException {
+    public void addTask(String formattedMessage) throws EmptyDescriptionException,
+            EmptyDeadlineException {
         Task task = null;
         if (isToDo(formattedMessage)) {
             task = addTodo(formattedMessage);
@@ -160,6 +175,9 @@ public class Erika {
             try {
                 addTask(formattedMessage);
             } catch (EmptyDescriptionException e) {
+                System.out.println("Erika: Hmm something went wrong. Please look at the message below");
+                System.out.println(e.getMessage());
+            } catch (EmptyDeadlineException e) {
                 System.out.println("Erika: Hmm something went wrong. Please look at the message below");
                 System.out.println(e.getMessage());
             }
