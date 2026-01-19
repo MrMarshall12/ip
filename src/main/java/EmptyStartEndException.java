@@ -1,4 +1,4 @@
-public class EmptyStartEndException extends Exception {
+public class EmptyStartEndException extends ErikaException {
     public EmptyStartEndException() {
         super("""
                 Start and end time for event command cannot be empty

@@ -1,4 +1,4 @@
-public class EmptyDeadlineException extends Exception {
+public class EmptyDeadlineException extends ErikaException {
     public EmptyDeadlineException() {
         super("""
                 Deadline for deadline command cannot be empty

@@ -174,10 +174,7 @@ public class Erika {
         } else if (isAddTaskCommand(formattedMessage)) {
             try {
                 addTask(formattedMessage);
-            } catch (EmptyDescriptionException e) {
-                System.out.println("Erika: Hmm something went wrong. Please look at the message below");
-                System.out.println(e.getMessage());
-            } catch (EmptyDeadlineException e) {
+            } catch (ErikaException e) {
                 System.out.println("Erika: Hmm something went wrong. Please look at the message below");
                 System.out.println(e.getMessage());
             }

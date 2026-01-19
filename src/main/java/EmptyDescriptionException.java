@@ -1,4 +1,4 @@
-public class EmptyDescriptionException extends Exception {
+public class EmptyDescriptionException extends ErikaException {
     public EmptyDescriptionException() {
         super("""
                 Description for todo, deadline, and event commands cannot be empty
