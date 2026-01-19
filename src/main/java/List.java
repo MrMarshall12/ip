@@ -15,6 +15,11 @@ public class List {
         index++;
     }
 
+    /** Check if the list is empty */
+    public boolean isEmpty() {
+        return index == 0;
+    }
+
     public Task getTask(int index) {
         return tasks[index];
     }
