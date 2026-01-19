@@ -77,8 +77,12 @@ public class Erika {
     }
 
     /** Adds todo task to the list */
-    public Task addTodo(String formattedMessage) {
-        String taskName = formattedMessage.toLowerCase().replace("todo ", "");
+    public Task addTodo(String formattedMessage) throws EmptyDescriptionException {
+        String taskName = formattedMessage.toLowerCase().replace("todo", "").strip();
+        System.out.println("task name: " + taskName);
+        if  (taskName.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
         Task task = new ToDos(taskName);
         list.add(task);
         return task;
@@ -109,7 +113,7 @@ public class Erika {
     }
 
     /** Adds task to the list */
-    public void addTask(String formattedMessage) {
+    public void addTask(String formattedMessage) throws EmptyDescriptionException {
         Task task = null;
         if (isToDo(formattedMessage)) {
             task = addTodo(formattedMessage);
@@ -154,7 +158,12 @@ public class Erika {
         } else if (isMarkingCommand(formattedMessage)) {
             markTask(formattedMessage);
         } else if (isAddTaskCommand(formattedMessage)) {
-            addTask(formattedMessage);
+            try {
+                addTask(formattedMessage);
+            } catch (EmptyDescriptionException e) {
+                System.out.println("Erika: Hmm something went wrong. Please look at the message below");
+                System.out.println(e.getMessage());
+            }
         } else {
             System.out.println( "Erika: Hmm, sorry. Please use either todo, deadline, event, or list command."
                     + "\n");
