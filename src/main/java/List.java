@@ -9,7 +9,7 @@ public class List {
     }
 
 
-    /** Adds string to strings array */
+    /** Adds a task to the list */
     public void add(Task task) {
         tasks.add(task);
     }
