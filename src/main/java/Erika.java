@@ -173,6 +173,7 @@ public class Erika {
 
     }
 
+    /** Deletes task from the list */
     public void deleteTask(String formattedMessage) throws InvalidDeleteCommandException,
             OutOfBoundsException{
         String[] splitMessage = formattedMessage.split(" ");
@@ -200,18 +201,18 @@ public class Erika {
                 + "\n");
     }
 
-    /** Check if the user input is a list command */
+    /** Checks if the user input is a list command */
     public boolean isListCommand(String formattedMessage) {
         return formattedMessage.equalsIgnoreCase("list");
     }
 
-    /** Check if the user input is a marking command */
+    /** Checks if the user input is a marking command */
     public boolean isMarkingCommand(String formattedMessage) {
         return formattedMessage.toLowerCase().startsWith("mark")
                 || formattedMessage.toLowerCase().startsWith("unmark");
     }
 
-    /** Check if the user input is an add task command */
+    /** Checks if the user input is an add task command */
     public boolean isAddTaskCommand(String formattedMessage) {
         String lowerCase = formattedMessage.toLowerCase();
         return lowerCase.startsWith("todo")
