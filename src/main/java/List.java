@@ -14,6 +14,11 @@ public class List {
         tasks.add(task);
     }
 
+    /** Checks if the specified index is within boundary */
+    public boolean isWithinBounds(int index) {
+        return index >= 0 && index < tasks.size();
+    }
+
     /** Removes a task from the list */
     public Task remove(int index) {
         return tasks.remove(index);
