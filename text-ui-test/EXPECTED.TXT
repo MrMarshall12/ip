@@ -6,21 +6,21 @@ Got it. I have added this task:
 	 [T][ ] bring book
 
 User:
-Erika: Hmm, sorry. Please use either todo, deadline, event, or list command.
+Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
 
 User:
 Got it. I have added this task:
 	 [D][ ] cs2103t ip (by: Sunday)
 
 User:
-Erika: Hmm, sorry. Please use either todo, deadline, event, or list command.
+Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
 
 User:
 Got it. I have added this task:
 	 [E][ ] late talkshow (from: Mon 9pm to: /11pm)
 
 User:
-Erika: Hmm, sorry. Please use either todo, deadline, event, or list command.
+Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
 
 User:
 Erika: Here are the tasks in your list:
@@ -45,6 +45,67 @@ Erika: Here are the tasks in your list:
 1. [T][ ] bring book
 2. [D][ ] cs2103t ip (by: Sunday)
 3. [E][X] late talkshow (from: Mon 9pm to: /11pm)
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Task number out of bounds!
+
+Please ensure the specified task number is
+within boundary
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Deadline for deadline command cannot be empty
+
+Please ensure you follow the syntax below:
+    deadline <description> /by <deadline>
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Description for todo, deadline, and event commands cannot be empty
+
+Please ensure you follow either of the syntax below:
+    a. todo <description>
+    b. deadline <description> /by <deadline>
+    c. event <description> /from <start> /to <end>
+
+User:
+Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Description for todo, deadline, and event commands cannot be empty
+
+Please ensure you follow either of the syntax below:
+    a. todo <description>
+    b. deadline <description> /by <deadline>
+    c. event <description> /from <start> /to <end>
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Description for todo, deadline, and event commands cannot be empty
+
+Please ensure you follow either of the syntax below:
+    a. todo <description>
+    b. deadline <description> /by <deadline>
+    c. event <description> /from <start> /to <end>
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Description for todo, deadline, and event commands cannot be empty
+
+Please ensure you follow either of the syntax below:
+    a. todo <description>
+    b. deadline <description> /by <deadline>
+    c. event <description> /from <start> /to <end>
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Invalid mark command!
+
+Please ensure you follow either of the syntax below:
+    a. mark <task_number>
+    b. unmark <task_number>
 
 User:
 Erika: Bye. Hope to see you again soon!

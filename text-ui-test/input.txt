@@ -9,4 +9,12 @@ mark 1
 unmark 1
 mark 3
 list
+mark -1
+deadline /from /from
+todo
+abracadabra
+deadline
+event
+event /from /to
+mark from
 bye
