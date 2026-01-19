@@ -20,7 +20,7 @@ public class List {
     }
 
     /** Checks the number of task contained */
-    public int numberOfTasks() {
+    public int getNumberOfTasks() {
         return index + 1;
     }
 
