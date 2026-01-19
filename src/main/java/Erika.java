@@ -21,7 +21,6 @@ public class Erika {
     /** Prints farewell message for the user */
     public void bidFarewell() {
         String message = """
-                
                 Erika: Bye. Hope to see you again soon!
                 """;
         System.out.println(message);
@@ -30,12 +29,14 @@ public class Erika {
     /** Returns string inputted by the user */
     public String readUserInput() {
         System.out.print("User: ");
-        return scanner.nextLine();
+        String message = scanner.nextLine();
+        System.out.println(); // To create line break
+        return message;
     }
 
     /** Displays items in the list */
     public void displayList() {
-        System.out.println("\n" + "Erika: Here are the tasks in your list: ");
+        System.out.println("Erika: Here are the tasks in your list: ");
         list.display();
         System.out.println(); // To create line break
     }
@@ -48,7 +49,7 @@ public class Erika {
         list.mark(index - 1, mark);
 
         String status = mark ? "done" : "not done yet";
-        System.out.println("\n" + "Nice! I have marked this task as "
+        System.out.println("Nice! I have marked this task as "
                 + status
                 + ": \n"
                 + "\t "
@@ -79,13 +80,12 @@ public class Erika {
         }
 
         if (task == null) {
-            System.out.println( "\n"
-                    + "Erika: Hmm, sorry. Please use either todo, deadline, event, or list."
+            System.out.println( "Erika: Hmm, sorry. Please use either todo, deadline, event, or list."
                     + "\n");
         } else {
             list.add(task);
 
-            System.out.println("\n" + "Got it. I have added this task:"
+            System.out.println("Got it. I have added this task:"
                     + "\n"
                     + "\t "
                     + task.toString()
