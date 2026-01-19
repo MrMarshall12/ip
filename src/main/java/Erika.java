@@ -10,7 +10,7 @@ public class Erika {
         scanner = new Scanner(System.in);
     }
     /** Prints greeting message for the user */
-    public void greetUser() {
+    private void greetUser() {
         String message = """
                 Erika: Hello! I'm Erika
                        What can I do for you?
@@ -19,7 +19,7 @@ public class Erika {
     }
 
     /** Prints farewell message for the user */
-    public void bidFarewell() {
+    private void bidFarewell() {
         String message = """
                 Erika: Bye. Hope to see you again soon!
                 """;
@@ -27,7 +27,7 @@ public class Erika {
     }
 
     /** Returns string inputted by the user */
-    public String readUserInput() {
+    private String readUserInput() {
         System.out.print("User: ");
         String message = scanner.nextLine();
         System.out.println(); // To create line break
@@ -35,7 +35,7 @@ public class Erika {
     }
 
     /** Displays items in the list */
-    public void displayList() {
+    private void displayList() {
         if (list.isEmpty()) {
             System.out.println("Erika: List is empty");
         } else {
@@ -46,7 +46,7 @@ public class Erika {
     }
 
     /** Marks the status of a task in the list */
-    public void markTask(String formattedMessage) throws InvalidMarkCommandException,
+    private void markTask(String formattedMessage) throws InvalidMarkCommandException,
             OutOfBoundsException {
         String[] splitMessage = formattedMessage.split(" ");
         if (splitMessage.length != 2) {
@@ -76,22 +76,22 @@ public class Erika {
     }
 
     /** Checks if the add command is a todo */
-    public boolean isToDo(String formattedMessage) {
+    private boolean isToDo(String formattedMessage) {
         return formattedMessage.toLowerCase().startsWith("todo");
     }
 
     /** Checks if the add command is a deadline */
-    public boolean isDeadline(String formattedMessage) {
+    private boolean isDeadline(String formattedMessage) {
         return formattedMessage.toLowerCase().startsWith("deadline");
     }
 
     /** Checks if the add command is an event */
-    public boolean isEvent(String formattedMessage) {
+    private boolean isEvent(String formattedMessage) {
         return formattedMessage.toLowerCase().startsWith("event");
     }
 
     /** Adds todo task to the list */
-    public Task addTodo(String formattedMessage) throws EmptyDescriptionException {
+    private Task addTodo(String formattedMessage) throws EmptyDescriptionException {
         String taskName = formattedMessage.toLowerCase().replace("todo", "").strip();
         if  (taskName.isEmpty()) {
             throw new EmptyDescriptionException();
@@ -102,7 +102,7 @@ public class Erika {
     }
 
     /** Adds deadline task to the list */
-    public Task addDeadline(String formattedMessage) throws EmptyDescriptionException,
+    private Task addDeadline(String formattedMessage) throws EmptyDescriptionException,
             EmptyDeadlineException {
         String deadlineContent = formattedMessage.toLowerCase().replace("deadline", "").strip();
         String[] splitMessage = deadlineContent.split("/by");
@@ -127,7 +127,7 @@ public class Erika {
     }
 
     /** Adds event task to the list */
-    public Task addEvent(String formattedMessage) throws EmptyDescriptionException,
+    private Task addEvent(String formattedMessage) throws EmptyDescriptionException,
             EmptyStartEndException {
         String eventContent = formattedMessage.toLowerCase().replace("event", "").strip();
         String[] splitMessage = eventContent.split("/from ");
@@ -154,7 +154,7 @@ public class Erika {
     }
 
     /** Adds task to the list */
-    public void addTask(String formattedMessage) throws EmptyDescriptionException,
+    private void addTask(String formattedMessage) throws EmptyDescriptionException,
             EmptyDeadlineException, EmptyStartEndException {
         Task task = null;
         if (isToDo(formattedMessage)) {
@@ -174,7 +174,7 @@ public class Erika {
     }
 
     /** Deletes task from the list */
-    public void deleteTask(String formattedMessage) throws InvalidDeleteCommandException,
+    private void deleteTask(String formattedMessage) throws InvalidDeleteCommandException,
             OutOfBoundsException{
         String[] splitMessage = formattedMessage.split(" ");
         if (splitMessage.length != 2) {
@@ -202,18 +202,18 @@ public class Erika {
     }
 
     /** Checks if the user input is a list command */
-    public boolean isListCommand(String formattedMessage) {
+    private boolean isListCommand(String formattedMessage) {
         return formattedMessage.equalsIgnoreCase("list");
     }
 
     /** Checks if the user input is a marking command */
-    public boolean isMarkingCommand(String formattedMessage) {
+    private boolean isMarkingCommand(String formattedMessage) {
         return formattedMessage.toLowerCase().startsWith("mark")
                 || formattedMessage.toLowerCase().startsWith("unmark");
     }
 
     /** Checks if the user input is an add task command */
-    public boolean isAddTaskCommand(String formattedMessage) {
+    private boolean isAddTaskCommand(String formattedMessage) {
         String lowerCase = formattedMessage.toLowerCase();
         return lowerCase.startsWith("todo")
                 || lowerCase.startsWith("deadline")
@@ -221,13 +221,13 @@ public class Erika {
     }
 
     /** Checks if the user input is a delete task command */
-    public boolean isDeleteTaskCommand(String formattedMessage) {
+    private boolean isDeleteTaskCommand(String formattedMessage) {
         String lowerCase = formattedMessage.toLowerCase();
         return lowerCase.startsWith("delete");
     }
 
     /** Prints any message passed through the parameter */
-    public void respondToUser(String message) {
+    private void respondToUser(String message) {
         String formattedMessage = message.strip();
         try {
             if (isListCommand(formattedMessage)) {
