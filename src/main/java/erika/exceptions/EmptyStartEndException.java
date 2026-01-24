@@ -1,3 +1,5 @@
+package erika.exceptions;
+
 public class EmptyStartEndException extends ErikaException {
     public EmptyStartEndException() {
         super("""

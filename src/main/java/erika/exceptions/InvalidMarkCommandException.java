@@ -1,3 +1,5 @@
+package erika.exceptions;
+
 public class InvalidMarkCommandException extends ErikaException {
     public InvalidMarkCommandException() {
         super("""

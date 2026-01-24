@@ -1,3 +1,5 @@
+package erika.exceptions;
+
 public class InvalidDeleteCommandException extends ErikaException {
     public InvalidDeleteCommandException() {
         super("""

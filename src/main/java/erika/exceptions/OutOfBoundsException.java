@@ -1,3 +1,5 @@
+package erika.exceptions;
+
 public class OutOfBoundsException extends ErikaException{
     public OutOfBoundsException() {
         super("""

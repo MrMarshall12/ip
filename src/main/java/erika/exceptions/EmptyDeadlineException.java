@@ -1,3 +1,5 @@
+package erika.exceptions;
+
 public class EmptyDeadlineException extends ErikaException {
     public EmptyDeadlineException() {
         super("""

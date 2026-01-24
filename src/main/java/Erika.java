@@ -1,3 +1,11 @@
+import erika.exceptions.EmptyDeadlineException;
+import erika.exceptions.EmptyDescriptionException;
+import erika.exceptions.EmptyStartEndException;
+import erika.exceptions.ErikaException;
+import erika.exceptions.InvalidDeleteCommandException;
+import erika.exceptions.InvalidMarkCommandException;
+import erika.exceptions.OutOfBoundsException;
+
 import java.util.Scanner;
 
 /** A class representing the chatbot named Erika */
@@ -109,7 +117,7 @@ public class Erika {
         String taskName = splitMessage.length > 0
                 ? splitMessage[0].strip()
                 : "";
-        if  (taskName.isEmpty()) {
+        if (taskName.isEmpty()) {
             throw new EmptyDescriptionException();
         }
 
@@ -134,7 +142,7 @@ public class Erika {
         String taskName = splitMessage.length > 0
                 ? splitMessage[0].strip()
                 : "";
-        if  (taskName.isEmpty()) {
+        if (taskName.isEmpty()) {
             throw new EmptyDescriptionException();
         }
 
