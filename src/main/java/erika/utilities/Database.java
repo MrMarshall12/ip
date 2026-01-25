@@ -54,9 +54,9 @@ public class Database {
     }
 
     /**
-     * Loads tasks from storage file
+     * Loads tasks from storage file.
      *
-     * @return A list of Tasks
+     * @return A list of Tasks.
      */
     public ArrayList<Task> load() throws ErikaIOException {
         ArrayList<Task> tasks = new ArrayList<>();
@@ -92,9 +92,9 @@ public class Database {
     }
 
     /**
-     * Overwrites tasks from storage file
+     * Overwrites tasks from storage file.
      *
-     * @return A new list of Tasks
+     * @return A new list of Tasks.
      */
     public ArrayList<Task> overwrite(ArrayList<Task> tasks) throws ErikaIOException {
         try (FileWriter fileWriterOverwrite = new FileWriter(storageTemp)) {
