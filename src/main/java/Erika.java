@@ -240,6 +240,7 @@ public class Erika {
                     5. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm => add event
                     6. mark <task_number> => mark a task as done
                     7. unmark <task_number> => mark a task as not done
+                    8. delete <task_number> => delete a task
                 """;
         System.out.println(helpMessage);
     }
