@@ -27,6 +27,7 @@ public class Erika {
         list = new TaskList();
         scanner = new Scanner(System.in);
     }
+
     /** Prints greeting message for the user */
     private void greetUser() {
         String message = """
@@ -241,6 +242,7 @@ public class Erika {
                     6. mark <task_number> => mark a task as done
                     7. unmark <task_number> => mark a task as not done
                     8. delete <task_number> => delete a task
+                    9. bye => end session
                 """;
         System.out.println(helpMessage);
     }
