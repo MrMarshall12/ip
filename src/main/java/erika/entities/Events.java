@@ -1,5 +1,6 @@
 package erika.entities;
 
+/** A subclass of Task representing event task */
 public class Events extends Task {
     private String begin;
     private String end;

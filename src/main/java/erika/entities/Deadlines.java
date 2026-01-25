@@ -1,5 +1,6 @@
 package erika.entities;
 
+/** A subclass of Task representing deadline task */
 public class Deadlines extends Task {
     private String deadline;
 
