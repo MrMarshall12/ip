@@ -19,14 +19,9 @@ public class Erika {
     private List list;
     private Scanner scanner;
 
-    public Erika() {
-        try {
-            list = new List();
-            scanner = new Scanner(System.in);
-        } catch (ErikaException e) {
-            System.out.println("Erika: Hmm something went wrong. Please look at the message below:");
-            System.out.println(e.getMessage());
-        }
+    public Erika() throws ErikaIOException {
+        list = new List();
+        scanner = new Scanner(System.in);
     }
     /** Prints greeting message for the user */
     private void greetUser() {
@@ -284,7 +279,12 @@ public class Erika {
     }
 
     public static void main(String[] args) {
-        Erika erika = new Erika();
-        erika.converse();
+        try {
+            Erika erika = new Erika();
+            erika.converse();
+        } catch (ErikaException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Erika: I can't work without my database. Please fix it first. See yaaa :)");
+        }
     }
 }
