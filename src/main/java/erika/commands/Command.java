@@ -33,11 +33,6 @@ public abstract class Command {
         return false;
     }
 
-    /** Checks if this is an Unmark command */
-    public boolean isUnmark() {
-        return false;
-    }
-
     /** Checks if this is a delete command */
     public boolean isDelete() {
         return false;
