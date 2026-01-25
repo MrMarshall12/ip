@@ -6,13 +6,13 @@ import erika.exceptions.ErikaIOException;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
-/** A class representing a list */
-public class List {
+/** A class representing a list of tasks */
+public class TaskList {
     private ArrayList<Task> tasks;
-    private Database database;
+    private Storage database;
 
-    public List() throws ErikaIOException {
-        database = new Database();
+    public TaskList() throws ErikaIOException {
+        database = new Storage();
         tasks = database.load();
     }
 
