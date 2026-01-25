@@ -75,7 +75,7 @@ public class Database {
                     isDone = items[1].equals("[X]");
                     task = new Events(items[2], items[3],  items[4]);
                 } else {
-                    break; // Content not in the expected format
+                    throw new ErikaIOException("Database file is probably corrupted or improperly formatted");
                 }
                 task.setDone(isDone);
                 tasks.add(task);
