@@ -1,3 +1,7 @@
+import erika.entities.Deadlines;
+import erika.entities.Events;
+import erika.entities.Task;
+import erika.entities.ToDos;
 import erika.exceptions.EmptyDeadlineException;
 import erika.exceptions.EmptyDescriptionException;
 import erika.exceptions.EmptyStartEndException;

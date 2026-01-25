@@ -1,3 +1,5 @@
+package erika.entities;
+
 /** A class representing a task */
 public class Task {
     private String taskName;

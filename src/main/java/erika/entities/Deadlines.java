@@ -1,3 +1,5 @@
+package erika.entities;
+
 public class Deadlines extends Task {
     private String deadline;
 

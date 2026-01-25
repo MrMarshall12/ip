@@ -1,3 +1,5 @@
+import erika.entities.Task;
+
 import java.util.ArrayList;
 
 /** A class representing a list */

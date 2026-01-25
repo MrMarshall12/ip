@@ -1,3 +1,5 @@
+package erika.entities;
+
 public class Events extends Task {
     private String begin;
     private String end;
