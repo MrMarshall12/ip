@@ -11,7 +11,7 @@ import erika.commands.MarkCommand;
 import erika.commands.ToDoCommand;
 import erika.exceptions.UnknownCommandException;
 
-/** A class representing a parser that parses command from users */
+/** A class representing a parser that parses command from user */
 public class Parser {
     /** Checks if the add command is a todo */
     private static boolean isToDo(String formattedMessage) {
