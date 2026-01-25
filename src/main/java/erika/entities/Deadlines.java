@@ -10,7 +10,9 @@ public class Deadlines extends Task {
 
     @Override
     public String formatToStorageString() {
-        return "todo," + super.getTaskName()
+        return super.formatToStorageString()
+                + "deadline,"
+                + super.getTaskName()
                 + ","
                 + deadline;
     }

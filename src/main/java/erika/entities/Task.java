@@ -20,7 +20,7 @@ public class Task {
 
     /** Formats a task into a storable string */
     public String formatToStorageString() {
-        return "";
+        return isDone ? "[X]," : "[ ],";
     }
 
     @Override
