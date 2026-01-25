@@ -10,26 +10,33 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /** A class representing a database */
 public class Database {
     File storage;
+    File storageTemp;
 
     public Database() throws IOException {
         Path path = Paths.get("data", "ErikaDatabase.txt");
+        Path pathTemp = Paths.get("data", "ErikaDatabaseTemp.tmp");
 
         try {
             Files.createDirectories(path.getParent());
             if (!Files.exists(path)) {
                 Files.createFile(path);
             }
+            if (!Files.exists(pathTemp)) {
+                Files.createFile(pathTemp);
+            }
         } catch (IOException e) {
             throw new IOException("Database creation failed");
         }
 
         storage = path.toFile();
+        storageTemp = pathTemp.toFile();
     }
 
     /** Stores task to storage file */
@@ -75,4 +82,25 @@ public class Database {
         return tasks;
     }
 
+    /**
+     * Overwrites tasks from storage file
+     *
+     * @return A new list of Tasks
+     */
+    public ArrayList<Task> overwrite(ArrayList<Task> tasks) throws IOException {
+        FileWriter fileWriterOverwrite = new FileWriter(storageTemp);
+        try {
+            for (Task task : tasks) {
+                fileWriterOverwrite.write(task.formatToStorageString() + "\n");
+            }
+        } catch (IOException e) {
+            throw new IOException("Database write failed");
+        } finally {
+            fileWriterOverwrite.close();
+        }
+        Files.move(storageTemp.toPath(), storage.toPath(),
+                StandardCopyOption.REPLACE_EXISTING,
+                StandardCopyOption.ATOMIC_MOVE);
+        return load();
+    }
 }
