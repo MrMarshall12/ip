@@ -5,7 +5,7 @@ import erika.exceptions.ErikaException;
 
 import java.util.Scanner;
 
-/** A class representing a user interface that handles interaction users */
+/** A class representing a user interface that handles interaction with user */
 public class Ui {
     private Scanner scanner;
 
