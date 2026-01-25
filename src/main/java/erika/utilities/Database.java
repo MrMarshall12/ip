@@ -34,14 +34,13 @@ public class Database {
 
         storage = path.toFile();
         scanner = new Scanner(storage);
-        fileWriterOverwrite = new FileWriter(storage);
         fileWriterAppend = new FileWriter(storage, true);
     }
 
     /** Stores task to storage file */
     public void store(Task task) throws IOException {
         try {
-            fileWriterOverwrite.write(task.formatToStorageString() + "\n");
+            fileWriterAppend.write(task.formatToStorageString() + "\n");
         } catch (IOException e) {
             throw new IOException("Database write failed");
         } finally {
@@ -78,4 +77,5 @@ public class Database {
         }
         return tasks;
     }
+
 }
