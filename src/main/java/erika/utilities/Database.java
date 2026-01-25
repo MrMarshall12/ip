@@ -3,8 +3,10 @@ package erika.utilities;
 import erika.entities.Deadlines;
 import erika.entities.Task;
 import erika.entities.ToDos;
+import erika.exceptions.ErikaIOException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,7 +21,7 @@ public class Database {
     private File storage;
     private File storageTemp;
 
-    public Database() throws IOException {
+    public Database() throws ErikaIOException {
         Path path = Paths.get("data", "ErikaDatabase.txt");
         Path pathTemp = Paths.get("data", "ErikaDatabaseTemp.tmp");
 
@@ -32,7 +34,7 @@ public class Database {
                 Files.createFile(pathTemp);
             }
         } catch (IOException e) {
-            throw new IOException("Database creation failed");
+            throw new ErikaIOException("Database creation failed");
         }
 
         storage = path.toFile();
@@ -40,14 +42,11 @@ public class Database {
     }
 
     /** Stores task to storage file */
-    public void store(Task task) throws IOException {
-        FileWriter fileWriterAppend = new FileWriter(storage, true);
-        try {
+    public void store(Task task) throws ErikaIOException {
+        try (FileWriter fileWriterAppend = new FileWriter(storage, true)) {
             fileWriterAppend.write(task.formatToStorageString() + "\n");
         } catch (IOException e) {
-            throw new IOException("Database write failed");
-        } finally {
-            fileWriterAppend.close();
+            throw new ErikaIOException("Database write failed");
         }
     }
 
@@ -56,28 +55,32 @@ public class Database {
      *
      * @return A list of Tasks
      */
-    public ArrayList<Task> load() throws IOException {
+    public ArrayList<Task> load() throws ErikaIOException {
         ArrayList<Task> tasks = new ArrayList<>();
-        Scanner scanner = new Scanner(storage);
-        Task task = null;
-        boolean isDone = false;
-        while (scanner.hasNextLine()) {
-            String item = scanner.nextLine();
-            String[] items = item.split(",");
-            if (items.length == 3 && items[0].equals("todo")) {
-                isDone = items[1].equals("[X]");
-                task = new ToDos(items[2]);
-            } else if (items.length == 4 && items[0].equals("deadline")) {
-                isDone = items[1].equals("[X]");
-                task = new Deadlines(items[2],  items[3]);
-            } else if (items.length == 5 && items[0].equals("event")) {
-                isDone = items[1].equals("[X]");
-                task = new Deadlines(items[2],  items[3]);
-            } else {
-                break; // Content not in the expected format
+        try {
+            Scanner scanner = new Scanner(storage);
+            Task task = null;
+            boolean isDone = false;
+            while (scanner.hasNextLine()) {
+                String item = scanner.nextLine();
+                String[] items = item.split(",");
+                if (items.length == 3 && items[0].equals("todo")) {
+                    isDone = items[1].equals("[X]");
+                    task = new ToDos(items[2]);
+                } else if (items.length == 4 && items[0].equals("deadline")) {
+                    isDone = items[1].equals("[X]");
+                    task = new Deadlines(items[2], items[3]);
+                } else if (items.length == 5 && items[0].equals("event")) {
+                    isDone = items[1].equals("[X]");
+                    task = new Deadlines(items[2], items[3]);
+                } else {
+                    break; // Content not in the expected format
+                }
+                task.setDone(isDone);
+                tasks.add(task);
             }
-            task.setDone(isDone);
-            tasks.add(task);
+        } catch (FileNotFoundException e) {
+            throw new ErikaIOException("Database file not found");
         }
         return tasks;
     }
@@ -87,20 +90,17 @@ public class Database {
      *
      * @return A new list of Tasks
      */
-    public ArrayList<Task> overwrite(ArrayList<Task> tasks) throws IOException {
-        FileWriter fileWriterOverwrite = new FileWriter(storageTemp);
-        try {
+    public ArrayList<Task> overwrite(ArrayList<Task> tasks) throws ErikaIOException {
+        try (FileWriter fileWriterOverwrite = new FileWriter(storageTemp)) {
             for (Task task : tasks) {
                 fileWriterOverwrite.write(task.formatToStorageString() + "\n");
             }
+            Files.move(storageTemp.toPath(), storage.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING,
+                    StandardCopyOption.ATOMIC_MOVE);
         } catch (IOException e) {
-            throw new IOException("Database write failed");
-        } finally {
-            fileWriterOverwrite.close();
+            throw new ErikaIOException("Database write failed");
         }
-        Files.move(storageTemp.toPath(), storage.toPath(),
-                StandardCopyOption.REPLACE_EXISTING,
-                StandardCopyOption.ATOMIC_MOVE);
         return load();
     }
 }

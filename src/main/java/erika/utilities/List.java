@@ -1,8 +1,8 @@
 package erika.utilities;
 
 import erika.entities.Task;
+import erika.exceptions.ErikaIOException;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 /** A class representing a list */
@@ -10,24 +10,16 @@ public class List {
     private ArrayList<Task> tasks;
     private Database database;
 
-    public List() {
-        try {
-            database = new Database();
-            tasks = database.load();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public List() throws ErikaIOException {
+        database = new Database();
+        tasks = database.load();
     }
 
 
     /** Adds a task to the list and to the database */
-    public void add(Task task) {
-        try {
-            database.store(task);
-            tasks.add(task);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public void add(Task task) throws ErikaIOException {
+        database.store(task);
+        tasks.add(task);
     }
 
     /** Checks if the specified index is within boundary */
@@ -40,13 +32,13 @@ public class List {
      *
      * @return the task being removed
      */
-    public Task remove(int index) {
+    public Task remove(int index) throws ErikaIOException {
         Task task = tasks.remove(index);
         try {
             database.overwrite(tasks);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (ErikaIOException e) {
             tasks.add(index, task);
+            throw e;
         }
         return task;
     }
@@ -66,13 +58,9 @@ public class List {
     }
 
     /** Marks the status of a task and overwrites the database*/
-    public void mark(int taskIndex, boolean status) {
-        try {
-            tasks.get(taskIndex).setDone(status);
-            database.overwrite(tasks);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    public void mark(int taskIndex, boolean status) throws ErikaIOException {
+        tasks.get(taskIndex).setDone(status);
+        database.overwrite(tasks);
     }
 
     /** Prints non-empty elements of the list */
