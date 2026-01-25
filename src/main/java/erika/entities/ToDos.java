@@ -7,8 +7,8 @@ public class ToDos extends Task {
 
     @Override
     public String formatToStorageString() {
-        return super.formatToStorageString()
-                + "todo,"
+        return "todo,"
+                + super.formatToStorageString()
                 + super.getTaskName();
     }
 

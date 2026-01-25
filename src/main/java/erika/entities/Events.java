@@ -12,8 +12,8 @@ public class Events extends Task {
 
     @Override
     public String formatToStorageString() {
-        return super.formatToStorageString()
-                + "event,"
+        return "event,"
+                + super.formatToStorageString()
                 + super.getTaskName()
                 + ","
                 + begin
