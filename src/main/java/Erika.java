@@ -12,6 +12,8 @@ import erika.exceptions.InvalidMarkCommandException;
 import erika.exceptions.OutOfBoundsException;
 import erika.utilities.List;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /** A class representing the chatbot named Erika */
@@ -136,7 +138,8 @@ public class Erika {
             throw new EmptyDeadlineException();
         }
 
-        Task task = new Deadlines(taskName, deadlineTime);
+        Task task = new Deadlines(taskName, LocalDateTime.parse(deadlineTime,
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
         list.add(task);
         return task;
     }
@@ -163,7 +166,9 @@ public class Erika {
 
         String startDate = splitAroundTo[0].strip();
         String endDate = splitAroundTo[1].strip();
-        Task task = new Events(taskName, startDate, endDate);
+        Task task = new Events(taskName,
+                LocalDateTime.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
+                LocalDateTime.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
         list.add(task);
         return task;
     }

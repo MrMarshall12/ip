@@ -14,6 +14,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -70,10 +72,13 @@ public class Database {
                     task = new ToDos(items[2]);
                 } else if (items.length == 4 && items[0].equals("deadline")) {
                     isDone = items[1].equals("[X]");
-                    task = new Deadlines(items[2], items[3]);
+                    task = new Deadlines(items[2],
+                            LocalDateTime.parse(items[3], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
                 } else if (items.length == 5 && items[0].equals("event")) {
                     isDone = items[1].equals("[X]");
-                    task = new Events(items[2], items[3],  items[4]);
+                    task = new Events(items[2],
+                            LocalDateTime.parse(items[3], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
+                            LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
                 } else {
                     throw new ErikaIOException("Database file is probably corrupted or improperly formatted");
                 }
