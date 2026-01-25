@@ -61,21 +61,21 @@ public class Parser {
     public static Command parseCommand(String command) throws UnknownCommandException {
         String formattedMessage = command.strip();
         if (isListCommand(formattedMessage)) {
-            return new ListCommand();
+            return new ListCommand(formattedMessage);
         } else if (isMarkingCommand(formattedMessage)) {
-            return new MarkCommand();
+            return new MarkCommand(formattedMessage);
         } else if (isToDo(formattedMessage)) {
-            return new ToDoCommand();
+            return new ToDoCommand(formattedMessage);
         } else if (isDeadline(formattedMessage)) {
-            return new DeadlineCommand();
+            return new DeadlineCommand(formattedMessage);
         } else if (isEvent(formattedMessage)) {
-            return new EventCommand();
+            return new EventCommand(formattedMessage);
         } else if (isDeleteTaskCommand(formattedMessage)) {
-            return new DeleteCommand();
+            return new DeleteCommand(formattedMessage);
         } else if (isHelpCommand(formattedMessage)) {
-            return new HelpCommand();
+            return new HelpCommand(formattedMessage);
         } else if (isByeCommand(formattedMessage)) {
-            return new ByeCommand();
+            return new ByeCommand(formattedMessage);
         } else {
             throw new UnknownCommandException();
         }
