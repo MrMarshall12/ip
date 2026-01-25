@@ -6,6 +6,11 @@ public class ToDos extends Task {
     }
 
     @Override
+    public String formatToStorageString() {
+        return "todo," + super.getTaskName();
+    }
+
+    @Override
     public String toString() {
         return "[T]" + super.toString();
     }

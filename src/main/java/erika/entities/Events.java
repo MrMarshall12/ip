@@ -11,6 +11,15 @@ public class Events extends Task {
     }
 
     @Override
+    public String formatToStorageString() {
+        return "todo," + super.getTaskName()
+                + ","
+                + begin
+                + ","
+                + end;
+    }
+
+    @Override
     public String toString() {
         return "[E]" + super.toString()
                 + " (from: " + begin
