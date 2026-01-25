@@ -1,6 +1,7 @@
 package erika.utilities;
 
 import erika.entities.Deadlines;
+import erika.entities.Events;
 import erika.entities.Task;
 import erika.entities.ToDos;
 import erika.exceptions.ErikaIOException;
@@ -72,7 +73,7 @@ public class Database {
                     task = new Deadlines(items[2], items[3]);
                 } else if (items.length == 5 && items[0].equals("event")) {
                     isDone = items[1].equals("[X]");
-                    task = new Deadlines(items[2], items[3]);
+                    task = new Events(items[2], items[3],  items[4]);
                 } else {
                     break; // Content not in the expected format
                 }
