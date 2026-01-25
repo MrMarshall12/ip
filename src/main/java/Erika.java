@@ -50,7 +50,7 @@ public class Erika {
     /** Displays items in the list */
     private void displayList() {
         if (list.isEmpty()) {
-            System.out.println("Erika: erika.utilities.List is empty");
+            System.out.println("Erika: List is empty");
         } else {
             System.out.println("Erika: Here are the tasks in your list: ");
             list.display();
