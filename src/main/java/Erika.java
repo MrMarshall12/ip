@@ -32,6 +32,9 @@ public class Erika {
         String message = """
                 Erika: Hello! I'm Erika
                        What can I do for you?
+                       
+                       If you are not familiar with me, type "help".
+                       I will be glad to fully introduce myself
                 """;
         System.out.println(message);
     }
@@ -226,6 +229,21 @@ public class Erika {
                 + "\n");
     }
 
+    /** Prints command description */
+    private void help() {
+        String helpMessage = """
+                Lets get to know me. My commands are simple:
+                    1. help => display list of commands
+                    2. list => display list of tasks
+                    3. todo <description> => add todo task
+                    4. deadline <description> /by dd-MM-yyyy HH:mm => add task with deadline
+                    5. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm => add event
+                    6. mark <task_number> => mark a task as done
+                    7. unmark <task_number> => mark a task as not done
+                """;
+        System.out.println(helpMessage);
+    }
+
     /** Checks if the user input is a list command */
     private boolean isListCommand(String formattedMessage) {
         return formattedMessage.equalsIgnoreCase("list");
@@ -251,6 +269,12 @@ public class Erika {
         return lowerCase.startsWith("delete");
     }
 
+    /** Checks if the user input is a help command */
+    private boolean isHelpCommand(String formattedMessage) {
+        String lowerCase = formattedMessage.toLowerCase();
+        return lowerCase.equalsIgnoreCase("help");
+    }
+
     /** Prints any message passed through the parameter */
     private void respondToUser(String message) {
         String formattedMessage = message.strip();
@@ -263,9 +287,10 @@ public class Erika {
                 addTask(formattedMessage);
             } else if (isDeleteTaskCommand(formattedMessage)) {
                 deleteTask(formattedMessage);
+            } else if (isHelpCommand(formattedMessage)) {
+                help();
             } else {
-                System.out.println("Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, "
-                        + "or list command."
+                System.out.println("Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands"
                         + "\n");
             }
         } catch (ErikaException e) {
