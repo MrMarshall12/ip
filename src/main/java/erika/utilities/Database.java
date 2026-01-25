@@ -41,7 +41,7 @@ public class Database {
     /** Stores task to storage file */
     public void store(Task task) throws IOException {
         try {
-            fileWriterOverwrite.write(task.formatToStorageString());
+            fileWriterOverwrite.write(task.formatToStorageString() + "\n");
         } catch (IOException e) {
             throw new IOException("Database write failed");
         } finally {
