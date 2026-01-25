@@ -9,10 +9,10 @@ import java.util.function.Predicate;
 /** A class representing a list */
 public class TaskList {
     private ArrayList<Task> tasks;
-    private Database database;
+    private Storage database;
 
     public TaskList() throws ErikaIOException {
-        database = new Database();
+        database = new Storage();
         tasks = database.load();
     }
 

@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /** A class representing a database */
-public class Database {
+public class Storage {
     private File storage;
     private File storageTemp;
 
-    public Database() throws ErikaIOException {
+    public Storage() throws ErikaIOException {
         Path path = Paths.get("data", "ErikaDatabase.txt");
         Path pathTemp = Paths.get("data", "ErikaDatabaseTemp.tmp");
 
