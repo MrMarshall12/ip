@@ -2,20 +2,32 @@ package erika.utilities;
 
 import erika.entities.Task;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /** A class representing a list */
 public class List {
     private ArrayList<Task> tasks;
+    private Database database;
 
     public List() {
-        tasks = new ArrayList<>();
+        try {
+            database = new Database();
+            tasks = database.load();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
-    /** Adds a task to the list */
+    /** Adds a task to the list and to the database */
     public void add(Task task) {
-        tasks.add(task);
+        try {
+            database.store(task);
+            tasks.add(task);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /** Checks if the specified index is within boundary */
@@ -23,9 +35,20 @@ public class List {
         return index >= 0 && index < tasks.size();
     }
 
-    /** Removes a task from the list */
+    /**
+     * Removes task from the list and overwrites the database
+     *
+     * @return the task being removed
+     */
     public Task remove(int index) {
-        return tasks.remove(index);
+        Task task = tasks.remove(index);
+        try {
+            database.overwrite(tasks);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            tasks.add(index, task);
+        }
+        return task;
     }
 
     /** Checks if the list is empty */
@@ -42,9 +65,14 @@ public class List {
         return tasks.get(index);
     }
 
-    /** Marks the status of a task */
+    /** Marks the status of a task and overwrites the database*/
     public void mark(int taskIndex, boolean status) {
-        tasks.get(taskIndex).setDone(status);
+        try {
+            tasks.get(taskIndex).setDone(status);
+            database.overwrite(tasks);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /** Prints non-empty elements of the list */
