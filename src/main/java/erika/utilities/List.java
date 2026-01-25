@@ -4,6 +4,7 @@ import erika.entities.Task;
 import erika.exceptions.ErikaIOException;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 /** A class representing a list */
 public class List {
@@ -67,6 +68,17 @@ public class List {
     public void display() {
         for (Task task : tasks) {
             System.out.println((tasks.indexOf(task) + 1) + ". " + task);
+        }
+    }
+
+    /** Prints elements of the list that satisfy the predicate */
+    public void display(Predicate<Task> predicate) {
+        int taskDisplayed = 0;
+        for (Task task : tasks) {
+            if (predicate.test(task)) {
+                taskDisplayed++;
+                System.out.println(taskDisplayed + ". " + task);
+            }
         }
     }
 }
