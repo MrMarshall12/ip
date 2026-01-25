@@ -1,11 +1,14 @@
 package erika.entities;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /** A subclass of Task representing event task */
 public class Events extends Task {
-    private String begin;
-    private String end;
+    private LocalDateTime begin;
+    private LocalDateTime end;
 
-    public Events(String taskName, String begin, String end) {
+    public Events(String taskName, LocalDateTime begin, LocalDateTime end) {
         super(taskName);
         this.begin = begin;
         this.end = end;
@@ -17,15 +20,18 @@ public class Events extends Task {
                 + super.formatToStorageString()
                 + super.getTaskName()
                 + ","
-                + begin
+                + begin.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"))
                 + ","
-                + end;
+                + end.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
     }
 
     @Override
     public String toString() {
         return "[E]" + super.toString()
-                + " (from: " + begin
-                + " to: " + end + ")";
+                + " (from: "
+                + begin.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"))
+                + " to: "
+                + end.format(DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm"))
+                + ")";
     }
 }

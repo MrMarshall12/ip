@@ -1,9 +1,9 @@
 todo bring book
 bring book
-deadline cs2103t ip /by Sunday
-cs2103t ip /by Sunday
-event late talkshow /from Mon 9pm /to /11pm
-late talkshow /from Mon 9pm /to /11pm
+deadline cs2103t ip /by 15-12-2026 18:00
+cs2103t ip /by 15-12-2026 18:00
+event late talkshow /from 16-12-2026 18:00 /to 17-12-2026 00:00
+late talkshow /from 16-12-2026 18:00 /to 17-12-2026 00:00
 list
 mark 1
 unmark 1
@@ -22,4 +22,5 @@ delete
 delete from
 delete 1000
 delete -1
+help
 bye

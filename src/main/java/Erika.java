@@ -5,6 +5,7 @@ import erika.entities.ToDos;
 import erika.exceptions.EmptyDeadlineException;
 import erika.exceptions.EmptyDescriptionException;
 import erika.exceptions.EmptyStartEndException;
+import erika.exceptions.ErikaDateTimeParseException;
 import erika.exceptions.ErikaException;
 import erika.exceptions.ErikaIOException;
 import erika.exceptions.InvalidDeleteCommandException;
@@ -12,6 +13,9 @@ import erika.exceptions.InvalidMarkCommandException;
 import erika.exceptions.OutOfBoundsException;
 import erika.utilities.List;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 /** A class representing the chatbot named Erika */
@@ -28,6 +32,9 @@ public class Erika {
         String message = """
                 Erika: Hello! I'm Erika
                        What can I do for you?
+                       
+                       If you are not familiar with me, type "help".
+                       I will be glad to fully introduce myself
                 """;
         System.out.println(message);
     }
@@ -118,7 +125,7 @@ public class Erika {
 
     /** Adds deadline task to the list */
     private Task addDeadline(String formattedMessage) throws EmptyDescriptionException,
-            EmptyDeadlineException, ErikaIOException {
+            EmptyDeadlineException, ErikaIOException, DateTimeParseException {
         String deadlineContent = formattedMessage.toLowerCase().replace("deadline", "").strip();
         String[] splitMessage = deadlineContent.split("/by");
         String taskName = splitMessage.length > 0
@@ -136,14 +143,15 @@ public class Erika {
             throw new EmptyDeadlineException();
         }
 
-        Task task = new Deadlines(taskName, deadlineTime);
+        Task task = new Deadlines(taskName, LocalDateTime.parse(deadlineTime,
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
         list.add(task);
         return task;
     }
 
     /** Adds event task to the list */
     private Task addEvent(String formattedMessage) throws EmptyDescriptionException,
-            EmptyStartEndException, ErikaIOException {
+            EmptyStartEndException, ErikaIOException, DateTimeParseException {
         String eventContent = formattedMessage.toLowerCase().replace("event", "").strip();
         String[] splitMessage = eventContent.split("/from ");
         String taskName = splitMessage.length > 0
@@ -163,21 +171,27 @@ public class Erika {
 
         String startDate = splitAroundTo[0].strip();
         String endDate = splitAroundTo[1].strip();
-        Task task = new Events(taskName, startDate, endDate);
+        Task task = new Events(taskName,
+                LocalDateTime.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
+                LocalDateTime.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
         list.add(task);
         return task;
     }
 
     /** Adds task to the list */
     private void addTask(String formattedMessage) throws EmptyDescriptionException,
-            EmptyDeadlineException, EmptyStartEndException, ErikaIOException {
+            EmptyDeadlineException, EmptyStartEndException, ErikaIOException, ErikaDateTimeParseException {
         Task task = null;
-        if (isToDo(formattedMessage)) {
-            task = addTodo(formattedMessage);
-        } else if (isDeadline(formattedMessage)) {
-            task = addDeadline(formattedMessage);
-        } else if (isEvent(formattedMessage)) {
-            task = addEvent(formattedMessage);
+        try {
+            if (isToDo(formattedMessage)) {
+                task = addTodo(formattedMessage);
+            } else if (isDeadline(formattedMessage)) {
+                task = addDeadline(formattedMessage);
+            } else if (isEvent(formattedMessage)) {
+                task = addEvent(formattedMessage);
+            }
+        } catch (DateTimeParseException e) {
+            throw new ErikaDateTimeParseException();
         }
 
         System.out.println("Erika: Got it. I have added this task:"
@@ -215,6 +229,22 @@ public class Erika {
                 + "\n");
     }
 
+    /** Prints command description */
+    private void help() {
+        String helpMessage = """
+                Erika: Lets get to know me. My commands are simple:
+                    1. help => display list of commands
+                    2. list => display list of tasks
+                    3. todo <description> => add todo task
+                    4. deadline <description> /by dd-MM-yyyy HH:mm => add task with deadline
+                    5. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm => add event
+                    6. mark <task_number> => mark a task as done
+                    7. unmark <task_number> => mark a task as not done
+                    8. delete <task_number> => delete a task
+                """;
+        System.out.println(helpMessage);
+    }
+
     /** Checks if the user input is a list command */
     private boolean isListCommand(String formattedMessage) {
         return formattedMessage.equalsIgnoreCase("list");
@@ -240,6 +270,12 @@ public class Erika {
         return lowerCase.startsWith("delete");
     }
 
+    /** Checks if the user input is a help command */
+    private boolean isHelpCommand(String formattedMessage) {
+        String lowerCase = formattedMessage.toLowerCase();
+        return lowerCase.equalsIgnoreCase("help");
+    }
+
     /** Prints any message passed through the parameter */
     private void respondToUser(String message) {
         String formattedMessage = message.strip();
@@ -252,9 +288,10 @@ public class Erika {
                 addTask(formattedMessage);
             } else if (isDeleteTaskCommand(formattedMessage)) {
                 deleteTask(formattedMessage);
+            } else if (isHelpCommand(formattedMessage)) {
+                help();
             } else {
-                System.out.println("Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, "
-                        + "or list command."
+                System.out.println("Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands"
                         + "\n");
             }
         } catch (ErikaException e) {

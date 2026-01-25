@@ -1,32 +1,35 @@
 Erika: Hello! I'm Erika
        What can I do for you?
 
+       If you are not familiar with me, type "help".
+       I will be glad to fully introduce myself
+
 User:
 Erika: Got it. I have added this task:
 	 [T][ ] bring book
 
 User:
-Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
+Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands
 
 User:
 Erika: Got it. I have added this task:
-	 [D][ ] cs2103t ip (by: Sunday)
+	 [D][ ] cs2103t ip (by: 15 Dec 2026, 18:00)
 
 User:
-Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
+Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands
 
 User:
 Erika: Got it. I have added this task:
-	 [E][ ] late talkshow (from: Mon 9pm to: /11pm)
+	 [E][ ] late talkshow (from: 16 Dec 2026, 18:00 to: 17 Dec 2026, 00:00)
 
 User:
-Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
+Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands
 
 User:
 Erika: Here are the tasks in your list:
 1. [T][ ] bring book
-2. [D][ ] cs2103t ip (by: Sunday)
-3. [E][ ] late talkshow (from: Mon 9pm to: /11pm)
+2. [D][ ] cs2103t ip (by: 15 Dec 2026, 18:00)
+3. [E][ ] late talkshow (from: 16 Dec 2026, 18:00 to: 17 Dec 2026, 00:00)
 
 User:
 Erika: Nice! I have marked this task as done:
@@ -38,13 +41,13 @@ Erika: Nice! I have marked this task as not done yet:
 
 User:
 Erika: Nice! I have marked this task as done:
-	 [E][X] late talkshow (from: Mon 9pm to: /11pm)
+	 [E][X] late talkshow (from: 16 Dec 2026, 18:00 to: 17 Dec 2026, 00:00)
 
 User:
 Erika: Here are the tasks in your list:
 1. [T][ ] bring book
-2. [D][ ] cs2103t ip (by: Sunday)
-3. [E][X] late talkshow (from: Mon 9pm to: /11pm)
+2. [D][ ] cs2103t ip (by: 15 Dec 2026, 18:00)
+3. [E][X] late talkshow (from: 16 Dec 2026, 18:00 to: 17 Dec 2026, 00:00)
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
@@ -58,7 +61,7 @@ Erika: Hmm something went wrong. Please look at the message below:
 Deadline for deadline command cannot be empty!
 
 Please ensure you follow the syntax below:
-    deadline <description> /by <deadline>
+    deadline <description> /by dd-MM-yyyy HH:mm
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
@@ -66,20 +69,11 @@ Description for todo, deadline, and event commands cannot be empty!
 
 Please ensure you follow either of the syntax below:
     a. todo <description>
-    b. deadline <description> /by <deadline>
-    c. event <description> /from <start> /to <end>
+    b. deadline <description> /by dd-MM-yyyy HH:mm
+    c. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm
 
 User:
-Erika: Hmm, sorry. Please use either todo, deadline, event, mark, unmark, or list command.
-
-User:
-Erika: Hmm something went wrong. Please look at the message below:
-Description for todo, deadline, and event commands cannot be empty!
-
-Please ensure you follow either of the syntax below:
-    a. todo <description>
-    b. deadline <description> /by <deadline>
-    c. event <description> /from <start> /to <end>
+Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
@@ -87,8 +81,8 @@ Description for todo, deadline, and event commands cannot be empty!
 
 Please ensure you follow either of the syntax below:
     a. todo <description>
-    b. deadline <description> /by <deadline>
-    c. event <description> /from <start> /to <end>
+    b. deadline <description> /by dd-MM-yyyy HH:mm
+    c. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
@@ -96,8 +90,17 @@ Description for todo, deadline, and event commands cannot be empty!
 
 Please ensure you follow either of the syntax below:
     a. todo <description>
-    b. deadline <description> /by <deadline>
-    c. event <description> /from <start> /to <end>
+    b. deadline <description> /by dd-MM-yyyy HH:mm
+    c. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm
+
+User:
+Erika: Hmm something went wrong. Please look at the message below:
+Description for todo, deadline, and event commands cannot be empty!
+
+Please ensure you follow either of the syntax below:
+    a. todo <description>
+    b. deadline <description> /by dd-MM-yyyy HH:mm
+    c. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
@@ -138,6 +141,17 @@ Task number out of bounds!
 
 Please ensure the specified task number is
 within boundary
+
+User:
+Erika: Lets get to know me. My commands are simple:
+                    1. help => display list of commands
+                    2. list => display list of tasks
+                    3. todo <description> => add todo task
+                    4. deadline <description> /by dd-MM-yyyy HH:mm => add task with deadline
+                    5. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm => add event
+                    6. mark <task_number> => mark a task as done
+                    7. unmark <task_number> => mark a task as not done
+                    8. delete <task_number> => delete a task
 
 User:
 Erika: Bye. Hope to see you again soon!
