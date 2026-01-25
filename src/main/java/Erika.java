@@ -11,7 +11,7 @@ import erika.exceptions.ErikaIOException;
 import erika.exceptions.InvalidDeleteCommandException;
 import erika.exceptions.InvalidMarkCommandException;
 import erika.exceptions.OutOfBoundsException;
-import erika.utilities.List;
+import erika.utilities.TaskList;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,11 +20,11 @@ import java.util.Scanner;
 
 /** A class representing the chatbot named Erika */
 public class Erika {
-    private List list;
+    private TaskList list;
     private Scanner scanner;
 
     public Erika() throws ErikaIOException {
-        list = new List();
+        list = new TaskList();
         scanner = new Scanner(System.in);
     }
     /** Prints greeting message for the user */

@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 
 /** A class representing a list */
-public class List {
+public class TaskList {
     private ArrayList<Task> tasks;
     private Database database;
 
-    public List() throws ErikaIOException {
+    public TaskList() throws ErikaIOException {
         database = new Database();
         tasks = database.load();
     }
