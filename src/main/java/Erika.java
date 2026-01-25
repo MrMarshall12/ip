@@ -5,6 +5,7 @@ import erika.entities.ToDos;
 import erika.exceptions.EmptyDeadlineException;
 import erika.exceptions.EmptyDescriptionException;
 import erika.exceptions.EmptyStartEndException;
+import erika.exceptions.ErikaDateTimeParseException;
 import erika.exceptions.ErikaException;
 import erika.exceptions.ErikaIOException;
 import erika.exceptions.InvalidDeleteCommandException;
@@ -14,6 +15,7 @@ import erika.utilities.List;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 /** A class representing the chatbot named Erika */
@@ -120,7 +122,7 @@ public class Erika {
 
     /** Adds deadline task to the list */
     private Task addDeadline(String formattedMessage) throws EmptyDescriptionException,
-            EmptyDeadlineException, ErikaIOException {
+            EmptyDeadlineException, ErikaIOException, DateTimeParseException {
         String deadlineContent = formattedMessage.toLowerCase().replace("deadline", "").strip();
         String[] splitMessage = deadlineContent.split("/by");
         String taskName = splitMessage.length > 0
@@ -146,7 +148,7 @@ public class Erika {
 
     /** Adds event task to the list */
     private Task addEvent(String formattedMessage) throws EmptyDescriptionException,
-            EmptyStartEndException, ErikaIOException {
+            EmptyStartEndException, ErikaIOException, DateTimeParseException {
         String eventContent = formattedMessage.toLowerCase().replace("event", "").strip();
         String[] splitMessage = eventContent.split("/from ");
         String taskName = splitMessage.length > 0
@@ -175,14 +177,18 @@ public class Erika {
 
     /** Adds task to the list */
     private void addTask(String formattedMessage) throws EmptyDescriptionException,
-            EmptyDeadlineException, EmptyStartEndException, ErikaIOException {
+            EmptyDeadlineException, EmptyStartEndException, ErikaIOException, ErikaDateTimeParseException {
         Task task = null;
-        if (isToDo(formattedMessage)) {
-            task = addTodo(formattedMessage);
-        } else if (isDeadline(formattedMessage)) {
-            task = addDeadline(formattedMessage);
-        } else if (isEvent(formattedMessage)) {
-            task = addEvent(formattedMessage);
+        try {
+            if (isToDo(formattedMessage)) {
+                task = addTodo(formattedMessage);
+            } else if (isDeadline(formattedMessage)) {
+                task = addDeadline(formattedMessage);
+            } else if (isEvent(formattedMessage)) {
+                task = addEvent(formattedMessage);
+            }
+        } catch (DateTimeParseException e) {
+            throw new ErikaDateTimeParseException();
         }
 
         System.out.println("Erika: Got it. I have added this task:"
