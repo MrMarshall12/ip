@@ -63,7 +63,7 @@ public class List {
         tasks = database.overwrite(tasks);
     }
 
-    /** Prints non-empty elements of the list */
+    /** Prints elements of the list */
     public void display() {
         for (Task task : tasks) {
             System.out.println((tasks.indexOf(task) + 1) + ". " + task);
