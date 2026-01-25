@@ -35,7 +35,7 @@ public class DeadlineCommand extends Command {
             throw new EmptyDescriptionException();
         }
 
-        String[] splitAroundBy = formattedMessage.split("/by");
+        String[] splitAroundBy = super.formattedMessage.split("/by");
         String deadlineTime = splitAroundBy.length == 2
                 ? splitAroundBy[1].strip()
                 : "";
