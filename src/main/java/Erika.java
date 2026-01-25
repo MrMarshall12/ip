@@ -6,6 +6,7 @@ import erika.exceptions.EmptyDeadlineException;
 import erika.exceptions.EmptyDescriptionException;
 import erika.exceptions.EmptyStartEndException;
 import erika.exceptions.ErikaException;
+import erika.exceptions.ErikaIOException;
 import erika.exceptions.InvalidDeleteCommandException;
 import erika.exceptions.InvalidMarkCommandException;
 import erika.exceptions.OutOfBoundsException;
@@ -19,8 +20,13 @@ public class Erika {
     private Scanner scanner;
 
     public Erika() {
-        list = new List();
-        scanner = new Scanner(System.in);
+        try {
+            list = new List();
+            scanner = new Scanner(System.in);
+        } catch (ErikaException e) {
+            System.out.println("Erika: Hmm something went wrong. Please look at the message below:");
+            System.out.println(e.getMessage());
+        }
     }
     /** Prints greeting message for the user */
     private void greetUser() {
@@ -60,7 +66,7 @@ public class Erika {
 
     /** Marks the status of a task in the list */
     private void markTask(String formattedMessage) throws InvalidMarkCommandException,
-            OutOfBoundsException {
+            OutOfBoundsException, ErikaIOException {
         String[] splitMessage = formattedMessage.split(" ");
         if (splitMessage.length != 2) {
             throw new InvalidMarkCommandException();
@@ -104,7 +110,8 @@ public class Erika {
     }
 
     /** Adds todo task to the list */
-    private Task addTodo(String formattedMessage) throws EmptyDescriptionException {
+    private Task addTodo(String formattedMessage) throws EmptyDescriptionException,
+            ErikaIOException {
         String taskName = formattedMessage.toLowerCase().replace("todo", "").strip();
         if  (taskName.isEmpty()) {
             throw new EmptyDescriptionException();
@@ -116,7 +123,7 @@ public class Erika {
 
     /** Adds deadline task to the list */
     private Task addDeadline(String formattedMessage) throws EmptyDescriptionException,
-            EmptyDeadlineException {
+            EmptyDeadlineException, ErikaIOException {
         String deadlineContent = formattedMessage.toLowerCase().replace("deadline", "").strip();
         String[] splitMessage = deadlineContent.split("/by");
         String taskName = splitMessage.length > 0
@@ -141,7 +148,7 @@ public class Erika {
 
     /** Adds event task to the list */
     private Task addEvent(String formattedMessage) throws EmptyDescriptionException,
-            EmptyStartEndException {
+            EmptyStartEndException, ErikaIOException {
         String eventContent = formattedMessage.toLowerCase().replace("event", "").strip();
         String[] splitMessage = eventContent.split("/from ");
         String taskName = splitMessage.length > 0
@@ -168,7 +175,7 @@ public class Erika {
 
     /** Adds task to the list */
     private void addTask(String formattedMessage) throws EmptyDescriptionException,
-            EmptyDeadlineException, EmptyStartEndException {
+            EmptyDeadlineException, EmptyStartEndException, ErikaIOException {
         Task task = null;
         if (isToDo(formattedMessage)) {
             task = addTodo(formattedMessage);
@@ -188,12 +195,11 @@ public class Erika {
 
     /** Deletes task from the list */
     private void deleteTask(String formattedMessage) throws InvalidDeleteCommandException,
-            OutOfBoundsException{
+            OutOfBoundsException, ErikaIOException {
         String[] splitMessage = formattedMessage.split(" ");
         if (splitMessage.length != 2) {
             throw new InvalidDeleteCommandException();
         }
-        boolean mark = splitMessage[0].equalsIgnoreCase("delete");
         int index = -1;
         try {
             index = Integer.parseInt(splitMessage[1]);
