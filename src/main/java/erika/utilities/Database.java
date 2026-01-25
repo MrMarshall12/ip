@@ -16,9 +16,6 @@ import java.util.Scanner;
 /** A class representing a database */
 public class Database {
     File storage;
-    Scanner scanner;
-    FileWriter fileWriterOverwrite;
-    FileWriter fileWriterAppend;
 
     public Database() throws IOException {
         Path path = Paths.get("data", "ErikaDatabase.txt");
@@ -33,12 +30,11 @@ public class Database {
         }
 
         storage = path.toFile();
-        scanner = new Scanner(storage);
-        fileWriterAppend = new FileWriter(storage, true);
     }
 
     /** Stores task to storage file */
     public void store(Task task) throws IOException {
+        FileWriter fileWriterAppend = new FileWriter(storage, true);
         try {
             fileWriterAppend.write(task.formatToStorageString() + "\n");
         } catch (IOException e) {
@@ -55,6 +51,7 @@ public class Database {
      */
     public ArrayList<Task> load() throws IOException {
         ArrayList<Task> tasks = new ArrayList<>();
+        Scanner scanner = new Scanner(storage);
         Task task = null;
         boolean isDone = false;
         while (scanner.hasNextLine()) {
