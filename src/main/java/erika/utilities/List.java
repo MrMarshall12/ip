@@ -35,7 +35,7 @@ public class List {
     public Task remove(int index) throws ErikaIOException {
         Task task = tasks.remove(index);
         try {
-            database.overwrite(tasks);
+            tasks = database.overwrite(tasks);
         } catch (ErikaIOException e) {
             tasks.add(index, task);
             throw e;
@@ -60,7 +60,7 @@ public class List {
     /** Marks the status of a task and overwrites the database*/
     public void mark(int taskIndex, boolean status) throws ErikaIOException {
         tasks.get(taskIndex).setDone(status);
-        database.overwrite(tasks);
+        tasks = database.overwrite(tasks);
     }
 
     /** Prints non-empty elements of the list */
