@@ -6,7 +6,7 @@ import erika.exceptions.ErikaIOException;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
-/** A class representing a list */
+/** A class representing a list of tasks */
 public class TaskList {
     private ArrayList<Task> tasks;
     private Storage database;

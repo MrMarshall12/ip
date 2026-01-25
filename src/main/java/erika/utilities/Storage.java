@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/** A class representing a database */
+/** A class representing a Storage */
 public class Storage {
     private File storage;
     private File storageTemp;
