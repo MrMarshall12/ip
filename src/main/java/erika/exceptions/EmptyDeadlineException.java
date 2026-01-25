@@ -7,7 +7,7 @@ public class EmptyDeadlineException extends ErikaException {
                 Deadline for deadline command cannot be empty!
                 
                 Please ensure you follow the syntax below:
-                    deadline <description> /by <deadline>
+                    deadline <description> /by dd-MM-yyyy HH:mm
                 """);
     }
 }
