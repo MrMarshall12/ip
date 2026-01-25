@@ -14,6 +14,10 @@ public class Task {
         this.isDone = isDone;
     }
 
+    public boolean isDone() {
+        return isDone;
+    }
+
     public String getTaskName() {
         return taskName;
     }
