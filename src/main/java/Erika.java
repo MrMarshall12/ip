@@ -284,7 +284,13 @@ public class Erika {
             erika.converse();
         } catch (ErikaException e) {
             System.out.println(e.getMessage());
-            System.out.println("Erika: I can't work without my database. Please fix it first. See yaaa :)");
+            System.out.println("""
+                    Erika: I can't work without my database. Please fix it first. If you can find ErikaDatabase.txt
+                           under data folder, please clear its content and ensure the cursor is at line 1 column 1.
+                           Also, please remove any empty line.
+                           
+                           See yaa :)
+                    """);
         }
     }
 }
