@@ -1,8 +1,16 @@
 package erika.entities;
 
+/** A subclass of Task representing todo task */
 public class ToDos extends Task {
     public ToDos(String taskName) {
         super(taskName);
+    }
+
+    @Override
+    public String formatToStorageString() {
+        return "todo,"
+                + super.formatToStorageString()
+                + super.getTaskName();
     }
 
     @Override

@@ -14,6 +14,15 @@ public class Task {
         this.isDone = isDone;
     }
 
+    public String getTaskName() {
+        return taskName;
+    }
+
+    /** Formats a task into a storable string */
+    public String formatToStorageString() {
+        return isDone ? "[X]," : "[ ],";
+    }
+
     @Override
     public String toString() {
         String mark = isDone ? "[X]" : "[ ]";

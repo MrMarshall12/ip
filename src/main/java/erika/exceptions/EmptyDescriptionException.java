@@ -1,5 +1,6 @@
 package erika.exceptions;
 
+/** A subclass of ErikaException representing EmptyDescriptionException */
 public class EmptyDescriptionException extends ErikaException {
     public EmptyDescriptionException() {
         super("""

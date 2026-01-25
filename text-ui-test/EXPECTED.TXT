@@ -48,7 +48,7 @@ Erika: Here are the tasks in your list:
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
-erika.entities.Task number out of bounds!
+Task number out of bounds!
 
 Please ensure the specified task number is
 within boundary
@@ -127,14 +127,14 @@ Please ensure you follow the syntax below:
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
-erika.entities.Task number out of bounds!
+Task number out of bounds!
 
 Please ensure the specified task number is
 within boundary
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
-erika.entities.Task number out of bounds!
+Task number out of bounds!
 
 Please ensure the specified task number is
 within boundary

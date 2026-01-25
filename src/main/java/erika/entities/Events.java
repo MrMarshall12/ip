@@ -1,5 +1,6 @@
 package erika.entities;
 
+/** A subclass of Task representing event task */
 public class Events extends Task {
     private String begin;
     private String end;
@@ -8,6 +9,17 @@ public class Events extends Task {
         super(taskName);
         this.begin = begin;
         this.end = end;
+    }
+
+    @Override
+    public String formatToStorageString() {
+        return "event,"
+                + super.formatToStorageString()
+                + super.getTaskName()
+                + ","
+                + begin
+                + ","
+                + end;
     }
 
     @Override
