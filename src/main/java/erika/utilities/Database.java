@@ -16,8 +16,8 @@ import java.util.Scanner;
 
 /** A class representing a database */
 public class Database {
-    File storage;
-    File storageTemp;
+    private File storage;
+    private File storageTemp;
 
     public Database() throws IOException {
         Path path = Paths.get("data", "ErikaDatabase.txt");
