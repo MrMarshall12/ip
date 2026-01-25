@@ -232,7 +232,7 @@ public class Erika {
     /** Prints command description */
     private void help() {
         String helpMessage = """
-                Lets get to know me. My commands are simple:
+                Erika: Lets get to know me. My commands are simple:
                     1. help => display list of commands
                     2. list => display list of tasks
                     3. todo <description> => add todo task
