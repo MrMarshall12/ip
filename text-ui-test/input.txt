@@ -22,4 +22,5 @@ delete
 delete from
 delete 1000
 delete -1
+help
 bye
