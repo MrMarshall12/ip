@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/** A class representing a database */
 public class Database {
     File storage;
     Scanner scanner;
@@ -37,6 +38,7 @@ public class Database {
         fileWriterAppend = new FileWriter(storage, true);
     }
 
+    /** Stores task to storage file */
     public void store(Task task) throws IOException {
         try {
             fileWriterOverwrite.write(task.formatToStorageString());
@@ -47,6 +49,11 @@ public class Database {
         }
     }
 
+    /**
+     * Loads tasks from storage file
+     *
+     * @return A list of Tasks
+     */
     public ArrayList<Task> load() throws IOException {
         ArrayList<Task> tasks = new ArrayList<>();
         Task task = null;
