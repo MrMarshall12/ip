@@ -9,21 +9,30 @@ Erika: Got it. I have added this task:
 	 [T][ ] bring book
 
 User:
-Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands
+Erika: Hmm something went wrong. Please look at the message below:
+Hmm, sorry. I don't understand your command.
+
+Type 'help' if you forget my commands
 
 User:
 Erika: Got it. I have added this task:
 	 [D][ ] cs2103t ip (by: 15 Dec 2026, 18:00)
 
 User:
-Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands
+Erika: Hmm something went wrong. Please look at the message below:
+Hmm, sorry. I don't understand your command.
+
+Type 'help' if you forget my commands
 
 User:
 Erika: Got it. I have added this task:
 	 [E][ ] late talkshow (from: 16 Dec 2026, 18:00 to: 17 Dec 2026, 00:00)
 
 User:
-Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands
+Erika: Hmm something went wrong. Please look at the message below:
+Hmm, sorry. I don't understand your command.
+
+Type 'help' if you forget my commands
 
 User:
 Erika: Here are the tasks in your list:
@@ -73,7 +82,10 @@ Please ensure you follow either of the syntax below:
     c. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm
 
 User:
-Erika: Hmm, sorry. I don't understand that. Type 'help' if you forget my commands
+Erika: Hmm something went wrong. Please look at the message below:
+Hmm, sorry. I don't understand your command.
+
+Type 'help' if you forget my commands
 
 User:
 Erika: Hmm something went wrong. Please look at the message below:
