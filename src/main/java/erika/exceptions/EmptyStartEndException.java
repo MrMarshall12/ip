@@ -1,5 +1,6 @@
 package erika.exceptions;
 
+/** A subclass of ErikaException representing EmptyStartEndException */
 public class EmptyStartEndException extends ErikaException {
     public EmptyStartEndException() {
         super("""

@@ -1,5 +1,6 @@
 package erika.exceptions;
 
+/** A subclass of ErikaException representing OutOfBoundsException */
 public class OutOfBoundsException extends ErikaException{
     public OutOfBoundsException() {
         super("""
