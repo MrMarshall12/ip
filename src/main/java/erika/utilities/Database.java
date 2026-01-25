@@ -1,5 +1,7 @@
 package erika.utilities;
 
+import erika.entities.Task;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,7 +13,8 @@ import java.util.Scanner;
 public class Database {
     File storage;
     Scanner scanner;
-    FileWriter fileWriter;
+    FileWriter fileWriterOverwrite;
+    FileWriter fileWriterAppend;
 
     public Database() throws IOException {
         Path path = Paths.get("data", "ErikaDatabase.txt");
@@ -27,6 +30,17 @@ public class Database {
 
         storage = path.toFile();
         scanner = new Scanner(storage);
-        fileWriter = new FileWriter(storage);
+        fileWriterOverwrite = new FileWriter(storage);
+        fileWriterAppend = new FileWriter(storage, true);
+    }
+
+    public void store(Task task) throws IOException {
+        try {
+            fileWriterOverwrite.write(task.formatToStorageString());
+        } catch (IOException e) {
+            throw new IOException("Database write failed");
+        } finally {
+            fileWriterAppend.close();
+        }
     }
 }
