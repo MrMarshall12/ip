@@ -52,6 +52,11 @@ public abstract class Command {
         return false;
     }
 
+    /** Checks if this is a find command */
+    public boolean isFind() {
+        return false;
+    }
+
     /**
      * Executes the command based on its respective logic
      *

@@ -5,6 +5,7 @@ import erika.commands.Command;
 import erika.commands.DeadlineCommand;
 import erika.commands.DeleteCommand;
 import erika.commands.EventCommand;
+import erika.commands.FindCommand;
 import erika.commands.HelpCommand;
 import erika.commands.ListCommand;
 import erika.commands.MarkCommand;
@@ -57,6 +58,11 @@ public class Parser {
         return lowerCase.equalsIgnoreCase("bye");
     }
 
+    /** Checks if the user input is a find command */
+    private static boolean isFindCommand(String formattedMessage) {
+        String lowerCase = formattedMessage.toLowerCase();
+        return lowerCase.startsWith("find");
+    }
 
     /**
      * Transforms a command from the user into an instance of Command's subclasses
@@ -82,6 +88,8 @@ public class Parser {
             return new HelpCommand(formattedMessage);
         } else if (isByeCommand(formattedMessage)) {
             return new ByeCommand(formattedMessage);
+        } else if (isFindCommand(formattedMessage)) {
+            return new FindCommand(formattedMessage);
         } else {
             throw new UnknownCommandException();
         }
