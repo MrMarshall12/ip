@@ -1,3 +1,5 @@
+package erika.chatbot;
+
 import erika.commands.Command;
 import erika.exceptions.ErikaException;
 import erika.exceptions.ErikaIOException;
