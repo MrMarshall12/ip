@@ -14,6 +14,7 @@ public class Task {
         this.isDone = isDone;
     }
 
+    /** Returns the completion status of a task */
     public boolean isDone() {
         return isDone;
     }
