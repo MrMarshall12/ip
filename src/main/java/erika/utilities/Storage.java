@@ -44,7 +44,11 @@ public class Storage {
         storageTemp = pathTemp.toFile();
     }
 
-    /** Stores task to storage file */
+    /**
+     * Stores task to storage file
+     *
+     * @throws ErikaIOException if the I/O fails
+     */
     protected void store(Task task) throws ErikaIOException {
         try (FileWriter fileWriterAppend = new FileWriter(storage, true)) {
             fileWriterAppend.write(task.formatToStorageString() + "\n");
@@ -57,6 +61,7 @@ public class Storage {
      * Loads tasks from storage file.
      *
      * @return A list of Tasks stored in the storage file.
+     * @throws ErikaIOException if the I/O fails
      */
     protected ArrayList<Task> load() throws ErikaIOException {
         ArrayList<Task> tasks = new ArrayList<>();
@@ -95,6 +100,7 @@ public class Storage {
      * Overwrites tasks from storage file.
      *
      * @return A new list of Tasks.
+     * @throws ErikaIOException if the I/O fails
      */
     protected ArrayList<Task> overwrite(ArrayList<Task> tasks) throws ErikaIOException {
         try (FileWriter fileWriterOverwrite = new FileWriter(storageTemp)) {

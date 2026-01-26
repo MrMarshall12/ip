@@ -52,7 +52,13 @@ public abstract class Command {
         return false;
     }
 
-    /** Executes the command based on its respective logic */
+    /**
+     * Executes the command based on its respective logic
+     *
+     * @param taskList list of tasks to be worked on
+     * @param ui user interface class that handles interaction with user
+     * @throws ErikaException if any of the execution logic triggers the subclass of ErikaException
+     */
     public abstract void execute(TaskList taskList, Ui ui) throws ErikaException;
 
     @Override

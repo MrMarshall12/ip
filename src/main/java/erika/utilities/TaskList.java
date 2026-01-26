@@ -17,7 +17,11 @@ public class TaskList {
     }
 
 
-    /** Adds a task to the list and to the database */
+    /**
+     * Adds a task to the list and to the database
+     *
+     * @throws ErikaIOException if the I/O fails
+     */
     public void add(Task task) throws ErikaIOException {
         database.store(task);
         tasks.add(task);
@@ -32,6 +36,7 @@ public class TaskList {
      * Removes task from the list and overwrites the database
      *
      * @return the task being removed
+     * @throws ErikaIOException if the I/O fails
      */
     public Task remove(int index) throws ErikaIOException {
         Task task = tasks.remove(index);
@@ -58,7 +63,11 @@ public class TaskList {
         return tasks.get(index);
     }
 
-    /** Marks the status of a task and overwrites the database*/
+    /**
+     * Marks the status of a task and overwrites the database
+     *
+     * @throws ErikaIOException if the I/O fails
+     */
     public void mark(int taskIndex, boolean status) throws ErikaIOException {
         tasks.get(taskIndex).setDone(status);
         tasks = database.overwrite(tasks);
