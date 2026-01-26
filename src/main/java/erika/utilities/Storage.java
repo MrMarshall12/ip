@@ -56,7 +56,7 @@ public class Storage {
     /**
      * Loads tasks from storage file.
      *
-     * @return A list of Tasks.
+     * @return A list of Tasks stored in the storage file.
      */
     protected ArrayList<Task> load() throws ErikaIOException {
         ArrayList<Task> tasks = new ArrayList<>();
