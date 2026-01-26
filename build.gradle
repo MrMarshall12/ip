@@ -38,8 +38,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "duke"
-    archiveClassifier = null
+    archiveFileName = 'erika.jar'
 }
 
 run{
