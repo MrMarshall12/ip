@@ -4,6 +4,7 @@ import erika.entities.Task;
 import erika.exceptions.ErikaException;
 
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 /** A class representing a user interface that handles interaction with user */
 public class Ui {
@@ -48,6 +49,17 @@ public class Ui {
         } else {
             System.out.println("Erika: Here are the tasks in your list: ");
             tasks.display();
+        }
+        System.out.println(); // To create line break
+    }
+
+    /** Displays selected items in the list */
+    public void showSelectedTasks(TaskList tasks, Predicate<Task> criteria) {
+        if (tasks.isEmpty()) {
+            System.out.println("Erika: List is empty");
+        } else {
+            System.out.println("Erika: Here are the tasks in your list: ");
+            tasks.display(criteria);
         }
         System.out.println(); // To create line break
     }
