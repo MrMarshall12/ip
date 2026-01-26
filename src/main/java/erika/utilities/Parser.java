@@ -57,7 +57,7 @@ public class Parser {
         return lowerCase.equalsIgnoreCase("bye");
     }
 
-    /** Transforms user's command into an instance of a subclass of Comman */
+    /** Transforms user's command into an instance of a subclass of Command */
     public static Command parseCommand(String command) throws UnknownCommandException {
         String formattedMessage = command.strip();
         if (isListCommand(formattedMessage)) {
