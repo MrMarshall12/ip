@@ -44,7 +44,11 @@ public class Storage {
         storageTemp = pathTemp.toFile();
     }
 
-    /** Stores task to storage file */
+    /**
+     * Stores task to storage file
+     *
+     * @throws ErikaIOException if the I/O fails
+     */
     protected void store(Task task) throws ErikaIOException {
         try (FileWriter fileWriterAppend = new FileWriter(storage, true)) {
             fileWriterAppend.write(task.formatToStorageString() + "\n");
