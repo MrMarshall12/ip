@@ -29,4 +29,9 @@ public class ToDoCommand extends Command {
         taskList.add(task);
         ui.showAddedTask(task);
     }
+
+    @Override
+    public String toString() {
+        return "todo";
+    }
 }

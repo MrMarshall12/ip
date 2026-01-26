@@ -39,4 +39,9 @@ public class DeleteCommand extends Command {
         Task task = taskList.remove(index - 1);
         ui.showDeletedTask(task);
     }
+
+    @Override
+    public String toString() {
+        return "delete";
+    }
 }

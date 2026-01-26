@@ -18,4 +18,9 @@ public class ByeCommand extends Command {
     public void execute(TaskList taskList, Ui ui) {
         ui.showFarewell();
     }
+
+    @Override
+    public String toString() {
+        return "bye";
+    }
 }

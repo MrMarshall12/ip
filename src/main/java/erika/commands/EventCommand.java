@@ -51,4 +51,9 @@ public class EventCommand extends Command {
         taskList.add(task);
         ui.showAddedTask(task);
     }
+
+    @Override
+    public String toString() {
+        return "event";
+    }
 }
