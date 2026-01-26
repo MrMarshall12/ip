@@ -26,7 +26,7 @@ public class Erika {
             try {
                 String command = ui.readUserInput();
                 Command commandType = Parser.parseCommand(command);
-                commandType.execute(this.list, this.ui);
+                commandType.execute(list, ui);
                 isBye = commandType.isBye();
             } catch (ErikaException e) {
                 ui.showErrorMessage(e);
