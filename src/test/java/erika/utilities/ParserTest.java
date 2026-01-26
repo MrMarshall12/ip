@@ -9,7 +9,6 @@ import erika.commands.ListCommand;
 import erika.commands.MarkCommand;
 import erika.commands.ToDoCommand;
 import erika.exceptions.ErikaException;
-import erika.exceptions.ErikaIOException;
 import erika.exceptions.UnknownCommandException;
 import org.junit.jupiter.api.Test;
 
