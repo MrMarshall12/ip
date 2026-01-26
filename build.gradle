@@ -39,6 +39,8 @@ application {
 
 shadowJar {
     archiveFileName = 'erika.jar'
+    archiveBaseName = 'erika'
+    archiveVersion = 'v1.0'
 }
 
 run{
