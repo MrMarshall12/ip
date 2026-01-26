@@ -24,7 +24,7 @@ public class Storage {
     private File storage;
     private File storageTemp;
 
-    public Storage() throws ErikaIOException {
+    protected Storage() throws ErikaIOException {
         Path path = Paths.get("data", "ErikaDatabase.txt");
         Path pathTemp = Paths.get("data", "ErikaDatabaseTemp.tmp");
 
@@ -45,7 +45,7 @@ public class Storage {
     }
 
     /** Stores task to storage file */
-    public void store(Task task) throws ErikaIOException {
+    protected void store(Task task) throws ErikaIOException {
         try (FileWriter fileWriterAppend = new FileWriter(storage, true)) {
             fileWriterAppend.write(task.formatToStorageString() + "\n");
         } catch (IOException e) {
@@ -58,7 +58,7 @@ public class Storage {
      *
      * @return A list of Tasks.
      */
-    public ArrayList<Task> load() throws ErikaIOException {
+    protected ArrayList<Task> load() throws ErikaIOException {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(storage);
@@ -96,7 +96,7 @@ public class Storage {
      *
      * @return A new list of Tasks.
      */
-    public ArrayList<Task> overwrite(ArrayList<Task> tasks) throws ErikaIOException {
+    protected ArrayList<Task> overwrite(ArrayList<Task> tasks) throws ErikaIOException {
         try (FileWriter fileWriterOverwrite = new FileWriter(storageTemp)) {
             for (Task task : tasks) {
                 fileWriterOverwrite.write(task.formatToStorageString() + "\n");

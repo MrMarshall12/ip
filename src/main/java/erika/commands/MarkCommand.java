@@ -39,4 +39,9 @@ public class MarkCommand extends Command {
         taskList.mark(index - 1, mark);
         ui.showMarkedTask(taskList.getTask(index - 1));
     }
+
+    @Override
+    public String toString() {
+        return "mark";
+    }
 }

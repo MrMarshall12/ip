@@ -18,4 +18,9 @@ public class ListCommand extends Command {
     public void execute(TaskList taskList, Ui ui) {
         ui.showTasks(taskList);
     }
+
+    @Override
+    public String toString() {
+        return "list";
+    }
 }

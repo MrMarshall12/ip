@@ -55,4 +55,9 @@ public abstract class Command {
     /** Executes the command based on its respective logic */
     public abstract void execute(TaskList taskList, Ui ui) throws ErikaException;
 
+    @Override
+    public String toString() {
+        return "";
+    }
+
 }

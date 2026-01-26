@@ -18,4 +18,9 @@ public class HelpCommand extends Command {
     public void execute(TaskList taskList, Ui ui) {
         ui.showHelp();
     }
+
+    @Override
+    public String toString() {
+        return "help";
+    }
 }
