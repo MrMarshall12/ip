@@ -20,7 +20,7 @@ then
 fi
 
 # run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
-java -classpath ../bin Erika < input.txt > ACTUAL.TXT
+java -classpath ../bin erika.chatbot.Erika < input.txt > ACTUAL.TXT
 
 # compare the output to the expected output
 diff -b ACTUAL.TXT EXPECTED.TXT
