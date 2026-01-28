@@ -1,7 +1,12 @@
 package erika.entities;
 
-/** A subclass of Task representing todo task */
+/**
+ * A subclass of Task representing todo task.
+ */
 public class ToDos extends Task {
+    /**
+     * Instantiates an instance of ToDos.
+     */
     public ToDos(String taskName) {
         super(taskName);
     }

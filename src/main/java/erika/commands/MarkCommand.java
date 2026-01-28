@@ -6,8 +6,13 @@ import erika.exceptions.OutOfBoundsException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
-/** A class representing a mark command */
+/**
+ * A class representing a mark command.
+ */
 public class MarkCommand extends Command {
+    /**
+     * Instantiates an instance of MarkCommand.
+     */
     public MarkCommand(String formattedMessage) {
         super(formattedMessage);
     }

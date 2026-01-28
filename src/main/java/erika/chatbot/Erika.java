@@ -8,17 +8,24 @@ import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
 
-/** A class representing the chatbot named Erika */
+/**
+ * A class representing the chatbot named Erika.
+ */
 public class Erika {
     private TaskList list;
     private Ui ui;
 
+    /**
+     * Instantiates an instance of Erika.
+     */
     public Erika() throws ErikaIOException {
         list = new TaskList();
         ui = new Ui();
     }
 
-    /** Maintain conversation until the user inputs "bye" */
+    /**
+     * Maintains conversation until the user inputs "bye".
+     */
     public void converse() {
         ui.showGreeting();
         boolean isBye = false;
@@ -34,6 +41,9 @@ public class Erika {
         }
     }
 
+    /**
+     * Provides main entrance to the program.
+     */
     public static void main(String[] args) {
         try {
             Erika erika = new Erika();

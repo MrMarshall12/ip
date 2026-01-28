@@ -7,8 +7,13 @@ import erika.exceptions.OutOfBoundsException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
-/** A class representing a delete command */
+/**
+ * A class representing a delete command.
+ */
 public class DeleteCommand extends Command {
+    /**
+     * Instantiates an instance of DeleteCommand.
+     */
     public DeleteCommand(String formattedMessage)  {
         super(formattedMessage);
     }

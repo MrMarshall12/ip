@@ -1,7 +1,12 @@
 package erika.exceptions;
 
-/** A subclass of ErikaException representing EmptyStartEndException */
+/**
+ * A subclass of ErikaException representing EmptyStartEndException.
+ */
 public class EmptyStartEndException extends ErikaException {
+    /**
+     * Instantiates an instance of EmptyStartEndException.
+     */
     public EmptyStartEndException() {
         super("""
                 Start and end time for event command cannot be empty!

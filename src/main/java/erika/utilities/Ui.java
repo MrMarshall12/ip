@@ -6,15 +6,22 @@ import erika.exceptions.ErikaException;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
-/** A class representing a user interface that handles interaction with user */
+/**
+ * A class representing a user interface that handles interaction with user.
+ */
 public class Ui {
     private Scanner scanner;
 
+    /**
+     * Instantiates an instance of Ui.
+     */
     public Ui() {
         scanner = new Scanner(System.in);
     }
 
-    /** Prints greeting message for the user */
+    /**
+     * Prints greeting message for the user.
+     */
     public void showGreeting() {
         String message = """
                 Erika: Hello! I'm Erika
@@ -26,7 +33,9 @@ public class Ui {
         System.out.println(message);
     }
 
-    /** Prints farewell message for the user */
+    /**
+     * Prints farewell message for the user.
+     */
     public void showFarewell() {
         String message = """
                 Erika: Bye. Hope to see you again soon!
@@ -34,7 +43,9 @@ public class Ui {
         System.out.println(message);
     }
 
-    /** Returns string inputted by the user */
+    /**
+     * Returns string inputted by the user.
+     */
     public String readUserInput() {
         System.out.print("User: ");
         String message = scanner.nextLine();
@@ -42,7 +53,9 @@ public class Ui {
         return message;
     }
 
-    /** Displays items in the list */
+    /**
+     * Displays items in the list.
+     */
     public void showTasks(TaskList tasks) {
         if (tasks.isEmpty()) {
             System.out.println("Erika: List is empty");
@@ -53,7 +66,9 @@ public class Ui {
         System.out.println(); // To create line break
     }
 
-    /** Displays selected items in the list */
+    /**
+     * Displays selected items in the list.
+     */
     public void showSelectedTasks(TaskList tasks, Predicate<Task> criteria) {
         if (tasks.isEmpty()) {
             System.out.println("Erika: List is empty");
@@ -64,7 +79,9 @@ public class Ui {
         System.out.println(); // To create line break
     }
 
-    /** Prints the task being marked or unmarked */
+    /**
+     * Prints the task being marked or unmarked.
+     */
     public void showMarkedTask(Task task) {
         String status = task.isDone() ? "done" : "not done yet";
         System.out.println("Erika: Nice! I have marked this task as "
@@ -75,7 +92,9 @@ public class Ui {
                 + "\n");
     }
 
-    /** Prints the task being added to the list */
+    /**
+     * Prints the task being added to the list.
+     */
     public void showAddedTask(Task task) {
         System.out.println("Erika: Got it. I have added this task:"
                 + "\n"
@@ -84,7 +103,9 @@ public class Ui {
                 + "\n");
     }
 
-    /** Prints the task being deleted from the list */
+    /**
+     * Prints the task being deleted from the list.
+     */
     public void showDeletedTask(Task task) {
         System.out.println("Erika: Noted. I have removed this task:"
                 + "\n"
@@ -93,7 +114,9 @@ public class Ui {
                 + "\n");
     }
 
-    /** Prints the help message */
+    /**
+     * Prints the help message.
+     */
     public void showHelp() {
         String helpMessage = """
                 Erika: Lets get to know me. My commands are simple:
@@ -110,13 +133,18 @@ public class Ui {
         System.out.println(helpMessage);
     }
 
-    /** Prints the error message */
+    /**
+     * Prints the error message.
+     */
     public void showErrorMessage(ErikaException e) {
         System.out.println("Erika: Hmm something went wrong. Please look at the message below:");
         System.out.println(e.getMessage());
     }
 
-    /** Prints initialization error message */
+    /**
+     * Prints initialization error message.
+     * It is static because InitializationError occurs before an instance of Ui is created.
+     */
     public static void showInitializationErrorMessage(ErikaException e) {
         System.out.println(e.getMessage());
         System.out.println("""

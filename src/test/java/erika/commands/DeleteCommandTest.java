@@ -8,8 +8,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+/**
+ * A class to test the DeleteCommand class.
+ */
 public class DeleteCommandTest {
 
+    /**
+     * Tests execute method.
+     */
     @Test
     public void execute_nonExistentTask_exceptionThrown() {
         try {

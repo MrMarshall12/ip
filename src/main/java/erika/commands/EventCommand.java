@@ -12,8 +12,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-/** A class representing an event command */
+/**
+ * A class representing an event command.
+ */
 public class EventCommand extends Command {
+    /**
+     * Instantiates an instance of EventCommand.
+     */
     public EventCommand(String formattedMessage) {
         super(formattedMessage);
     }

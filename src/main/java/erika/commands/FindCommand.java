@@ -9,7 +9,13 @@ import erika.utilities.Ui;
 
 import java.util.function.Predicate;
 
+/**
+ * A class representing a find command.
+ */
 public class FindCommand extends Command {
+    /**
+     * Instantiates an instance of FindCommand.
+     */
     public FindCommand(String formattedMessage) {
         super(formattedMessage);
     }

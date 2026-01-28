@@ -1,10 +1,15 @@
 package erika.entities;
 
-/** A class representing a task */
+/**
+ * A class representing a task.
+ */
 public class Task {
     private String taskName;
     private boolean isDone;
 
+    /**
+     * Instantiates an instance of Task.
+     */
     public Task(String taskName) {
         this.taskName = taskName;
         this.isDone = false;
@@ -14,7 +19,9 @@ public class Task {
         this.isDone = isDone;
     }
 
-    /** Returns the completion status of a task */
+    /**
+     * Returns the completion status of a task.
+     */
     public boolean isDone() {
         return isDone;
     }
@@ -23,7 +30,9 @@ public class Task {
         return taskName;
     }
 
-    /** Formats a task into a storable string */
+    /**
+     * Formats a task into a storable string.
+     */
     public String formatToStorageString() {
         return isDone ? "[X]," : "[ ],";
     }

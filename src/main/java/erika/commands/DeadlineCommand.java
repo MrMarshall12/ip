@@ -12,8 +12,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-/** A class representing a deadline command */
+/**
+ * A class representing a deadline command.
+ */
 public class DeadlineCommand extends Command {
+    /**
+     * Instantiates an instance of DeadlineCommand.
+     */
     public DeadlineCommand(String formattedMessage) {
         super(formattedMessage);
     }

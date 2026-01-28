@@ -1,7 +1,12 @@
 package erika.exceptions;
 
-/** A subclass of ErikaException representing ErikaDateTimeParseException */
+/**
+ * A subclass of ErikaException representing ErikaDateTimeParseException.
+ */
 public class ErikaDateTimeParseException extends ErikaException{
+    /**
+     * Instantiates an instance of ErikaDateTimeParseException.
+     */
     public ErikaDateTimeParseException() {
         super("""
                 Invalid date-time input!

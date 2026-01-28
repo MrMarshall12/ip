@@ -1,7 +1,12 @@
 package erika.exceptions;
 
-/** A subclass of ErikaException representing EmptyDescriptionException */
+/**
+ * A subclass of ErikaException representing EmptyDescriptionException.
+ */
 public class EmptyDescriptionException extends ErikaException {
+    /**
+     * Instantiates an instance of EmptyDescriptionException.
+     */
     public EmptyDescriptionException() {
         super("""
                 Description for todo, deadline, and event commands cannot be empty!

@@ -7,8 +7,13 @@ import erika.exceptions.ErikaIOException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
-/** A class representing a todo command */
+/**
+ * A class representing a todo command.
+ */
 public class ToDoCommand extends Command {
+    /**
+     * Instantiates an instance of ToDoCommand.
+     */
     public ToDoCommand(String formattedMessage) {
         super(formattedMessage);
     }

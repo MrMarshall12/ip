@@ -1,7 +1,12 @@
 package erika.exceptions;
 
-/** A subclass of ErikaException representing EmptyDeadlineException */
+/**
+ * A subclass of ErikaException representing EmptyDeadlineException.
+ */
 public class EmptyDeadlineException extends ErikaException {
+    /**
+     * Instantiates an instance of EmptyDeadlineException.
+     */
     public EmptyDeadlineException() {
         super("""
                 Deadline for deadline command cannot be empty!
