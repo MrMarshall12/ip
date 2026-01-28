@@ -4,13 +4,13 @@ import erika.entities.Events;
 import erika.entities.Task;
 import erika.exceptions.EmptyDescriptionException;
 import erika.exceptions.EmptyStartEndException;
+import erika.exceptions.ErikaDateTimeParseException;
 import erika.exceptions.ErikaIOException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 /**
  * A class representing an event command.
@@ -30,7 +30,7 @@ public class EventCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
-            EmptyStartEndException, ErikaIOException, DateTimeParseException {
+            EmptyStartEndException, ErikaIOException, ErikaDateTimeParseException {
         String eventContent = super.formattedMessage.toLowerCase().replace("event", "").strip();
         String[] splitMessage = eventContent.split("/from ");
         String taskName = splitMessage.length > 0
