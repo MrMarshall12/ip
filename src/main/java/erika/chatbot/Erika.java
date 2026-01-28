@@ -2,7 +2,7 @@ package erika.chatbot;
 
 import erika.commands.Command;
 import erika.exceptions.ErikaException;
-import erika.exceptions.ErikaIOException;
+import erika.exceptions.ErikaIoException;
 import erika.utilities.Parser;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
@@ -18,7 +18,7 @@ public class Erika {
     /**
      * Instantiates an instance of Erika.
      */
-    public Erika() throws ErikaIOException {
+    public Erika() throws ErikaIoException {
         list = new TaskList();
         ui = new Ui();
     }
@@ -48,7 +48,7 @@ public class Erika {
         try {
             Erika erika = new Erika();
             erika.converse();
-        } catch (ErikaIOException e) {
+        } catch (ErikaIoException e) {
             Ui.showInitializationErrorMessage(e);
         }
     }

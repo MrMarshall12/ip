@@ -3,11 +3,11 @@ package erika.exceptions;
 /**
  * A subclass of ErikaException representing ErikaIoException.
  */
-public class ErikaIOException extends ErikaException {
+public class ErikaIoException extends ErikaException {
     /**
      * Instantiates an instance of ErikaIoException.
      */
-    public ErikaIOException(String message) {
+    public ErikaIoException(String message) {
         super(message);
     }
 }

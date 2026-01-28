@@ -1,6 +1,6 @@
 package erika.commands;
 
-import erika.exceptions.ErikaIOException;
+import erika.exceptions.ErikaIoException;
 import erika.exceptions.InvalidMarkCommandException;
 import erika.exceptions.OutOfBoundsException;
 import erika.utilities.TaskList;
@@ -24,7 +24,7 @@ public class MarkCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui) throws InvalidMarkCommandException,
-            OutOfBoundsException, ErikaIOException {
+            OutOfBoundsException, ErikaIoException {
         String[] splitMessage = super.formattedMessage.split(" ");
         if (splitMessage.length != 2) {
             throw new InvalidMarkCommandException();

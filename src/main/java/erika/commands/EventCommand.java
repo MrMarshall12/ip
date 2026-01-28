@@ -5,7 +5,7 @@ import erika.entities.Task;
 import erika.exceptions.EmptyDescriptionException;
 import erika.exceptions.EmptyStartEndException;
 import erika.exceptions.ErikaDateTimeParseException;
-import erika.exceptions.ErikaIOException;
+import erika.exceptions.ErikaIoException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
@@ -30,7 +30,7 @@ public class EventCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
-            EmptyStartEndException, ErikaIOException, ErikaDateTimeParseException {
+            EmptyStartEndException, ErikaIoException, ErikaDateTimeParseException {
         String eventContent = super.formattedMessage.toLowerCase().replace("event", "").strip();
         String[] splitMessage = eventContent.split("/from ");
         String taskName = splitMessage.length > 0

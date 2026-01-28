@@ -4,7 +4,7 @@ import erika.entities.Deadlines;
 import erika.entities.Events;
 import erika.entities.Task;
 import erika.entities.ToDos;
-import erika.exceptions.ErikaIOException;
+import erika.exceptions.ErikaIoException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,7 +29,7 @@ public class Storage {
     /**
      * Instantiates an instance of Storage.
      */
-    protected Storage() throws ErikaIOException {
+    protected Storage() throws ErikaIoException {
         Path path = Paths.get("data", "ErikaDatabase.txt");
         Path pathTemp = Paths.get("data", "ErikaDatabaseTemp.tmp");
 
@@ -42,7 +42,7 @@ public class Storage {
                 Files.createFile(pathTemp);
             }
         } catch (IOException e) {
-            throw new ErikaIOException("Database creation failed");
+            throw new ErikaIoException("Database creation failed");
         }
 
         storage = path.toFile();
@@ -52,13 +52,13 @@ public class Storage {
     /**
      * Stores task to storage file.
      *
-     * @throws ErikaIOException if the I/O fails.
+     * @throws ErikaIoException if the I/O fails.
      */
-    protected void store(Task task) throws ErikaIOException {
+    protected void store(Task task) throws ErikaIoException {
         try (FileWriter fileWriterAppend = new FileWriter(storage, true)) {
             fileWriterAppend.write(task.formatToStorageString() + "\n");
         } catch (IOException e) {
-            throw new ErikaIOException("Database write failed");
+            throw new ErikaIoException("Database write failed");
         }
     }
 
@@ -66,9 +66,9 @@ public class Storage {
      * Loads tasks from storage file.
      *
      * @return A list of Tasks stored in the storage file.
-     * @throws ErikaIOException if the I/O fails.
+     * @throws ErikaIoException if the I/O fails.
      */
-    protected ArrayList<Task> load() throws ErikaIOException {
+    protected ArrayList<Task> load() throws ErikaIoException {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(storage);
@@ -90,13 +90,13 @@ public class Storage {
                             LocalDateTime.parse(items[3], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
                             LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
                 } else {
-                    throw new ErikaIOException("Database file is probably corrupted or improperly formatted");
+                    throw new ErikaIoException("Database file is probably corrupted or improperly formatted");
                 }
                 task.setDone(isDone);
                 tasks.add(task);
             }
         } catch (FileNotFoundException e) {
-            throw new ErikaIOException("Database file not found");
+            throw new ErikaIoException("Database file not found");
         }
         return tasks;
     }
@@ -105,9 +105,9 @@ public class Storage {
      * Overwrites tasks from storage file.
      *
      * @return A new list of Tasks.
-     * @throws ErikaIOException if the I/O fails.
+     * @throws ErikaIoException if the I/O fails.
      */
-    protected ArrayList<Task> overwrite(ArrayList<Task> tasks) throws ErikaIOException {
+    protected ArrayList<Task> overwrite(ArrayList<Task> tasks) throws ErikaIoException {
         try (FileWriter fileWriterOverwrite = new FileWriter(storageTemp)) {
             for (Task task : tasks) {
                 fileWriterOverwrite.write(task.formatToStorageString() + "\n");
@@ -116,7 +116,7 @@ public class Storage {
                     StandardCopyOption.REPLACE_EXISTING,
                     StandardCopyOption.ATOMIC_MOVE);
         } catch (IOException e) {
-            throw new ErikaIOException("Database write failed");
+            throw new ErikaIoException("Database write failed");
         }
         return load();
     }

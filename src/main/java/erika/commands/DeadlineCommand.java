@@ -5,7 +5,7 @@ import erika.entities.Task;
 import erika.exceptions.EmptyDeadlineException;
 import erika.exceptions.EmptyDescriptionException;
 import erika.exceptions.ErikaDateTimeParseException;
-import erika.exceptions.ErikaIOException;
+import erika.exceptions.ErikaIoException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
@@ -30,7 +30,7 @@ public class DeadlineCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
-            EmptyDeadlineException, ErikaIOException, ErikaDateTimeParseException {
+            EmptyDeadlineException, ErikaIoException, ErikaDateTimeParseException {
         String deadlineContent = super.formattedMessage.toLowerCase().replace("deadline", "").strip();
         String[] splitMessage = deadlineContent.split("/by");
         String taskName = splitMessage.length > 0

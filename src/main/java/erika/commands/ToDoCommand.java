@@ -3,7 +3,7 @@ package erika.commands;
 import erika.entities.Task;
 import erika.entities.ToDos;
 import erika.exceptions.EmptyDescriptionException;
-import erika.exceptions.ErikaIOException;
+import erika.exceptions.ErikaIoException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
@@ -25,7 +25,7 @@ public class ToDoCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
-            ErikaIOException {
+            ErikaIoException {
         String taskName = super.formattedMessage.toLowerCase().replace("todo", "").strip();
         if  (taskName.isEmpty()) {
             throw new EmptyDescriptionException();

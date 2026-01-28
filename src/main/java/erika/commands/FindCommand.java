@@ -1,7 +1,7 @@
 package erika.commands;
 
 import erika.entities.Task;
-import erika.exceptions.ErikaIOException;
+import erika.exceptions.ErikaIoException;
 import erika.exceptions.InvalidMarkCommandException;
 import erika.exceptions.OutOfBoundsException;
 import erika.utilities.TaskList;
@@ -27,7 +27,7 @@ public class FindCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui) throws InvalidMarkCommandException,
-            OutOfBoundsException, ErikaIOException {
+            OutOfBoundsException, ErikaIoException {
         String target = super.formattedMessage.replace("find", "").strip();
         Predicate<Task> predicate = t -> t.getTaskName().toLowerCase().startsWith(target);
 

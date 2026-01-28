@@ -1,7 +1,7 @@
 package erika.commands;
 
 import erika.entities.Task;
-import erika.exceptions.ErikaIOException;
+import erika.exceptions.ErikaIoException;
 import erika.exceptions.InvalidDeleteCommandException;
 import erika.exceptions.OutOfBoundsException;
 import erika.utilities.TaskList;
@@ -25,7 +25,7 @@ public class DeleteCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui) throws InvalidDeleteCommandException,
-            OutOfBoundsException, ErikaIOException {
+            OutOfBoundsException, ErikaIoException {
         String[] splitMessage = super.formattedMessage.split(" ");
         if (splitMessage.length != 2) {
             throw new InvalidDeleteCommandException();
