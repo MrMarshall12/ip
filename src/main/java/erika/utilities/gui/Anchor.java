@@ -1,12 +1,14 @@
 package erika.utilities.gui;
 
 import javafx.fxml.FXML;
+import javafx.animation.PauseTransition;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import erika.chatbot.Erika;
 
@@ -18,7 +20,7 @@ public class Anchor extends AnchorPane {
     private ScrollPane scrollPane;
 
     @FXML
-    private VBox dialogBox;
+    private VBox dialogContainer;
 
     @FXML
     private TextField inputField;
@@ -28,6 +30,10 @@ public class Anchor extends AnchorPane {
 
     private Erika erika;
 
+    private String byeResponse = """
+                Erika: Bye. Hope to see you again soon!
+                """;;
+
     private Image userAvatar = new Image(this.getClass().getResourceAsStream("/images/user.png"));
     private Image erikaAvatar = new Image(this.getClass().getResourceAsStream("/images/erika.png"));
 
@@ -36,7 +42,10 @@ public class Anchor extends AnchorPane {
      */
     @FXML
     public void initialize() {
-        scrollPane.vvalueProperty().bind(dialogBox.heightProperty());
+        scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        String greeting = erika.getGreeting();
+
+        dialogContainer.getChildren().addAll(DialogBox.createBotDialogBox(greeting, erikaAvatar));
     }
 
     /**
@@ -46,6 +55,26 @@ public class Anchor extends AnchorPane {
         this.erika = erika;
     }
 
+    /**
+     * Creates dialog box containing user's message and Erika's response and appends them to the dialog container.
+     * Clears user input at the end of the process
+     */
+    @FXML
+    private void handleUserInput() {
+        String userMessage = inputField.getText();
+        String response = erika.converse(userMessage);
+        dialogContainer.getChildren().addAll(
+                DialogBox.createUserDialogBox(userMessage, userAvatar),
+                DialogBox.createBotDialogBox(response, erikaAvatar));
+
+        inputField.clear();
+
+        if (response.equals(byeResponse)) {
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(event -> System.exit(0));
+            pause.play();
+        }
+    }
 
 
 }
