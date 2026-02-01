@@ -29,7 +29,7 @@ public class EventCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
+    public String execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
             EmptyStartEndException, ErikaIoException, ErikaDateTimeParseException {
         String eventContent = super.formattedMessage.toLowerCase().replace("event", "").strip();
         String[] splitMessage = eventContent.split("/from ");
@@ -54,7 +54,7 @@ public class EventCommand extends Command {
                 LocalDateTime.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
                 LocalDateTime.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
         taskList.add(task);
-        ui.showAddedTask(task);
+        return ui.showAddedTask(task);
     }
 
     @Override
