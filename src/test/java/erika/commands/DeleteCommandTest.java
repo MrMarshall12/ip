@@ -1,12 +1,13 @@
 package erika.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.Test;
+
 import erika.exceptions.ErikaException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * A class to test the DeleteCommand class.
@@ -27,10 +28,10 @@ public class DeleteCommandTest {
         } catch (ErikaException e) {
             String message = """
                 Task number out of bounds!
-                
+                \s
                 Please ensure the specified task number is
                 within boundary
-                """;
+                \s""";
             assertEquals(message, e.getMessage());
         }
 
