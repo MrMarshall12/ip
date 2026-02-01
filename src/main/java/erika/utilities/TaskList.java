@@ -1,5 +1,6 @@
 package erika.utilities;
 
+import java.lang.StringBuffer;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
@@ -85,24 +86,32 @@ public class TaskList {
     }
 
     /**
-     * Prints elements of the list.
+     * Prints elements of the list and returns it for GUI purpose.
      */
-    public void display() {
+    public String display() {
+        StringBuffer sb = new StringBuffer();
         for (Task task : tasks) {
-            System.out.println((tasks.indexOf(task) + 1) + ". " + task);
+            String taskString = (tasks.indexOf(task) + 1) + ". " + task;
+            System.out.println(taskString);
+            sb.append(taskString + "\n");
         }
+        return sb.toString();
     }
 
     /**
-     * Prints elements of the list that satisfy the predicate.
+     * Prints elements of the list that satisfy the predicate and returns it for GUI purpose.
      */
-    public void display(Predicate<Task> predicate) {
+    public String display(Predicate<Task> predicate) {
+        StringBuffer sb = new StringBuffer();
         int taskDisplayed = 0;
         for (Task task : tasks) {
             if (predicate.test(task)) {
                 taskDisplayed++;
-                System.out.println(taskDisplayed + ". " + task);
+                String taskString = taskDisplayed + ". " + task;
+                System.out.println(taskString);
+                sb.append(taskString + "\n");
             }
         }
+        return sb.toString();
     }
 }
