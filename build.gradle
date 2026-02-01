@@ -49,7 +49,7 @@ test {
 }
 
 application {
-    mainClass.set("erika.chatbot.Erika")
+    mainClass.set("erika.utilities.gui.Launcher")
 }
 
 shadowJar {
