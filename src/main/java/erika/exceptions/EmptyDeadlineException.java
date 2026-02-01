@@ -10,9 +10,9 @@ public class EmptyDeadlineException extends ErikaException {
     public EmptyDeadlineException() {
         super("""
                 Deadline for deadline command cannot be empty!
-                
+                \s
                 Please ensure you follow the syntax below:
                     deadline <description> /by dd-MM-yyyy HH:mm
-                """);
+                \s""");
     }
 }
