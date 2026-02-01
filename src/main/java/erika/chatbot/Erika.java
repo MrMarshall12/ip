@@ -24,6 +24,13 @@ public class Erika {
     }
 
     /**
+     * Returns greeting message
+     */
+    public String getGreeting() {
+        return ui.showGreeting();
+    }
+
+    /**
      * Maintains conversation until the user inputs "bye".
      */
     public void converse() {
@@ -39,13 +46,6 @@ public class Erika {
                 ui.showErrorMessage(e);
             }
         }
-    }
-
-    /**
-     * Returns greeting message
-     */
-    public String getGreeting() {
-        return ui.showGreeting();
     }
 
     /**
