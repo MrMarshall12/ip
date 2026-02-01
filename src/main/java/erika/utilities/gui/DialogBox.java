@@ -49,10 +49,11 @@ public class DialogBox extends HBox {
         Collections.reverse(temporary);
         getChildren().setAll(temporary);
         setAlignment(Pos.TOP_LEFT);
+        text.getStyleClass().add("reply-label");
     }
 
     /**
-     * Instantiates an dialog box with image on the right and text on the left.
+     * Instantiates a dialog box with image on the right and text on the left.
      */
     public static DialogBox createUserDialogBox(String message, Image avatar) {
         return new DialogBox(message, avatar);
