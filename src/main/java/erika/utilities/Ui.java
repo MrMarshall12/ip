@@ -24,7 +24,7 @@ public class Ui {
      */
     public void showGreeting() {
         String message = """
-                Erika: Hello! I'm Erika
+               Erika: Hello! I'm Erika
                        What can I do for you?
                       \s
                        If you are not familiar with me, type "help".
