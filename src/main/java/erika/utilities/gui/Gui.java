@@ -26,7 +26,7 @@ public class Gui extends Application {
             stage.setScene(scene);
             stage.setTitle("Erika");
             stage.setMinHeight(417);
-            stage.setMinWidth(800);
+            stage.setMinWidth(810);
             loader.<Anchor>getController().insertErika(erika);
             stage.show();
         } catch (IOException | ErikaIoException e) {
