@@ -12,6 +12,7 @@ import erika.utilities.Ui;
  * A class representing the chatbot named Erika.
  */
 public class Erika {
+    private Command commandType;
     private TaskList list;
     private Ui ui;
 
@@ -54,12 +55,19 @@ public class Erika {
     public String converse(String command) {
         String message = "";
         try {
-            Command commandType = Parser.parseCommand(command);
+            commandType = Parser.parseCommand(command);
             message = commandType.execute(list, ui);
         } catch (ErikaException e) {
             message = ui.showErrorMessage(e);
         }
         return message;
+    }
+
+    /**
+     * Returns the command type of current execution.
+     */
+    public String getCommandType() {
+        return commandType.toString();
     }
 
     /**

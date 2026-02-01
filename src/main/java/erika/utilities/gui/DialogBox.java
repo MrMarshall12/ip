@@ -59,12 +59,31 @@ public class DialogBox extends HBox {
         return new DialogBox(message, avatar);
     }
 
+    private void changeStyle(String command) {
+        switch(command) {
+        case "todo":
+        case "deadline":
+        case "event":
+            text.getStyleClass().add("add-label");
+            break;
+        case "mark":
+            text.getStyleClass().add("marked-label");
+            break;
+        case "delete":
+            text.getStyleClass().add("delete-label");
+            break;
+        default:
+            // Do nothing
+        }
+    }
+
     /**
      * Instantiates an dialog box with image on the left and text on the right.
      */
-    public static DialogBox createBotDialogBox(String message, Image avatar) {
+    public static DialogBox createBotDialogBox(String message, Image avatar, String command) {
         DialogBox dialogBox = new DialogBox(message, avatar);
         dialogBox.flip();
+        dialogBox.changeStyle(command);
         return dialogBox;
     }
 }

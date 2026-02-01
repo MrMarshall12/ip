@@ -52,7 +52,7 @@ public class Anchor extends AnchorPane {
 
         String greeting = this.erika.getGreeting();
 
-        dialogContainer.getChildren().addAll(DialogBox.createBotDialogBox(greeting, erikaAvatar));
+        dialogContainer.getChildren().addAll(DialogBox.createBotDialogBox(greeting, erikaAvatar, "greeting"));
     }
 
     /**
@@ -63,9 +63,10 @@ public class Anchor extends AnchorPane {
     private void handleUserInput() {
         String userMessage = inputField.getText();
         String response = erika.converse(userMessage);
+        String commandType = erika.getCommandType();
         dialogContainer.getChildren().addAll(
                 DialogBox.createUserDialogBox(userMessage, userAvatar),
-                DialogBox.createBotDialogBox(response, erikaAvatar));
+                DialogBox.createBotDialogBox(response, erikaAvatar, commandType));
 
         inputField.clear();
 
