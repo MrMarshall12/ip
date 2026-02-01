@@ -70,7 +70,7 @@ public class Anchor extends AnchorPane {
         inputField.clear();
 
         if (response.equals(byeResponse)) {
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
             pause.setOnFinished(event -> System.exit(0));
             pause.play();
         }
