@@ -42,6 +42,27 @@ public class Erika {
     }
 
     /**
+     * Returns greeting message
+     */
+    public String getGreeting() {
+        return ui.showGreeting();
+    }
+
+    /**
+     * Responds to user's input passed through GUI
+     */
+    public String converse(String command) {
+        String message = "";
+        try {
+            Command commandType = Parser.parseCommand(command);
+            message = commandType.execute(list, ui);
+        } catch (ErikaException e) {
+            message = ui.showErrorMessage(e);
+        }
+        return message;
+    }
+
+    /**
      * Provides main entrance to the program.
      */
     public static void main(String[] args) {
