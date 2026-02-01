@@ -1,10 +1,10 @@
 package erika.utilities;
 
-import erika.entities.Task;
-import erika.exceptions.ErikaException;
-
 import java.util.Scanner;
 import java.util.function.Predicate;
+
+import erika.entities.Task;
+import erika.exceptions.ErikaException;
 
 /**
  * A class representing a user interface that handles interaction with user.
@@ -24,12 +24,12 @@ public class Ui {
      */
     public void showGreeting() {
         String message = """
-                Erika: Hello! I'm Erika
+               Erika: Hello! I'm Erika
                        What can I do for you?
-                       
+                      \s
                        If you are not familiar with me, type "help".
                        I will be glad to fully introduce myself
-                """;
+               \s""";
         System.out.println(message);
     }
 
@@ -151,8 +151,8 @@ public class Ui {
                     Erika: I can't work without my database. Please fix it first. If you can find ErikaDatabase.txt
                            under data folder, please clear its content and ensure the cursor is at line 1 column 1.
                            Also, please remove any empty line.
-                           
+                          \s
                            See yaa :)
-                    """);
+                   \s""");
     }
 }

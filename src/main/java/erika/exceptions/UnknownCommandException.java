@@ -10,8 +10,8 @@ public class UnknownCommandException extends ErikaException {
     public UnknownCommandException() {
         super("""
                 Hmm, sorry. I don't understand your command.
-                
+                \s
                 Type 'help' if you forget my commands
-                """);
+                \s""");
     }
 }

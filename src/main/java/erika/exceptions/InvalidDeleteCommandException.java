@@ -10,9 +10,9 @@ public class InvalidDeleteCommandException extends ErikaException {
     public InvalidDeleteCommandException() {
         super("""
                 Invalid delete command!
-                
+                \s
                 Please ensure you follow the syntax below:
                     delete <task_number>
-                """);
+                \s""");
     }
 }

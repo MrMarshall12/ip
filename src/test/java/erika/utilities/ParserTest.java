@@ -1,5 +1,10 @@
 package erika.utilities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.Test;
+
 import erika.commands.ByeCommand;
 import erika.commands.DeadlineCommand;
 import erika.commands.DeleteCommand;
@@ -10,10 +15,6 @@ import erika.commands.MarkCommand;
 import erika.commands.ToDoCommand;
 import erika.exceptions.ErikaException;
 import erika.exceptions.UnknownCommandException;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * A class to test the Parser class.
@@ -107,9 +108,9 @@ public class ParserTest {
         } catch (ErikaException e) {
             String message = """
                 Hmm, sorry. I don't understand your command.
-                
+                \s
                 Type 'help' if you forget my commands
-                """;
+                \s""";
             assertEquals(message, e.getMessage());
         }
     }

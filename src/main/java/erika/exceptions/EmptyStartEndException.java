@@ -10,9 +10,9 @@ public class EmptyStartEndException extends ErikaException {
     public EmptyStartEndException() {
         super("""
                 Start and end time for event command cannot be empty!
-                
+                \s
                 Please ensure you follow the syntax below:
                     event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm
-                """);
+                \s""");
     }
 }
