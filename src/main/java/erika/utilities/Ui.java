@@ -20,9 +20,9 @@ public class Ui {
     }
 
     /**
-     * Prints greeting message for the user.
+     * Prints greeting message for the user and returns it for GUI purpose.
      */
-    public void showGreeting() {
+    public String showGreeting() {
         String message = """
                Erika: Hello! I'm Erika
                        What can I do for you?
@@ -31,16 +31,18 @@ public class Ui {
                        I will be glad to fully introduce myself
                \s""";
         System.out.println(message);
+        return message;
     }
 
     /**
-     * Prints farewell message for the user.
+     * Prints farewell message for the user and returns it for GUI purpose.
      */
-    public void showFarewell() {
+    public String showFarewell() {
         String message = """
                 Erika: Bye. Hope to see you again soon!
                 """;
         System.out.println(message);
+        return message;
     }
 
     /**
@@ -54,70 +56,84 @@ public class Ui {
     }
 
     /**
-     * Displays items in the list.
+     * Displays items in the list and returns it for GUI purpose.
      */
-    public void showTasks(TaskList tasks) {
+    public String showTasks(TaskList tasks) {
+        String message = "Erika: List is empty";
+        String listOfTasks = "";
         if (tasks.isEmpty()) {
-            System.out.println("Erika: List is empty");
+            System.out.println(message);
         } else {
-            System.out.println("Erika: Here are the tasks in your list: ");
-            tasks.display();
+            message = "Erika: Here are the tasks in your list: ";
+            System.out.println(message);
+            listOfTasks = tasks.display();
         }
         System.out.println(); // To create line break
+        return message + "\n" + listOfTasks + "\n";
     }
 
     /**
-     * Displays selected items in the list.
+     * Displays selected items in the list and returns it for GUI purpose.
      */
-    public void showSelectedTasks(TaskList tasks, Predicate<Task> criteria) {
+    public String showSelectedTasks(TaskList tasks, Predicate<Task> criteria) {
+        String message = "Erika: List is empty";
+        String listOfTasks = "";
         if (tasks.isEmpty()) {
-            System.out.println("Erika: List is empty");
+            System.out.println(message);
         } else {
-            System.out.println("Erika: Here are the tasks in your list: ");
-            tasks.display(criteria);
+            message = "Erika: Here are the tasks in your list: ";
+            System.out.println(message);
+            listOfTasks = tasks.display(criteria);
         }
         System.out.println(); // To create line break
+        return message + "\n" + listOfTasks + "\n";
     }
 
     /**
-     * Prints the task being marked or unmarked.
+     * Prints the task being marked or unmarked and returns it for GUI purpose.
      */
-    public void showMarkedTask(Task task) {
+    public String showMarkedTask(Task task) {
         String status = task.isDone() ? "done" : "not done yet";
-        System.out.println("Erika: Nice! I have marked this task as "
+        String message = "Erika: Nice! I have marked this task as "
                 + status
                 + ": \n"
                 + "\t "
                 + task.toString()
-                + "\n");
+                + "\n";
+        System.out.println(message);
+        return message;
     }
 
     /**
-     * Prints the task being added to the list.
+     * Prints the task being added to the list and returns it for GUI purpose.
      */
-    public void showAddedTask(Task task) {
-        System.out.println("Erika: Got it. I have added this task:"
+    public String showAddedTask(Task task) {
+        String message = "Erika: Got it. I have added this task:"
                 + "\n"
                 + "\t "
                 + (task != null ? task.toString() : "")
-                + "\n");
+                + "\n";
+        System.out.println(message);
+        return message;
     }
 
     /**
-     * Prints the task being deleted from the list.
+     * Prints the task being deleted from the list and returns it for GUI purpose.
      */
-    public void showDeletedTask(Task task) {
-        System.out.println("Erika: Noted. I have removed this task:"
+    public String showDeletedTask(Task task) {
+        String message = "Erika: Noted. I have removed this task:"
                 + "\n"
                 + "\t "
                 + task.toString()
-                + "\n");
+                + "\n";
+        System.out.println(message);
+        return message;
     }
 
     /**
-     * Prints the help message.
+     * Prints the help message and returns it for GUI purpose.
      */
-    public void showHelp() {
+    public String showHelp() {
         String helpMessage = """
                 Erika: Lets get to know me. My commands are simple:
                     1. help => display list of commands
@@ -131,28 +147,34 @@ public class Ui {
                     9. bye => end session
                 """;
         System.out.println(helpMessage);
+        return helpMessage;
     }
 
     /**
-     * Prints the error message.
+     * Prints the error message and returns it for GUI purpose.
      */
-    public void showErrorMessage(ErikaException e) {
-        System.out.println("Erika: Hmm something went wrong. Please look at the message below:");
-        System.out.println(e.getMessage());
+    public String showErrorMessage(ErikaException e) {
+        String message = "Erika: Hmm something went wrong. Please look at the message below:"
+                + "\n"
+                + e.getMessage();
+        System.out.println(message);
+        return message;
     }
 
     /**
-     * Prints initialization error message.
+     * Prints initialization error message and returns it for GUI purpose.
      * It is static because InitializationError occurs before an instance of Ui is created.
      */
-    public static void showInitializationErrorMessage(ErikaException e) {
-        System.out.println(e.getMessage());
-        System.out.println("""
+    public static String showInitializationErrorMessage(ErikaException e) {
+        String errorMessage = e.getMessage() + "\n";
+        String message = errorMessage + """
                     Erika: I can't work without my database. Please fix it first. If you can find ErikaDatabase.txt
                            under data folder, please clear its content and ensure the cursor is at line 1 column 1.
                            Also, please remove any empty line.
                           \s
                            See yaa :)
-                   \s""");
+                   \s""";
+        System.out.println(message);
+        return message;
     }
 }
