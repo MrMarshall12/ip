@@ -24,7 +24,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui) throws InvalidDeleteCommandException,
+    public String execute(TaskList taskList, Ui ui) throws InvalidDeleteCommandException,
             OutOfBoundsException, ErikaIoException {
         String[] splitMessage = super.formattedMessage.split(" ");
         if (splitMessage.length != 2) {
@@ -42,7 +42,7 @@ public class DeleteCommand extends Command {
         }
 
         Task task = taskList.remove(index - 1);
-        ui.showDeletedTask(task);
+        return ui.showDeletedTask(task);
     }
 
     @Override

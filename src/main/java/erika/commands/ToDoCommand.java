@@ -24,7 +24,7 @@ public class ToDoCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
+    public String execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
             ErikaIoException {
         String taskName = super.formattedMessage.toLowerCase().replace("todo", "").strip();
         if (taskName.isEmpty()) {
@@ -32,7 +32,7 @@ public class ToDoCommand extends Command {
         }
         Task task = new ToDos(taskName);
         taskList.add(task);
-        ui.showAddedTask(task);
+        return ui.showAddedTask(task);
     }
 
     @Override

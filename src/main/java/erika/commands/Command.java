@@ -83,9 +83,10 @@ public abstract class Command {
      *
      * @param taskList list of tasks to be worked on.
      * @param ui user interface class that handles interaction with user.
+     * @return the message to be displayed to the user.
      * @throws ErikaException if any of the execution logic triggers the subclass of ErikaException.
      */
-    public abstract void execute(TaskList taskList, Ui ui) throws ErikaException;
+    public abstract String execute(TaskList taskList, Ui ui) throws ErikaException;
 
     @Override
     public String toString() {

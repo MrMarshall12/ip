@@ -12,6 +12,7 @@ import erika.utilities.Ui;
  * A class representing the chatbot named Erika.
  */
 public class Erika {
+    private Command commandType;
     private TaskList list;
     private Ui ui;
 
@@ -21,6 +22,13 @@ public class Erika {
     public Erika() throws ErikaIoException {
         list = new TaskList();
         ui = new Ui();
+    }
+
+    /**
+     * Returns greeting message
+     */
+    public String getGreeting() {
+        return ui.showGreeting();
     }
 
     /**
@@ -39,6 +47,27 @@ public class Erika {
                 ui.showErrorMessage(e);
             }
         }
+    }
+
+    /**
+     * Responds to user's input passed through GUI
+     */
+    public String converse(String command) {
+        String message = "";
+        try {
+            commandType = Parser.parseCommand(command);
+            message = commandType.execute(list, ui);
+        } catch (ErikaException e) {
+            message = ui.showErrorMessage(e);
+        }
+        return message;
+    }
+
+    /**
+     * Returns the command type of current execution.
+     */
+    public String getCommandType() {
+        return commandType.toString();
     }
 
     /**

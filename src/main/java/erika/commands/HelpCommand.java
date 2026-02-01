@@ -20,8 +20,8 @@ public class HelpCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui) {
-        ui.showHelp();
+    public String execute(TaskList taskList, Ui ui) {
+        return ui.showHelp();
     }
 
     @Override

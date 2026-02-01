@@ -29,7 +29,7 @@ public class DeadlineCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
+    public String execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
             EmptyDeadlineException, ErikaIoException, ErikaDateTimeParseException {
         String deadlineContent = super.formattedMessage.toLowerCase().replace("deadline", "").strip();
         String[] splitMessage = deadlineContent.split("/by");
@@ -51,7 +51,7 @@ public class DeadlineCommand extends Command {
         Task task = new Deadlines(taskName, LocalDateTime.parse(deadlineTime,
                 DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
         taskList.add(task);
-        ui.showAddedTask(task);
+        return ui.showAddedTask(task);
     }
 
     @Override

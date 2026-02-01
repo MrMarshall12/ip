@@ -20,8 +20,8 @@ public class ByeCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui) {
-        ui.showFarewell();
+    public String execute(TaskList taskList, Ui ui) {
+        return ui.showFarewell();
     }
 
     @Override

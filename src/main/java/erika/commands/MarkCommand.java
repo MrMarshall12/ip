@@ -23,7 +23,7 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui) throws InvalidMarkCommandException,
+    public String execute(TaskList taskList, Ui ui) throws InvalidMarkCommandException,
             OutOfBoundsException, ErikaIoException {
         String[] splitMessage = super.formattedMessage.split(" ");
         if (splitMessage.length != 2) {
@@ -42,7 +42,7 @@ public class MarkCommand extends Command {
         }
 
         taskList.mark(index - 1, mark);
-        ui.showMarkedTask(taskList.getTask(index - 1));
+        return ui.showMarkedTask(taskList.getTask(index - 1));
     }
 
     @Override
