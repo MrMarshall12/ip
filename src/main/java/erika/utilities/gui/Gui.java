@@ -24,6 +24,9 @@ public class Gui extends Application {
             AnchorPane anchorPane = loader.load();
             Scene scene = new Scene(anchorPane);
             stage.setScene(scene);
+            stage.setTitle("Erika");
+            stage.setMinHeight(417);
+            stage.setMinWidth(417);
             loader.<Anchor>getController().insertErika(erika);
             stage.show();
         } catch (IOException | ErikaIoException e) {
