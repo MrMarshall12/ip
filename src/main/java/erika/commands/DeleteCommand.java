@@ -14,7 +14,7 @@ public class DeleteCommand extends Command {
     /**
      * Instantiates an instance of DeleteCommand.
      */
-    public DeleteCommand(String formattedMessage)  {
+    public DeleteCommand(String formattedMessage) {
         super(formattedMessage);
     }
 

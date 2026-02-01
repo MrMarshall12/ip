@@ -3,7 +3,7 @@ package erika.exceptions;
 /**
  * A subclass of ErikaException representing OutOfBoundsException.
  */
-public class OutOfBoundsException extends ErikaException{
+public class OutOfBoundsException extends ErikaException {
     /**
      * Instantiates an instance of OutOfBoundsException.
      */

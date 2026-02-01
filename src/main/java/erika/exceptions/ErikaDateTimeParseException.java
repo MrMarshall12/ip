@@ -3,7 +3,7 @@ package erika.exceptions;
 /**
  * A subclass of ErikaException representing ErikaDateTimeParseException.
  */
-public class ErikaDateTimeParseException extends ErikaException{
+public class ErikaDateTimeParseException extends ErikaException {
     /**
      * Instantiates an instance of ErikaDateTimeParseException.
      */

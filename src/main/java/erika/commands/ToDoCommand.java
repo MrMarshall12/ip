@@ -27,7 +27,7 @@ public class ToDoCommand extends Command {
     public void execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
             ErikaIoException {
         String taskName = super.formattedMessage.toLowerCase().replace("todo", "").strip();
-        if  (taskName.isEmpty()) {
+        if (taskName.isEmpty()) {
             throw new EmptyDescriptionException();
         }
         Task task = new ToDos(taskName);
