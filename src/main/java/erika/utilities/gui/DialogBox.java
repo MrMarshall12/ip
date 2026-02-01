@@ -29,13 +29,14 @@ public class DialogBox extends HBox {
      */
     public DialogBox(String message, Image avatar) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DialogBox.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DialogBox.fxml"));
             loader.setRoot(this);
             loader.setController(this);
             loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         text.setText(message);
         displayPicture.setImage(avatar);
     }

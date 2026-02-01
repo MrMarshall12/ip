@@ -1,19 +1,35 @@
 package erika.utilities.gui;
 
+import java.io.IOException;
+
+import erika.chatbot.Erika;
+import erika.exceptions.ErikaIoException;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * A class representing the GUI of the application.
+ */
 public class Gui extends Application {
+    private Erika erika;
 
     @Override
     public void start(Stage stage) {
-        Label helloWorld = new Label("Hello World!"); // Creating a new Label control
-        Scene scene = new Scene(helloWorld); // Setting the scene to be our Label
+        try {
+            erika = new Erika();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Anchor.fxml"));
+            AnchorPane anchorPane = loader.load();
+            Scene scene = new Scene(anchorPane);
+            stage.setScene(scene);
+            loader.<Anchor>getController().insertErika(erika);
+            stage.show();
+        } catch (IOException | ErikaIoException e) {
+            e.printStackTrace();
+        }
 
-        stage.setScene(scene); // Setting the stage to show our scene
-        stage.show(); // Render the stage.
     }
 }
 

@@ -1,7 +1,8 @@
 package erika.utilities.gui;
 
-import javafx.fxml.FXML;
+import erika.chatbot.Erika;
 import javafx.animation.PauseTransition;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -9,8 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-
-import erika.chatbot.Erika;
 
 /**
  * A class representing the main window of the application.
@@ -43,9 +42,6 @@ public class Anchor extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
-        String greeting = erika.getGreeting();
-
-        dialogContainer.getChildren().addAll(DialogBox.createBotDialogBox(greeting, erikaAvatar));
     }
 
     /**
@@ -53,6 +49,10 @@ public class Anchor extends AnchorPane {
      */
     public void insertErika(Erika erika) {
         this.erika = erika;
+
+        String greeting = this.erika.getGreeting();
+
+        dialogContainer.getChildren().addAll(DialogBox.createBotDialogBox(greeting, erikaAvatar));
     }
 
     /**
