@@ -1,5 +1,8 @@
 package erika.commands;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import erika.entities.Events;
 import erika.entities.Task;
 import erika.exceptions.EmptyDescriptionException;
@@ -8,9 +11,6 @@ import erika.exceptions.ErikaDateTimeParseException;
 import erika.exceptions.ErikaIoException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * A class representing an event command.

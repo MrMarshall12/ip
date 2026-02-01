@@ -1,10 +1,10 @@
 package erika.utilities;
 
-import erika.entities.Task;
-import erika.exceptions.ErikaException;
-
 import java.util.Scanner;
 import java.util.function.Predicate;
+
+import erika.entities.Task;
+import erika.exceptions.ErikaException;
 
 /**
  * A class representing a user interface that handles interaction with user.

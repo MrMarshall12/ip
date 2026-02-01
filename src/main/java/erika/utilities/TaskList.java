@@ -1,10 +1,10 @@
 package erika.utilities;
 
-import erika.entities.Task;
-import erika.exceptions.ErikaIoException;
-
 import java.util.ArrayList;
 import java.util.function.Predicate;
+
+import erika.entities.Task;
+import erika.exceptions.ErikaIoException;
 
 /**
  * A class representing a list of tasks.

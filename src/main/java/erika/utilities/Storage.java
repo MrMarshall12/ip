@@ -1,11 +1,5 @@
 package erika.utilities;
 
-import erika.entities.Deadlines;
-import erika.entities.Events;
-import erika.entities.Task;
-import erika.entities.ToDos;
-import erika.exceptions.ErikaIoException;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -18,6 +12,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import erika.entities.Deadlines;
+import erika.entities.Events;
+import erika.entities.Task;
+import erika.entities.ToDos;
+import erika.exceptions.ErikaIoException;
 
 /**
  * A class representing a Storage.
