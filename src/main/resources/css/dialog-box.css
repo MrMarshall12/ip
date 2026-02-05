@@ -1,11 +1,12 @@
 .label {
-    -fx-background-color: linear-gradient(to bottom right, #00ffbf, #00ddff);
-    -fx-border-color: #d55e00 #009e73 #cc79a7 #0072b2;
+    -fx-background-color: #2b53cc;
+    -fx-border-color: #020112;
     -fx-border-width: 2px;
     -fx-background-radius: 1em 1em 0 1em;
     -fx-border-radius: 1em 1em 0 1em;
-    -fx-font-family: "monospaced";
-    -fx-text-fill: ladder(background, white 49%, black 50%)
+    -fx-font-family: "monospace";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
 .reply-label {
