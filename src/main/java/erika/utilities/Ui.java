@@ -24,11 +24,11 @@ public class Ui {
      */
     public String showGreeting() {
         String message = """
-               Erika: Hello! I'm Erika
-                       What can I do for you?
-                      \s
-                       If you are not familiar with me, type "help".
-                       I will be glad to fully introduce myself
+               Hello! I'm Erika
+               What can I do for you?
+               \s
+               If you are not familiar with me, type "help".
+               I will be glad to fully introduce myself
                \s""";
         System.out.println(message);
         return message;
@@ -39,7 +39,7 @@ public class Ui {
      */
     public String showFarewell() {
         String message = """
-                Erika: Bye. Hope to see you again soon!
+                Bye. Hope to see you again soon!
                 """;
         System.out.println(message);
         return message;
@@ -59,12 +59,12 @@ public class Ui {
      * Displays items in the list and returns it for GUI purpose.
      */
     public String showTasks(TaskList tasks) {
-        String message = "Erika: List is empty";
+        String message = "List is empty";
         String listOfTasks = "";
         if (tasks.isEmpty()) {
             System.out.println(message);
         } else {
-            message = "Erika: Here are the tasks in your list: ";
+            message = "Here are the tasks in your list: ";
             System.out.println(message);
             listOfTasks = tasks.display();
         }
@@ -76,12 +76,12 @@ public class Ui {
      * Displays selected items in the list and returns it for GUI purpose.
      */
     public String showSelectedTasks(TaskList tasks, Predicate<Task> criteria) {
-        String message = "Erika: List is empty";
+        String message = "List is empty";
         String listOfTasks = "";
         if (tasks.isEmpty()) {
             System.out.println(message);
         } else {
-            message = "Erika: Here are the tasks in your list: ";
+            message = "Here are the tasks in your list: ";
             System.out.println(message);
             listOfTasks = tasks.display(criteria);
         }
@@ -94,7 +94,7 @@ public class Ui {
      */
     public String showMarkedTask(Task task) {
         String status = task.isDone() ? "done" : "not done yet";
-        String message = "Erika: Nice! I have marked this task as "
+        String message = "Nice! I have marked this task as "
                 + status
                 + ": \n"
                 + "\t "
@@ -108,7 +108,7 @@ public class Ui {
      * Prints the task being added to the list and returns it for GUI purpose.
      */
     public String showAddedTask(Task task) {
-        String message = "Erika: Got it. I have added this task:"
+        String message = "Got it. I have added this task:"
                 + "\n"
                 + "\t "
                 + (task != null ? task.toString() : "")
@@ -121,7 +121,7 @@ public class Ui {
      * Prints the task being deleted from the list and returns it for GUI purpose.
      */
     public String showDeletedTask(Task task) {
-        String message = "Erika: Noted. I have removed this task:"
+        String message = "Noted. I have removed this task:"
                 + "\n"
                 + "\t "
                 + task.toString()
@@ -135,7 +135,7 @@ public class Ui {
      */
     public String showHelp() {
         String helpMessage = """
-                Erika: Lets get to know me. My commands are simple:
+                Lets get to know me. My commands are simple:
                     1. help => display list of commands
                     2. list => display list of tasks
                     3. todo <description> => add todo task
@@ -154,7 +154,7 @@ public class Ui {
      * Prints the error message and returns it for GUI purpose.
      */
     public String showErrorMessage(ErikaException e) {
-        String message = "Erika: Hmm something went wrong. Please look at the message below:"
+        String message = "Hmm something went wrong. Please look at the message below:"
                 + "\n"
                 + e.getMessage();
         System.out.println(message);
@@ -168,11 +168,11 @@ public class Ui {
     public static String showInitializationErrorMessage(ErikaException e) {
         String errorMessage = e.getMessage() + "\n";
         String message = errorMessage + """
-                    Erika: I can't work without my database. Please fix it first. If you can find ErikaDatabase.txt
-                           under data folder, please clear its content and ensure the cursor is at line 1 column 1.
-                           Also, please remove any empty line.
-                          \s
-                           See yaa :)
+                   I can't work without my database. Please fix it first. If you can find ErikaDatabase.txt
+                   under data folder, please clear its content and ensure the cursor is at line 1 column 1.
+                   Also, please remove any empty line.
+                   \s
+                   See yaa :)
                    \s""";
         System.out.println(message);
         return message;
