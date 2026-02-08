@@ -13,6 +13,8 @@ import erika.commands.ListCommand;
 import erika.commands.MarkCommand;
 import erika.commands.ToDoCommand;
 import erika.exceptions.UnknownCommandException;
+import erika.exceptions.UnknownPriorityException;
+import erika.utilities.enums.Priority;
 
 /**
  * A class representing a parser that parses command from the user.
@@ -96,23 +98,74 @@ public class Parser {
     }
 
     /**
+     * Removes the priority specifier from the formatted message.
+     *
+     * @return formatted message without the priority specifier.
+     */
+    private static String removePrioritySpecifier(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
+        if (formattedMessage.toLowerCase().contains("/p")) {
+            return formattedMessage.split("/p")[0].strip();
+        } else {
+            return formattedMessage;
+        }
+    }
+
+
+    /**
+     * Checks if the priority is specified.
+     *
+     * @return the priority of the task.
+     */
+    private static Priority checkPriority(String formattedMessage) throws
+            UnknownPriorityException {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
+        String[] partitioned = formattedMessage.toLowerCase().split("/p");
+        if (partitioned.length != 2 && !formattedMessage.contains("/p")) { // Guards against unspecified priority
+            return Priority.NONE;
+        } else if (partitioned.length != 2 && formattedMessage.contains("/p")) {
+            throw new UnknownPriorityException();
+        }
+
+        String lowerCase = partitioned[1].strip();
+        if (lowerCase.equals("h")) {
+            return Priority.HIGH;
+        } else if (lowerCase.equals("m")) {
+            return Priority.MEDIUM;
+        } else if (lowerCase.equals("l")) {
+            return Priority.LOW;
+        } else if (lowerCase.equals("n")) {
+            return Priority.NONE;
+        } else {
+            throw new UnknownPriorityException();
+        }
+    }
+
+    /**
      * Transforms a command from the user into an instance of Command's subclasses.
      *
      * @return Object of Command's subclasses.
      * @throws UnknownCommandException if the command is unknown.
      */
-    public static Command parseCommand(String command) throws UnknownCommandException {
+    public static Command parseCommand(String command) throws UnknownCommandException,
+            UnknownPriorityException {
         String formattedMessage = command.strip();
         if (isListCommand(formattedMessage)) {
             return new ListCommand(formattedMessage);
         } else if (isMarkingCommand(formattedMessage)) {
             return new MarkCommand(formattedMessage);
         } else if (isToDo(formattedMessage)) {
-            return new ToDoCommand(formattedMessage);
+            Priority priority = checkPriority(formattedMessage);
+            formattedMessage = removePrioritySpecifier(formattedMessage);
+            return new ToDoCommand(formattedMessage).setPriority(priority);
         } else if (isDeadline(formattedMessage)) {
-            return new DeadlineCommand(formattedMessage);
+            Priority priority = checkPriority(formattedMessage);
+            formattedMessage = removePrioritySpecifier(formattedMessage);
+            return new DeadlineCommand(formattedMessage).setPriority(priority);
         } else if (isEvent(formattedMessage)) {
-            return new EventCommand(formattedMessage);
+            Priority priority = checkPriority(formattedMessage);
+            formattedMessage = removePrioritySpecifier(formattedMessage);
+            return new EventCommand(formattedMessage).setPriority(priority);
         } else if (isDeleteTaskCommand(formattedMessage)) {
             return new DeleteCommand(formattedMessage);
         } else if (isHelpCommand(formattedMessage)) {
