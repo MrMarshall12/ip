@@ -23,8 +23,9 @@ public class Task {
         this.isDone = isDone;
     }
 
-    public Priority setPriority(Priority priority) {
-        return this.priority = priority;
+    public Task setPriority(Priority priority) {
+        this.priority = priority;
+        return this;
     }
 
     /**
