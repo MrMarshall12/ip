@@ -60,9 +60,9 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Instantiates an dialog box with image on the left and text on the right.
+     * Instantiates a dialog box with image on the left and text on the right.
      */
-    public static DialogBox createBotDialogBox(String message, Image avatar, String command) {
+    public static DialogBox createBotDialogBox(String message, Image avatar) {
         DialogBox dialogBox = new DialogBox(message, avatar);
         dialogBox.flip();
         return dialogBox;

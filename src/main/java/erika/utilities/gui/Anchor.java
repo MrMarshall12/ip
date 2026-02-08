@@ -51,22 +51,20 @@ public class Anchor extends AnchorPane {
         this.erika = erika;
 
         String greeting = this.erika.getGreeting();
-
-        dialogContainer.getChildren().addAll(DialogBox.createBotDialogBox(greeting, erikaAvatar, "greeting"));
+        dialogContainer.getChildren().addAll(DialogBox.createBotDialogBox(greeting, erikaAvatar));
     }
 
     /**
      * Creates dialog box containing user's message and Erika's response and appends them to the dialog container.
-     * Clears user input at the end of the process
+     * Clears user input at the end of the process.
      */
     @FXML
     private void handleUserInput() {
         String userMessage = inputField.getText();
         String response = erika.converse(userMessage);
-        String commandType = erika.getCommandType();
         dialogContainer.getChildren().addAll(
                 DialogBox.createUserDialogBox(userMessage, userAvatar),
-                DialogBox.createBotDialogBox(response, erikaAvatar, commandType));
+                DialogBox.createBotDialogBox(response, erikaAvatar));
 
         inputField.clear();
 
