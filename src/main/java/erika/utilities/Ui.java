@@ -169,6 +169,8 @@ public class Ui {
                     7. unmark <task_number> => mark a task as not done
                     8. delete <task_number> => delete a task
                     9. prio <task_number> <priority> => change priority of a task
+                        priority option:
+                        h = high, m = medium, l = low, n = no priority
                    10. bye => end session
                 """;
         System.out.println(helpMessage);
