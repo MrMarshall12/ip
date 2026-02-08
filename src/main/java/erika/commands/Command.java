@@ -45,7 +45,9 @@ public abstract class Command {
         return false;
     }
 
-    /** Checks if this is an event command. */
+    /**
+     * Checks if this is an event command.
+     */
     public boolean isEvent() {
         return false;
     }

@@ -25,7 +25,7 @@ public class Erika {
     }
 
     /**
-     * Returns greeting message
+     * Returns greeting message.
      */
     public String getGreeting() {
         return ui.showGreeting();
@@ -36,6 +36,7 @@ public class Erika {
      */
     public void converse() {
         ui.showGreeting();
+
         boolean isBye = false;
         while (!isBye) {
             try {
@@ -50,7 +51,8 @@ public class Erika {
     }
 
     /**
-     * Responds to user's input passed through GUI
+     * Responds to user's input passed through GUI.
+     * This method is an overload of the converse method designed for GUI.
      */
     public String converse(String command) {
         String message = "";
@@ -64,14 +66,14 @@ public class Erika {
     }
 
     /**
-     * Returns the command type of current execution.
+     * Returns the command type of the current execution.
      */
     public String getCommandType() {
         return commandType.toString();
     }
 
     /**
-     * Provides main entrance to the program.
+     * Provides the main entrance to the program.
      */
     public static void main(String[] args) {
         try {

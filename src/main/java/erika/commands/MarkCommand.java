@@ -29,6 +29,7 @@ public class MarkCommand extends Command {
         if (splitMessage.length != 2) {
             throw new InvalidMarkCommandException();
         }
+
         boolean mark = splitMessage[0].equalsIgnoreCase("mark");
         int index = -1;
         try {

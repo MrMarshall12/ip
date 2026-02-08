@@ -1,7 +1,7 @@
 package erika.exceptions;
 
 /**
- * A class representing exception specific to Erika.
+ * A class representing an exception specific to Erika.
  */
 public class ErikaException extends Exception {
     /**
