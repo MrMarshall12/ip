@@ -30,6 +30,7 @@ public class DeleteCommand extends Command {
         if (splitMessage.length != 2) {
             throw new InvalidDeleteCommandException();
         }
+
         int index = -1;
         try {
             index = Integer.parseInt(splitMessage[1]);
