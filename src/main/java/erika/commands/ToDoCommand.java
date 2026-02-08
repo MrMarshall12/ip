@@ -30,6 +30,7 @@ public class ToDoCommand extends Command {
         if (taskName.isEmpty()) {
             throw new EmptyDescriptionException();
         }
+
         Task task = new ToDos(taskName);
         taskList.add(task);
         return ui.showAddedTask(task);
