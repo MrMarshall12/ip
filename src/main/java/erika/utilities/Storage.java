@@ -11,6 +11,7 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 import erika.entities.Deadlines;
@@ -55,6 +56,7 @@ public class Storage {
      * @throws ErikaIoException if the I/O fails.
      */
     protected void store(Task task) throws ErikaIoException {
+        assert Objects.nonNull(task) : "task cannot be null";
         try (FileWriter fileWriterAppend = new FileWriter(storage, true)) {
             fileWriterAppend.write(task.formatToStorageString() + "\n");
         } catch (IOException e) {
@@ -108,6 +110,7 @@ public class Storage {
      * @throws ErikaIoException if the I/O fails.
      */
     protected ArrayList<Task> overwrite(ArrayList<Task> tasks) throws ErikaIoException {
+        assert Objects.nonNull(tasks) : "tasks cannot be null";
         try (FileWriter fileWriterOverwrite = new FileWriter(storageTemp)) {
             for (Task task : tasks) {
                 fileWriterOverwrite.write(task.formatToStorageString() + "\n");
