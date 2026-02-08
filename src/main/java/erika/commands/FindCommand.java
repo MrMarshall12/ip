@@ -27,7 +27,7 @@ public class FindCommand extends Command {
 
     @Override
     public String execute(TaskList taskList, Ui ui) throws InvalidMarkCommandException,
-            OutOfBoundsException, ErikaIoException {
+            ErikaIoException {
         String target = super.formattedMessage.replace("find", "").strip();
         Predicate<Task> predicate = t -> t.getTaskName().toLowerCase().startsWith(target);
 
