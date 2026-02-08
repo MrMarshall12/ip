@@ -30,7 +30,7 @@ public class Anchor extends AnchorPane {
     private Erika erika;
 
     private String byeResponse = """
-                Erika: Bye. Hope to see you again soon!
+                Bye. Hope to see you again soon!
                 """;;
 
     private Image userAvatar = new Image(this.getClass().getResourceAsStream("/images/user.png"));
