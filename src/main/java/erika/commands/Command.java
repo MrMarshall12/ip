@@ -3,18 +3,21 @@ package erika.commands;
 import erika.exceptions.ErikaException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
+import erika.utilities.enums.Priority;
 
 /**
  * An abstract class being the super-type of all commands.
  */
 public abstract class Command {
     protected String formattedMessage;
+    protected Priority priority;
 
     /**
      * Instantiates an instance of Command only through the instantiation of its subclasses.
      */
     public Command(String formattedMessage) {
         this.formattedMessage = formattedMessage;
+        this.priority = Priority.NONE;
     }
 
     /**
@@ -79,6 +82,19 @@ public abstract class Command {
     public boolean isFind() {
         return false;
     }
+
+    /**
+     * Checks if this is a priority command.
+     */
+    public boolean isPriority() {
+        return false;
+    }
+
+    public Command setPriority(Priority priority) {
+        this.priority = priority;
+        return this;
+    }
+
 
     /**
      * Executes the command based on its respective logic.

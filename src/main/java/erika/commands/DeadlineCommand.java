@@ -50,6 +50,7 @@ public class DeadlineCommand extends Command {
 
         Task task = new Deadlines(taskName, LocalDateTime.parse(deadlineTime,
                 DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
+        task = task.setPriority(super.priority);
         taskList.add(task);
         return ui.showAddedTask(task);
     }

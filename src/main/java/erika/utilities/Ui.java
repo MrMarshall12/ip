@@ -131,6 +131,19 @@ public class Ui {
     }
 
     /**
+     * Prints the task whose priority is updated from the list and returns it for GUI purpose.
+     */
+    public String showUpdatedPriorityTask(Task task) {
+        String message = "Got it. I have updated the priority this task:"
+                + "\n"
+                + "\t "
+                + task.toString()
+                + "\n";
+        System.out.println(message);
+        return message;
+    }
+
+    /**
      * Prints the help message and returns it for GUI purpose.
      */
     public String showHelp() {
@@ -138,13 +151,25 @@ public class Ui {
                 Lets get to know me. My commands are simple:
                     1. help => display list of commands
                     2. list => display list of tasks
-                    3. todo <description> => add todo task
-                    4. deadline <description> /by dd-MM-yyyy HH:mm => add task with deadline
-                    5. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm => add event
+                    3. todo <description> /p <priority> => add todo task
+                       priority option:
+                        h = high, m = medium, l = low, n = no priority
+                        if priority is not specified task will be added with no priority.
+                    4. deadline <description> /by dd-MM-yyyy HH:mm /p <priority>
+                        => add task with deadline
+                        priority option:
+                        h = high, m = medium, l = low, n = no priority
+                        if priority is not specified task will be added with no priority.
+                    5. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm /p <priority>
+                        => add event
+                        priority option:
+                        h = high, m = medium, l = low, n = no priority
+                        if priority is not specified task will be added with no priority.
                     6. mark <task_number> => mark a task as done
                     7. unmark <task_number> => mark a task as not done
                     8. delete <task_number> => delete a task
-                    9. bye => end session
+                    9. prio <task_number> <priority> => change priority of a task
+                   10. bye => end session
                 """;
         System.out.println(helpMessage);
         return helpMessage;

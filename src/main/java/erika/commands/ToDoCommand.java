@@ -31,7 +31,7 @@ public class ToDoCommand extends Command {
             throw new EmptyDescriptionException();
         }
 
-        Task task = new ToDos(taskName);
+        Task task = (new ToDos(taskName)).setPriority(super.priority);
         taskList.add(task);
         return ui.showAddedTask(task);
     }

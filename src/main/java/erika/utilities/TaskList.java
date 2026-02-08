@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import erika.entities.Task;
 import erika.exceptions.ErikaIoException;
+import erika.utilities.enums.Priority;
 
 /**
  * A class representing a list of tasks.
@@ -81,6 +82,14 @@ public class TaskList {
      */
     public void mark(int taskIndex, boolean status) throws ErikaIoException {
         tasks.get(taskIndex).setDone(status);
+        tasks = database.overwrite(tasks);
+    }
+
+    /**
+     * Sets the priority of a task and overwrites the database.
+     */
+    public void setPriority(int taskIndex, Priority priority) throws ErikaIoException {
+        tasks.get(taskIndex).setPriority(priority);
         tasks = database.overwrite(tasks);
     }
 

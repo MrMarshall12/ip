@@ -53,6 +53,7 @@ public class EventCommand extends Command {
         Task task = new Events(taskName,
                 LocalDateTime.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
                 LocalDateTime.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
+        task = task.setPriority(super.priority);
         taskList.add(task);
         return ui.showAddedTask(task);
     }
