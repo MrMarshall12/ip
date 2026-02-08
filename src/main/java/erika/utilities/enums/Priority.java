@@ -19,6 +19,9 @@ public enum Priority {
         return priority;
     }
 
+    /**
+     * Converts priority string to Priority enum.
+     */
     public static Priority convertToPriority(String priority) {
         switch (priority) {
         case "high":

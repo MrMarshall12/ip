@@ -83,6 +83,13 @@ public abstract class Command {
         return false;
     }
 
+    /**
+     * Checks if this is a priority command.
+     */
+    public boolean isPriority() {
+        return false;
+    }
+
     public Command setPriority(Priority priority) {
         this.priority = priority;
         return this;

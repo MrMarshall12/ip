@@ -3,7 +3,7 @@ package erika.exceptions;
 /**
  * A subclass of ErikaException representing UnknownPriorityException.
  */
-public class UnknownPriorityException extends ErikaException{
+public class UnknownPriorityException extends ErikaException {
     /**
      * Instantiates an instance of UnknownPriorityException.
      */

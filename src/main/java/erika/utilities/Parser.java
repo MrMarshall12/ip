@@ -11,6 +11,7 @@ import erika.commands.FindCommand;
 import erika.commands.HelpCommand;
 import erika.commands.ListCommand;
 import erika.commands.MarkCommand;
+import erika.commands.PriorityCommand;
 import erika.commands.ToDoCommand;
 import erika.exceptions.UnknownCommandException;
 import erika.exceptions.UnknownPriorityException;
@@ -98,6 +99,14 @@ public class Parser {
     }
 
     /**
+     * Checks if the user input is a priority command.
+     */
+    private static boolean isPriorityCommand(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
+        return formattedMessage.toLowerCase().startsWith("prio");
+    }
+
+    /**
      * Removes the priority specifier from the formatted message.
      *
      * @return formatted message without the priority specifier.
@@ -174,6 +183,8 @@ public class Parser {
             return new ByeCommand(formattedMessage);
         } else if (isFindCommand(formattedMessage)) {
             return new FindCommand(formattedMessage);
+        } else if (isPriorityCommand(formattedMessage)) {
+            return new PriorityCommand(formattedMessage);
         } else {
             throw new UnknownCommandException();
         }
