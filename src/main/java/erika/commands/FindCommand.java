@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 import erika.entities.Task;
 import erika.exceptions.ErikaIoException;
 import erika.exceptions.InvalidMarkCommandException;
-import erika.exceptions.OutOfBoundsException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
