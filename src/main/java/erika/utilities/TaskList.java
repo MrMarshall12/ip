@@ -1,6 +1,7 @@
 package erika.utilities;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import erika.entities.Task;
@@ -20,6 +21,7 @@ public class TaskList {
     public TaskList() throws ErikaIoException {
         database = new Storage();
         tasks = database.load();
+        tasks.sort(Comparator.comparing(Task::getPriority));
     }
 
 
@@ -31,6 +33,7 @@ public class TaskList {
     public void add(Task task) throws ErikaIoException {
         database.store(task);
         tasks.add(task);
+        tasks.sort(Comparator.comparing(Task::getPriority));
     }
 
     /**
@@ -91,6 +94,7 @@ public class TaskList {
     public void setPriority(int taskIndex, Priority priority) throws ErikaIoException {
         tasks.get(taskIndex).setPriority(priority);
         tasks = database.overwrite(tasks);
+        tasks.sort(Comparator.comparing(Task::getPriority));
     }
 
     /**

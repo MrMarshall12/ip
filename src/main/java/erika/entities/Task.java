@@ -28,6 +28,10 @@ public class Task {
         return this;
     }
 
+    public Priority getPriority() {
+        return priority;
+    }
+
     /**
      * Returns the completion status of a task.
      */
