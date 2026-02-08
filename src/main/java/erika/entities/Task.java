@@ -43,7 +43,9 @@ public class Task {
      * Formats a task into a storable string.
      */
     public String formatToStorageString() {
-        return isDone ? "[X]," : "[ ],";
+        return isDone
+                ? "[X]," + priority.formatStoragePriority() + ","
+                : "[ ]," + priority.formatStoragePriority() + ",";
     }
 
     @Override

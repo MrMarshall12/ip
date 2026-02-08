@@ -15,6 +15,23 @@ public enum Priority {
         this.priority = priority;
     }
 
+    public String formatStoragePriority() {
+        return priority;
+    }
+
+    public static Priority convertToPriority(String priority) {
+        switch (priority) {
+        case "high":
+            return HIGH;
+        case "medium":
+            return MEDIUM;
+        case "low":
+            return LOW;
+        default:
+            return NONE;
+        }
+    }
+
     @Override
     public String toString() {
         return "[" + priority + " priority]";

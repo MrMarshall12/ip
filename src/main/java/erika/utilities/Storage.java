@@ -19,6 +19,7 @@ import erika.entities.Events;
 import erika.entities.Task;
 import erika.entities.ToDos;
 import erika.exceptions.ErikaIoException;
+import erika.utilities.enums.Priority;
 
 /**
  * A class representing a Storage.
@@ -79,18 +80,20 @@ public class Storage {
             while (scanner.hasNextLine()) {
                 String item = scanner.nextLine();
                 String[] items = item.split(",");
-                if (items.length == 3 && items[0].equals("todo")) {
+                if (items.length == 4 && items[0].equals("todo")) {
                     isDone = items[1].equals("[X]");
-                    task = new ToDos(items[2]);
-                } else if (items.length == 4 && items[0].equals("deadline")) {
+                    task = new ToDos(items[3]).setPriority(Priority.convertToPriority(items[2]));
+                } else if (items.length == 5 && items[0].equals("deadline")) {
                     isDone = items[1].equals("[X]");
-                    task = new Deadlines(items[2],
-                            LocalDateTime.parse(items[3], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
-                } else if (items.length == 5 && items[0].equals("event")) {
+                    task = new Deadlines(items[3],
+                            LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")))
+                            .setPriority(Priority.convertToPriority(items[2]));;
+                } else if (items.length == 6 && items[0].equals("event")) {
                     isDone = items[1].equals("[X]");
-                    task = new Events(items[2],
-                            LocalDateTime.parse(items[3], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
-                            LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
+                    task = new Events(items[3],
+                            LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
+                            LocalDateTime.parse(items[5], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")))
+                            .setPriority(Priority.convertToPriority(items[2]));;
                 } else {
                     throw new ErikaIoException("Database file is probably corrupted or improperly formatted");
                 }
