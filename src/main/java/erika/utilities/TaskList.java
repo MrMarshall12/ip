@@ -91,10 +91,11 @@ public class TaskList {
     /**
      * Sets the priority of a task and overwrites the database.
      */
-    public void setPriority(int taskIndex, Priority priority) throws ErikaIoException {
-        tasks.get(taskIndex).setPriority(priority);
+    public Task setPriority(int taskIndex, Priority priority) throws ErikaIoException {
+        Task task = tasks.get(taskIndex).setPriority(priority);
         tasks = database.overwrite(tasks);
         tasks.sort(Comparator.comparing(Task::getPriority));
+        return task;
     }
 
     /**

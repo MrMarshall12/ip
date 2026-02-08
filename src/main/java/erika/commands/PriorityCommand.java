@@ -1,5 +1,6 @@
 package erika.commands;
 
+import erika.entities.Task;
 import erika.exceptions.ErikaIoException;
 import erika.exceptions.InvalidPriorityCommandException;
 import erika.exceptions.OutOfBoundsException;
@@ -61,8 +62,8 @@ public class PriorityCommand extends Command {
             throw new UnknownPriorityException();
         }
 
-        taskList.setPriority(index - 1, priority);
-        return ui.showUpdatedPriorityTask(taskList.getTask(index - 1));
+        Task task = taskList.setPriority(index - 1, priority);
+        return ui.showUpdatedPriorityTask(task);
     }
 
     @Override
