@@ -1,7 +1,7 @@
 package erika.entities;
 
 /**
- * A subclass of Task representing todo task.
+ * A subclass of Task representing a todo task.
  */
 public class ToDos extends Task {
     /**
