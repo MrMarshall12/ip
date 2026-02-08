@@ -33,14 +33,14 @@ public class TaskList {
     }
 
     /**
-     * Checks if the specified index is within boundary.
+     * Checks if the specified index is within the boundary.
      */
     public boolean isWithinBounds(int index) {
         return index >= 0 && index < tasks.size();
     }
 
     /**
-     * Removes task from the list and overwrites the database.
+     * Removes a task from the list and overwrites the database.
      *
      * @return the task being removed.
      * @throws ErikaIoException if the I/O fails.
@@ -64,7 +64,7 @@ public class TaskList {
     }
 
     /**
-     * Checks the number of task contained.
+     * Checks the number of tasks contained.
      */
     public int getNumberOfTasks() {
         return tasks.size();

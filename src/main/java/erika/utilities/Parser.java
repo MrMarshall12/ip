@@ -13,7 +13,7 @@ import erika.commands.ToDoCommand;
 import erika.exceptions.UnknownCommandException;
 
 /**
- * A class representing a parser that parses command from user.
+ * A class representing a parser that parses command from the user.
  */
 public class Parser {
     /**
@@ -88,7 +88,7 @@ public class Parser {
      * Transforms a command from the user into an instance of Command's subclasses.
      *
      * @return Object of Command's subclasses.
-     * @throws UnknownCommandException if command is unknown.
+     * @throws UnknownCommandException if the command is unknown.
      */
     public static Command parseCommand(String command) throws UnknownCommandException {
         String formattedMessage = command.strip();

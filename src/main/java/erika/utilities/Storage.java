@@ -50,7 +50,7 @@ public class Storage {
     }
 
     /**
-     * Stores task to storage file.
+     * Stores task to a storage file.
      *
      * @throws ErikaIoException if the I/O fails.
      */
@@ -63,7 +63,7 @@ public class Storage {
     }
 
     /**
-     * Loads tasks from storage file.
+     * Loads tasks from a storage file.
      *
      * @return A list of Tasks stored in the storage file.
      * @throws ErikaIoException if the I/O fails.
@@ -102,7 +102,7 @@ public class Storage {
     }
 
     /**
-     * Overwrites tasks from storage file.
+     * Overwrites tasks from a storage file.
      *
      * @return A new list of Tasks.
      * @throws ErikaIoException if the I/O fails.

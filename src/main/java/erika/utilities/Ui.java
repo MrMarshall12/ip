@@ -7,7 +7,7 @@ import erika.entities.Task;
 import erika.exceptions.ErikaException;
 
 /**
- * A class representing a user interface that handles interaction with user.
+ * A class representing a user interface that handles interaction with the user.
  */
 public class Ui {
     private Scanner scanner;
@@ -20,7 +20,7 @@ public class Ui {
     }
 
     /**
-     * Prints greeting message for the user and returns it for GUI purpose.
+     * Prints a greeting message for the user and returns it for GUI purpose.
      */
     public String showGreeting() {
         String message = """
@@ -35,7 +35,7 @@ public class Ui {
     }
 
     /**
-     * Prints farewell message for the user and returns it for GUI purpose.
+     * Prints a farewell message for the user and returns it for GUI purpose.
      */
     public String showFarewell() {
         String message = """
@@ -51,7 +51,7 @@ public class Ui {
     public String readUserInput() {
         System.out.print("User: ");
         String message = scanner.nextLine();
-        System.out.println(); // To create line break
+        System.out.println(); // To create a line break
         return message;
     }
 
@@ -68,7 +68,7 @@ public class Ui {
             System.out.println(message);
             listOfTasks = tasks.display();
         }
-        System.out.println(); // To create line break
+        System.out.println(); // To create a line break
         return message + "\n" + listOfTasks + "\n";
     }
 
@@ -85,7 +85,7 @@ public class Ui {
             System.out.println(message);
             listOfTasks = tasks.display(criteria);
         }
-        System.out.println(); // To create line break
+        System.out.println(); // To create a line break
         return message + "\n" + listOfTasks + "\n";
     }
 
@@ -162,7 +162,7 @@ public class Ui {
     }
 
     /**
-     * Prints initialization error message and returns it for GUI purpose.
+     * Prints an initialization error message and returns it for GUI purpose.
      * It is static because InitializationError occurs before an instance of Ui is created.
      */
     public static String showInitializationErrorMessage(ErikaException e) {
