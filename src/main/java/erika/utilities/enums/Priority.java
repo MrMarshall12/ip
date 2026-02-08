@@ -3,9 +3,9 @@ package erika.utilities.enums;
 /**
  * An enumerated type representing the priority of a task.
  */
-public enum Priority  {
+public enum Priority {
     HIGH("high"),
-    MEDIUM( "medium"),
+    MEDIUM("medium"),
     LOW("low"),
     NONE("none");
 
