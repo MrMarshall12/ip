@@ -7,7 +7,7 @@ public enum Priority {
     HIGH("high"),
     MEDIUM("medium"),
     LOW("low"),
-    NONE("none");
+    NONE("no");
 
     private final String priority;
 
@@ -17,6 +17,6 @@ public enum Priority {
 
     @Override
     public String toString() {
-        return "priority: " + priority;
+        return "[" + priority + " priority]";
     }
 }

@@ -1,11 +1,14 @@
 package erika.entities;
 
+import erika.utilities.enums.Priority;
+
 /**
  * A class representing a task.
  */
 public class Task {
     private String taskName;
     private boolean isDone;
+    private Priority priority;
 
     /**
      * Instantiates an instance of Task.
@@ -13,10 +16,15 @@ public class Task {
     public Task(String taskName) {
         this.taskName = taskName;
         this.isDone = false;
+        this.priority = Priority.NONE;
     }
 
     public void setDone(boolean isDone) {
         this.isDone = isDone;
+    }
+
+    public Priority setPriority(Priority priority) {
+        return this.priority = priority;
     }
 
     /**
@@ -40,6 +48,6 @@ public class Task {
     @Override
     public String toString() {
         String mark = isDone ? "[X]" : "[ ]";
-        return mark + " " + taskName;
+        return mark + priority.toString() + " " + taskName;
     }
 }
