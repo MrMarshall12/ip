@@ -93,8 +93,8 @@ public class TaskList {
      */
     public Task setPriority(int taskIndex, Priority priority) throws ErikaIoException {
         Task task = tasks.get(taskIndex).setPriority(priority);
-        tasks = database.overwrite(tasks);
         tasks.sort(Comparator.comparing(Task::getPriority));
+        tasks = database.overwrite(tasks);
         return task;
     }
 
