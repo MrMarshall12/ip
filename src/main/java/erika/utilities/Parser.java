@@ -1,5 +1,7 @@
 package erika.utilities;
 
+import java.util.Objects;
+
 import erika.commands.ByeCommand;
 import erika.commands.Command;
 import erika.commands.DeadlineCommand;
@@ -20,6 +22,7 @@ public class Parser {
      * Checks if the add command is a todo.
      */
     private static boolean isToDo(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
         return formattedMessage.toLowerCase().startsWith("todo");
     }
 
@@ -27,6 +30,7 @@ public class Parser {
      * Checks if the add command is a deadline.
      */
     private static boolean isDeadline(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
         return formattedMessage.toLowerCase().startsWith("deadline");
     }
 
@@ -34,6 +38,7 @@ public class Parser {
      * Checks if the add command is an event.
      */
     private static boolean isEvent(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
         return formattedMessage.toLowerCase().startsWith("event");
     }
 
@@ -41,6 +46,7 @@ public class Parser {
      * Checks if the user input is a list command.
      */
     private static boolean isListCommand(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
         return formattedMessage.equalsIgnoreCase("list");
     }
 
@@ -48,6 +54,7 @@ public class Parser {
      * Checks if the user input is a marking command.
      */
     private static boolean isMarkingCommand(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
         return formattedMessage.toLowerCase().startsWith("mark")
                 || formattedMessage.toLowerCase().startsWith("unmark");
     }
@@ -56,6 +63,7 @@ public class Parser {
      * Checks if the user input is a delete task command.
      */
     private static boolean isDeleteTaskCommand(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
         String lowerCase = formattedMessage.toLowerCase();
         return lowerCase.startsWith("delete");
     }
@@ -64,6 +72,7 @@ public class Parser {
      * Checks if the user input is a help command.
      */
     private static boolean isHelpCommand(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
         String lowerCase = formattedMessage.toLowerCase();
         return lowerCase.equalsIgnoreCase("help");
     }
@@ -72,6 +81,7 @@ public class Parser {
      * Checks if the user input is a bye command.
      */
     private static boolean isByeCommand(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
         String lowerCase = formattedMessage.toLowerCase();
         return lowerCase.equalsIgnoreCase("bye");
     }
@@ -80,6 +90,7 @@ public class Parser {
      * Checks if the user input is a find command.
      */
     private static boolean isFindCommand(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
         String lowerCase = formattedMessage.toLowerCase();
         return lowerCase.startsWith("find");
     }
