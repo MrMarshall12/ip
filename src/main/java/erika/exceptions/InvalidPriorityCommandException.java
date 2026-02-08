@@ -9,7 +9,7 @@ public class InvalidPriorityCommandException extends ErikaException {
      */
     public InvalidPriorityCommandException() {
         super("""
-                Invalid delete command!
+                Invalid priority command!
                 \s
                 Please ensure you follow the syntax below:
                     prio <task_number> <priority>
