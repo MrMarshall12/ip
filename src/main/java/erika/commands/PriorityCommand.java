@@ -54,6 +54,9 @@ public class PriorityCommand extends Command {
         case "l":
             priority = Priority.LOW;
             break;
+        case "n":
+            priority = Priority.NONE;
+            break;
         default:
             throw new UnknownPriorityException();
         }
