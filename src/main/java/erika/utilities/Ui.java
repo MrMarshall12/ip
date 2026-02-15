@@ -152,7 +152,7 @@ public class Ui {
                     1. help => display list of commands
                     2. list => display list of tasks
                     3. todo <description> /p <priority> => add todo task
-                       priority option:
+                        priority option:
                         h = high, m = medium, l = low, n = no priority
                         if priority is not specified task will be added with no priority.
                     4. deadline <description> /by dd-MM-yyyy HH:mm /p <priority>

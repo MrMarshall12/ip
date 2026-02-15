@@ -1,27 +1,35 @@
 .root {
-    main-color: #060221;
+    main-color: #111b21;
     -fx-background-color: main-color;
 }
 
 .text-field {
-    -fx-background-color: #9bbee0;
+    -fx-border-radius: 1em;
+    -fx-background-radius: 1em;
+    -fx-background-color: #202c33;
+    -fx-text-fill: #e9edef;
     -fx-font: 20px "Arial";
+    -fx-border-color: #2a3942;
+    -fx-border-width: 2px;
+
 }
 
 .button {
-    -fx-background-color: #2d33f7;
+    -fx-border-radius: 1em;
+    -fx-background-radius: 1em;
+    -fx-background-color: #00a884;
     -fx-font: italic bold 16px "Arial";
     -fx-text-fill: white;
 }
 
 .button:hover {
-    -fx-background-color:cyan;
+    -fx-background-color:#00b892;
     -fx-font-size: 18px;
     -fx-text-fill: black;
 }
 
 .button:pressed {
-    -fx-background-color:#b0f7f7;
+    -fx-background-color:#008c6f;
     -fx-font-size: 20px;
 }
 
