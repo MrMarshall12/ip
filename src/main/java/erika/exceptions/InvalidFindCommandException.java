@@ -4,6 +4,9 @@ package erika.exceptions;
  * A subclass of ErikaException representing InvalidFindCommandException.
  */
 public class InvalidFindCommandException extends ErikaException {
+    /**
+     * Instantiates an instance of InvalidFindCommandException.
+     */
     public InvalidFindCommandException() {
         super("""
                 Invalid find command!
