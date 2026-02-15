@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 
 // The solution below adapted from https://se-education.org/guides/tutorials/javaFx.html
 
@@ -41,6 +43,18 @@ public class DialogBox extends HBox {
 
         text.setText(message);
         displayPicture.setImage(avatar);
+
+        // This code is written with the help of IntelliJ built in AI
+        HBox.setHgrow(text, Priority.ALWAYS);
+
+        parentProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue instanceof Region region) {
+                text.maxWidthProperty().unbind();
+                text.maxWidthProperty().bind(region.widthProperty()
+                        .multiply(0.65)
+                        .subtract(displayPicture.getFitWidth() + 30));
+            }
+        });
     }
 
     /**
