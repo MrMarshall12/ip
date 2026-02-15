@@ -4,12 +4,13 @@
     -fx-border-width: 2px;
     -fx-background-radius: 1em 1em 0 1em;
     -fx-border-radius: 1em 1em 0 1em;
-    -fx-font-family: "monospace";
+    -fx-font-family: "arial";
     -fx-font-weight: bold;
     -fx-text-fill: #e9edef;
 }
 
 .reply-label {
+    -fx-font-family: "monospace";
     -fx-background-radius: 1em 1em 1em 0;
     -fx-border-radius: 1em 1em 1em 0;
 }
