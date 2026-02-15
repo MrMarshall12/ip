@@ -45,7 +45,7 @@ public class DialogBox extends HBox {
         displayPicture.setImage(avatar);
 
         // This code is written with the help of IntelliJ built in AI
-        HBox.setHgrow(text, Priority.ALWAYS);
+        HBox.setHgrow(text, Priority.NEVER);
 
         parentProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue instanceof Region region) {
