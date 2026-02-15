@@ -3,8 +3,7 @@ package erika.commands;
 import java.util.function.Predicate;
 
 import erika.entities.Task;
-import erika.exceptions.ErikaIoException;
-import erika.exceptions.InvalidMarkCommandException;
+import erika.exceptions.InvalidFindCommandException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
@@ -25,10 +24,13 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList taskList, Ui ui) throws InvalidMarkCommandException,
-            ErikaIoException {
+    public String execute(TaskList taskList, Ui ui) throws InvalidFindCommandException {
+        String[] splitMessage = super.formattedMessage.split(" ");
+        if (splitMessage.length < 2) {
+            throw new InvalidFindCommandException();
+        }
         String target = super.formattedMessage.replace("find", "").strip().toLowerCase();
-        Predicate<Task> predicate = t -> t.getTaskName().toLowerCase().startsWith(target);
+        Predicate<Task> predicate = t -> t.getTaskName().toLowerCase().contains(target);
 
         return ui.showSelectedTasks(taskList, predicate);
     }
