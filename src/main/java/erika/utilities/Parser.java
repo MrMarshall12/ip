@@ -46,6 +46,14 @@ public class Parser {
     }
 
     /**
+     * Checks if the user input is an add command (either todo, deadline or event).
+     */
+    private static boolean isAddCommand(String formattedMessage) {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
+        return isToDo(formattedMessage) || isDeadline(formattedMessage) || isEvent(formattedMessage);
+    }
+
+    /**
      * Checks if the user input is a list command.
      */
     private static boolean isListCommand(String formattedMessage) {
@@ -151,6 +159,27 @@ public class Parser {
     }
 
     /**
+     * Handles add command parsing.
+     */
+    private static Command parseAddCommand(String formattedMessage) throws UnknownPriorityException,
+            UnknownCommandException {
+        assert Objects.nonNull(formattedMessage) : "formattedMessage cannot be null";
+        Priority priority = checkPriority(formattedMessage);
+        formattedMessage = removePrioritySpecifier(formattedMessage);
+        Command command;
+        if (isToDo(formattedMessage)) {
+            command = new ToDoCommand(formattedMessage).setPriority(priority);
+        } else if (isDeadline(formattedMessage)) {
+            command = new DeadlineCommand(formattedMessage).setPriority(priority);
+        } else if (isEvent(formattedMessage)) {
+            command = new EventCommand(formattedMessage).setPriority(priority);
+        } else {
+            throw new UnknownCommandException();
+        }
+        return command;
+    }
+
+    /**
      * Transforms a command from the user into an instance of Command's subclasses.
      *
      * @return Object of Command's subclasses.
@@ -163,18 +192,8 @@ public class Parser {
             return new ListCommand(formattedMessage);
         } else if (isMarkingCommand(formattedMessage)) {
             return new MarkCommand(formattedMessage);
-        } else if (isToDo(formattedMessage)) {
-            Priority priority = checkPriority(formattedMessage);
-            formattedMessage = removePrioritySpecifier(formattedMessage);
-            return new ToDoCommand(formattedMessage).setPriority(priority);
-        } else if (isDeadline(formattedMessage)) {
-            Priority priority = checkPriority(formattedMessage);
-            formattedMessage = removePrioritySpecifier(formattedMessage);
-            return new DeadlineCommand(formattedMessage).setPriority(priority);
-        } else if (isEvent(formattedMessage)) {
-            Priority priority = checkPriority(formattedMessage);
-            formattedMessage = removePrioritySpecifier(formattedMessage);
-            return new EventCommand(formattedMessage).setPriority(priority);
+        } else if (isAddCommand(formattedMessage)) {
+            return parseAddCommand(formattedMessage);
         } else if (isDeleteTaskCommand(formattedMessage)) {
             return new DeleteCommand(formattedMessage);
         } else if (isHelpCommand(formattedMessage)) {
