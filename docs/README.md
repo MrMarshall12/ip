@@ -1,6 +1,6 @@
 # Erika User Guide
 ## Product screenshot
-<img src="Ui.png" alt="Product screenshot" style="width: 200px;">
+<img src="Ui.png" alt="Product screenshot" style="width: 300px;">
 <br>
 <br>
 <br>
@@ -24,6 +24,7 @@ Fret not, it is **FREE!**
 <br>
 <br>
 <br>
+
 ## Features
 ### Viewing help: `help`
 Shows what commands are available. <br>
