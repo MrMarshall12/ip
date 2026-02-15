@@ -1,6 +1,6 @@
 .label {
-    -fx-background-color: #1f2c34;
-    -fx-border-color: #2a3942;
+    -fx-background-color: #005c4b;
+    -fx-border-color: #004c3f;
     -fx-border-width: 2px;
     -fx-background-radius: 1em 1em 0 1em;
     -fx-border-radius: 1em 1em 0 1em;
@@ -10,6 +10,8 @@
 }
 
 .reply-label {
+    -fx-background-color: #1f2c34;
+    -fx-border-color: #2a3942;
     -fx-font-family: "monospace";
     -fx-background-radius: 1em 1em 1em 0;
     -fx-border-radius: 1em 1em 1em 0;

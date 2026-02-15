@@ -16,13 +16,13 @@
 }
 
 .button:hover {
-    -fx-background-color:cyan;
+    -fx-background-color:#00b892;
     -fx-font-size: 18px;
     -fx-text-fill: black;
 }
 
 .button:pressed {
-    -fx-background-color:#b0f7f7;
+    -fx-background-color:#008c6f;
     -fx-font-size: 20px;
 }
 
