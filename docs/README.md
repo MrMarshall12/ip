@@ -1,6 +1,6 @@
 # Erika User Guide
 ## Product screenshot
-<img src="Ui.png" alt="Product screenshot" style="max-width: 300px; width: 100%;">
+<img src="Ui.png" alt="Product screenshot" style="width: 200px;">
 <br>
 <br>
 <br>
@@ -41,6 +41,7 @@ Examples:
 - `todo go to gym`
 <br>
 <br>
+
 ### Adding a deadline task: `deadline`
 Adds a deadline task to the list. <br>
 Format: `deadline <description> /by dd-MM-yyyy HH:mm /p <priority>` <br>
@@ -52,6 +53,7 @@ Examples:
 - `deadline fill up feedback form /by 20-02-2026 18:00`
 <br>
 <br>
+
 ### Adding an event task: `event`
 Adds an event task to the list. <br>
 Format: `event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm /p <priority>` <br>
@@ -63,11 +65,13 @@ Examples:
 - `event late night talk with erika /from 22-03-2026 23:00 /to 23-03-2026 00:00`
 <br>
 <br>
+
 ### Listing all tasks: `list`
 Shows a list of all tasks. <br>
 Format: `list`
 <br>
 <br>
+
 ### Marking a task as done or undone: `mark` or `unmark`
 Marks a task as done or undone. <br>
 Format: `mark <index>` or `unmark <index>` <br>
@@ -76,6 +80,7 @@ Examples:
 - `unmark 2`
 <br>
 <br>
+
 ### Deleting a task: `delete`
 Deletes a task. <br>
 format: `delete <index>` <br>
@@ -83,6 +88,7 @@ Examples:
 - `delete 1`
 <br>
 <br>
+
 ### Assigning priority to a task: `prio`
 Assigns priority to a task. <br>
 Format: `prio <index> <priority>` <br>
@@ -93,6 +99,7 @@ Examples:
 - `prio 1 h`
 <br>
 <br>
+
 ### Searching for taks by name: `find`
 Searches for tasks whose names contain any of the given keywords. <br>
 Keywords are case-insensitive. <br>
@@ -102,18 +109,22 @@ Examples:
 - `find meet`
 <br>
 <br>
+
 ### Exiting the program: `bye`
 Exits the program.
 Format: `bye`
 <br>
 <br>
+
 ### Saving the data
 Erika data is saved in the hard disk automatically after any command that changes the data. <br>
 Manual saving is unnecessary. 
 <br>
 <br>
+
 ### Editing the data file
 The file is saved in [JAR file location]/data/ErikaDatabase.txt <br>
+
 > [!CAUTION]
 > Editing the file manually may cause instantiation failure of the application.
 
