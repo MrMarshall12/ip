@@ -1,7 +1,7 @@
 package erika.commands;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import erika.entities.Events;
 import erika.entities.Task;
@@ -28,6 +28,27 @@ public class EventCommand extends Command {
         return true;
     }
 
+    /**
+     * Creates an event task.
+     * This method checks for invalid date formats and end date that precedes start date.
+     */
+    private Task createEvent(String taskName, String startDate, String endDate)
+            throws ErikaDateTimeParseException {
+        LocalDateTime start;
+        LocalDateTime end;
+        try {
+            start = LocalDateTime.parse(startDate, DATE_TIME_FORMATTER);
+            end = LocalDateTime.parse(endDate, DATE_TIME_FORMATTER);
+            if (start.isAfter(end)) {
+                throw new ErikaDateTimeParseException();
+            }
+        } catch (DateTimeParseException e) {
+            throw new ErikaDateTimeParseException();
+        }
+
+        return (new Events(taskName, start, end)).setPriority(super.priority);
+    }
+
     @Override
     public String execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
             EmptyStartEndException, ErikaIoException, ErikaDateTimeParseException {
@@ -50,13 +71,8 @@ public class EventCommand extends Command {
 
         String startDate = splitAroundTo[0].strip();
         String endDate = splitAroundTo[1].strip();
-        LocalDateTime start = LocalDateTime.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
-        LocalDateTime end = LocalDateTime.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
-        if (start.isAfter(end)) {
-            throw new ErikaDateTimeParseException();
-        }
 
-        Task task = (new Events(taskName, start, end)).setPriority(super.priority);
+        Task task = createEvent(taskName, startDate, endDate);
         taskList.add(task);
         return ui.showAddedTask(task);
     }

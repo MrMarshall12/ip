@@ -1,7 +1,7 @@
 package erika.commands;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import erika.entities.Deadlines;
 import erika.entities.Task;
@@ -28,6 +28,21 @@ public class DeadlineCommand extends Command {
         return true;
     }
 
+    /**
+     * Creates a deadline task.
+     * This method checks for invalid date formats and end date that precedes start date.
+     */
+    private Task createDeadline(String taskName, String deadlineTime)
+            throws ErikaDateTimeParseException {
+        LocalDateTime deadline;
+        try {
+            deadline = LocalDateTime.parse(deadlineTime, DATE_TIME_FORMATTER);
+        } catch (DateTimeParseException e) {
+            throw new ErikaDateTimeParseException();
+        }
+        return (new Deadlines(taskName, deadline)).setPriority(super.priority);
+    }
+
     @Override
     public String execute(TaskList taskList, Ui ui) throws EmptyDescriptionException,
             EmptyDeadlineException, ErikaIoException, ErikaDateTimeParseException {
@@ -48,9 +63,7 @@ public class DeadlineCommand extends Command {
             throw new EmptyDeadlineException();
         }
 
-        Task task = new Deadlines(taskName, LocalDateTime.parse(deadlineTime,
-                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
-        task = task.setPriority(super.priority);
+        Task task = createDeadline(taskName, deadlineTime);
         taskList.add(task);
         return ui.showAddedTask(task);
     }

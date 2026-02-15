@@ -1,5 +1,8 @@
 package erika.commands;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
+
 import erika.exceptions.ErikaException;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
@@ -9,6 +12,8 @@ import erika.utilities.enums.Priority;
  * An abstract class being the super-type of all commands.
  */
 public abstract class Command {
+    protected static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-uuuu HH:mm")
+            .withResolverStyle(ResolverStyle.STRICT);
     protected String formattedMessage;
     protected Priority priority;
 
