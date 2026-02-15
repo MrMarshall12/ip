@@ -3,6 +3,7 @@ package erika.utilities;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import erika.commands.PriorityCommand;
 import org.junit.jupiter.api.Test;
 
 import erika.commands.ByeCommand;
@@ -94,6 +95,15 @@ public class ParserTest {
     public void parseCommand_byeCommand_success() throws Exception {
         assertEquals((new ByeCommand("bye")).toString(),
                 Parser.parseCommand("bye").toString());
+    }
+
+    /**
+     * Tests parseCommand method.
+     */
+    @Test
+    public void parseCommand_priorityCommand_success() throws Exception {
+        assertEquals((new PriorityCommand("prio")).toString(),
+                Parser.parseCommand("prio").toString());
     }
 
     /**
