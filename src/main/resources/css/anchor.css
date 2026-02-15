@@ -1,15 +1,16 @@
 .root {
-    main-color: #060221;
+    main-color: #111b21;
     -fx-background-color: main-color;
 }
 
 .text-field {
-    -fx-background-color: #9bbee0;
+    -fx-background-color: #202c33;
+    -fx-text-fill: #e9edef;
     -fx-font: 20px "Arial";
 }
 
 .button {
-    -fx-background-color: #2d33f7;
+    -fx-background-color: #00a884;
     -fx-font: italic bold 16px "Arial";
     -fx-text-fill: white;
 }

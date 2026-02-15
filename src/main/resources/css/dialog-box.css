@@ -1,12 +1,12 @@
 .label {
-    -fx-background-color: #2b53cc;
-    -fx-border-color: #020112;
+    -fx-background-color: #1f2c34;
+    -fx-border-color: #2a3942;
     -fx-border-width: 2px;
     -fx-background-radius: 1em 1em 0 1em;
     -fx-border-radius: 1em 1em 0 1em;
     -fx-font-family: "monospace";
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-text-fill: #e9edef;
 }
 
 .reply-label {
