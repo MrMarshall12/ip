@@ -153,24 +153,24 @@ public class Ui {
                     1. help => display list of commands
                     2. list => display list of tasks
                     3. todo <description> /p <priority> => add todo task
-                        priority option:
+                        priority options:
                         h = high, m = medium, l = low, n = no priority
                         if priority is not specified task will be added with no priority.
                     4. deadline <description> /by dd-MM-yyyy HH:mm /p <priority>
                         => add task with deadline
-                        priority option:
+                        priority options:
                         h = high, m = medium, l = low, n = no priority
                         if priority is not specified task will be added with no priority.
                     5. event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm /p <priority>
                         => add event
-                        priority option:
+                        priority options:
                         h = high, m = medium, l = low, n = no priority
                         if priority is not specified task will be added with no priority.
                     6. mark <task_number> => mark a task as done
                     7. unmark <task_number> => mark a task as not done
                     8. delete <task_number> => delete a task
                     9. prio <task_number> <priority> => change priority of a task
-                        priority option:
+                        priority options:
                         h = high, m = medium, l = low, n = no priority
                    10. find <task_name> => find a task by name
                         task name can be partial and case insensitive.
