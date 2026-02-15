@@ -4,12 +4,19 @@
 }
 
 .text-field {
+    -fx-border-radius: 1em;
+    -fx-background-radius: 1em;
     -fx-background-color: #202c33;
     -fx-text-fill: #e9edef;
     -fx-font: 20px "Arial";
+    -fx-border-color: #2a3942;
+    -fx-border-width: 2px;
+
 }
 
 .button {
+    -fx-border-radius: 1em;
+    -fx-background-radius: 1em;
     -fx-background-color: #00a884;
     -fx-font: italic bold 16px "Arial";
     -fx-text-fill: white;
