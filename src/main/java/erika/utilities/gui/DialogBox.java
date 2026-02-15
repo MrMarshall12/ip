@@ -14,6 +14,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+// The solution below adapted from https://se-education.org/guides/tutorials/javaFx.html
+
 /**
  * A class representing a dialog box.
  */

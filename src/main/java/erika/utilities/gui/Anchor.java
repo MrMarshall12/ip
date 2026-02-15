@@ -11,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+// The solution below adapted from https://se-education.org/guides/tutorials/javaFx.html
+
 /**
  * A class representing the main window of the application.
  */

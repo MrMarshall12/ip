@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+// The solution below adapted from https://se-education.org/guides/tutorials/javaFx.html
+
 /**
  * A class representing the GUI of the application.
  */
