@@ -34,7 +34,7 @@ Format: `help`
 ### Adding a todo task: `todo`
 Adds a todo task to the list. <br>
 Format: `todo <description> /p <priority>` <br>
-Priority option: <br>
+Priority options: <br>
 h = high, m = medium, l = low, n = no priority <br>
 If priority is not specified task will be added with no priority. <br>
 Examples:
@@ -46,7 +46,7 @@ Examples:
 ### Adding a deadline task: `deadline`
 Adds a deadline task to the list. <br>
 Format: `deadline <description> /by dd-MM-yyyy HH:mm /p <priority>` <br>
-Priority option: <br>
+Priority options: <br>
 h = high, m = medium, l = low, n = no priority <br>
 If priority is not specified task will be added with no priority. <br>
 Examples: 
@@ -58,7 +58,7 @@ Examples:
 ### Adding an event task: `event`
 Adds an event task to the list. <br>
 Format: `event <description> /from dd-MM-yyyy HH:mm /to dd-MM-yyyy HH:mm /p <priority>` <br>
-Priority option: <br>
+Priority options: <br>
 h = high, m = medium, l = low, n = no priority <br>
 If priority is not specified task will be added with no priority. <br>
 Examples:
@@ -93,7 +93,7 @@ Examples:
 ### Assigning priority to a task: `prio`
 Assigns priority to a task. <br>
 Format: `prio <index> <priority>` <br>
-Priority option: <br>
+Priority options: <br>
 h = high, m = medium, l = low, n = no priority <br>
 For this command, the priority must be specified. <br>
 Examples:
