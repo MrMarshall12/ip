@@ -174,7 +174,6 @@ public class Ui {
                         h = high, m = medium, l = low, n = no priority
                    10. find <task_name> => find a task by name
                         task name can be partial and case insensitive.
-                        if task_name is unspecified, find will return all tasks in the list.
                    11. bye => end session
                 """;
         System.out.println(helpMessage);
