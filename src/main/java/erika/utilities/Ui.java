@@ -39,7 +39,7 @@ public class Ui {
      */
     public String showFarewell() {
         String message = """
-                Bye. Hope to see you again soon!
+                Bye. Until next time!
                 """;
         System.out.println(message);
         return message;
