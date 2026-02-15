@@ -3,7 +3,6 @@ package erika.utilities;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import erika.commands.PriorityCommand;
 import org.junit.jupiter.api.Test;
 
 import erika.commands.ByeCommand;
@@ -13,6 +12,7 @@ import erika.commands.EventCommand;
 import erika.commands.HelpCommand;
 import erika.commands.ListCommand;
 import erika.commands.MarkCommand;
+import erika.commands.PriorityCommand;
 import erika.commands.ToDoCommand;
 import erika.exceptions.ErikaException;
 import erika.exceptions.UnknownCommandException;
