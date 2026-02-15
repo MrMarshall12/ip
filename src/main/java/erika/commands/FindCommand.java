@@ -27,7 +27,7 @@ public class FindCommand extends Command {
     @Override
     public String execute(TaskList taskList, Ui ui) throws InvalidMarkCommandException,
             ErikaIoException {
-        String target = super.formattedMessage.replace("find", "").strip();
+        String target = super.formattedMessage.replace("find", "").strip().toLowerCase();
         Predicate<Task> predicate = t -> t.getTaskName().toLowerCase().startsWith(target);
 
         return ui.showSelectedTasks(taskList, predicate);

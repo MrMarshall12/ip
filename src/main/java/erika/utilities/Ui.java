@@ -76,15 +76,16 @@ public class Ui {
      * Displays selected items in the list and returns it for GUI purpose.
      */
     public String showSelectedTasks(TaskList tasks, Predicate<Task> criteria) {
-        String message = "List is empty";
-        String listOfTasks = "";
+        String message;
+        String listOfTasks = tasks.display(criteria);
         if (tasks.isEmpty()) {
-            System.out.println(message);
+            message = "List is empty";
+        } else if (listOfTasks.isEmpty()) {
+            message = "No tasks match the name";
         } else {
             message = "Here are the tasks in your list: ";
-            System.out.println(message);
-            listOfTasks = tasks.display(criteria);
         }
+        System.out.println(message);
         System.out.println(); // To create a line break
         return message + "\n" + listOfTasks + "\n";
     }
@@ -171,7 +172,10 @@ public class Ui {
                     9. prio <task_number> <priority> => change priority of a task
                         priority option:
                         h = high, m = medium, l = low, n = no priority
-                   10. bye => end session
+                   10. find <task_name> => find a task by name
+                        task name can be partial and case insensitive.
+                        if task_name is unspecified, find will return all tasks in the list.
+                   11. bye => end session
                 """;
         System.out.println(helpMessage);
         return helpMessage;
