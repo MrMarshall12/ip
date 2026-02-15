@@ -1,6 +1,6 @@
 # Erika User Guide
 ## Product screenshot
-<img src="Ui.png" alt="Product screenshot" style="width: 400px;">
+<img src="Ui.png" width="400px">
 <br>
 <br>
 <br>
@@ -126,13 +126,13 @@ Manual saving is unnecessary.
 ### Editing the data file
 The file is saved in [JAR file location]/data/ErikaDatabase.txt <br>
 
-> [!CAUTION]
+> **Caution!** <br>
 > Editing the file manually may cause instantiation failure of the application.
 
-> [!IMPORTANT]
+> **Important!** <br>
 > If the application suffers from instantiation failure, delete ErikaDatabase.txt and try again.
 
-> [!TIP]
+> **Tip** <br>
 > Only edit the list of tasks through the application.
 
 <br>

@@ -9,6 +9,7 @@
     -fx-font-family: "arial";
     -fx-font-weight: bold;
     -fx-text-fill: #e9edef;
+    -fx-font-size: 14px;
 }
 
 .reply-label {
