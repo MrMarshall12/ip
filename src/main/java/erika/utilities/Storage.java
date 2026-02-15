@@ -66,6 +66,58 @@ public class Storage {
     }
 
     /**
+     * Checks if the stored string value is a todo task
+     * The string passed to this method has been split by comma (,)
+     */
+    private boolean isTodo(String[] items) {
+        return items.length == 4 && items[0].equals("todo");
+    }
+
+    /**
+     * Checks if the stored string value is a deadline task
+     * The string passed to this method has been split by comma (,)
+     */
+    private boolean isDeadline(String[] items) {
+        return items.length == 5 && items[0].equals("deadline");
+    }
+
+    /**
+     * Checks if the stored string value is an event task
+     * The string passed to this method has been split by comma (,)
+     */
+    private boolean isEvent(String[] items) {
+        return items.length == 6 && items[0].equals("event");
+    }
+
+    /**
+     * Instantiates an instance of task based on the stored string value.
+     */
+    private Task instantiateTask(String item) throws ErikaIoException {
+        String[] items = item.split(",");
+        boolean isDone = false;
+        Task task;
+        if (isTodo(items)) {
+            isDone = items[1].equals("[X]");
+            task = new ToDos(items[3]).setPriority(Priority.convertToPriority(items[2]));
+        } else if (isDeadline(items)) {
+            isDone = items[1].equals("[X]");
+            task = new Deadlines(items[3],
+                    LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")))
+                    .setPriority(Priority.convertToPriority(items[2]));;
+        } else if (isEvent(items)) {
+            isDone = items[1].equals("[X]");
+            task = new Events(items[3],
+                    LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
+                    LocalDateTime.parse(items[5], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")))
+                    .setPriority(Priority.convertToPriority(items[2]));;
+        } else {
+            throw new ErikaIoException("Database file is probably corrupted or improperly formatted");
+        }
+        task.setDone(isDone);
+        return task;
+    }
+
+    /**
      * Loads tasks from a storage file.
      *
      * @return A list of Tasks stored in the storage file.
@@ -75,30 +127,9 @@ public class Storage {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(storage);
-            Task task = null;
-            boolean isDone = false;
             while (scanner.hasNextLine()) {
                 String item = scanner.nextLine();
-                String[] items = item.split(",");
-                if (items.length == 4 && items[0].equals("todo")) {
-                    isDone = items[1].equals("[X]");
-                    task = new ToDos(items[3]).setPriority(Priority.convertToPriority(items[2]));
-                } else if (items.length == 5 && items[0].equals("deadline")) {
-                    isDone = items[1].equals("[X]");
-                    task = new Deadlines(items[3],
-                            LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")))
-                            .setPriority(Priority.convertToPriority(items[2]));;
-                } else if (items.length == 6 && items[0].equals("event")) {
-                    isDone = items[1].equals("[X]");
-                    task = new Events(items[3],
-                            LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
-                            LocalDateTime.parse(items[5], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")))
-                            .setPriority(Priority.convertToPriority(items[2]));;
-                } else {
-                    throw new ErikaIoException("Database file is probably corrupted or improperly formatted");
-                }
-                task.setDone(isDone);
-                tasks.add(task);
+                tasks.add(instantiateTask(item));
             }
         } catch (FileNotFoundException e) {
             throw new ErikaIoException("Database file not found");
