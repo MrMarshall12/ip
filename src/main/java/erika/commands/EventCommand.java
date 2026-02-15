@@ -56,8 +56,7 @@ public class EventCommand extends Command {
             throw new ErikaDateTimeParseException();
         }
 
-        Task task = new Events(taskName, start, end);
-        task = task.setPriority(super.priority);
+        Task task = (new Events(taskName, start, end)).setPriority(super.priority);
         taskList.add(task);
         return ui.showAddedTask(task);
     }
