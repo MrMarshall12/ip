@@ -51,7 +51,7 @@ public class DialogBox extends HBox {
             if (newValue instanceof Region region) {
                 text.maxWidthProperty().unbind();
                 text.maxWidthProperty().bind(region.widthProperty()
-                        .multiply(0.65)
+                        .multiply(0.7)
                         .subtract(displayPicture.getFitWidth() + 30));
             }
         });
