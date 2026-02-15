@@ -1,6 +1,6 @@
 # Erika User Guide
 ## Product screenshot
-<img src="Ui.png" alt="Product screenshot" style="width: 300px;">
+<img src="Ui.png" alt="Product screenshot" style="width: 400px;">
 <br>
 <br>
 <br>
