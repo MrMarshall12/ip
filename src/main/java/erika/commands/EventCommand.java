@@ -50,9 +50,13 @@ public class EventCommand extends Command {
 
         String startDate = splitAroundTo[0].strip();
         String endDate = splitAroundTo[1].strip();
-        Task task = new Events(taskName,
-                LocalDateTime.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
-                LocalDateTime.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
+        LocalDateTime start = LocalDateTime.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        LocalDateTime end = LocalDateTime.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        if (start.isAfter(end)) {
+            throw new ErikaDateTimeParseException();
+        }
+
+        Task task = new Events(taskName, start, end);
         task = task.setPriority(super.priority);
         taskList.add(task);
         return ui.showAddedTask(task);
