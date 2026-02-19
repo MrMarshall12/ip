@@ -149,6 +149,10 @@ public class Storage {
             for (Task task : tasks) {
                 fileWriterOverwrite.write(task.formatToStorageString() + "\n");
             }
+        } catch (IOException e) {
+            throw new ErikaIoException("Database write failed");
+        }
+        try {
             Files.move(storageTemp.toPath(), storage.toPath(),
                     StandardCopyOption.REPLACE_EXISTING,
                     StandardCopyOption.ATOMIC_MOVE);
