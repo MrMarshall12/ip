@@ -157,7 +157,14 @@ public class Storage {
                     StandardCopyOption.REPLACE_EXISTING,
                     StandardCopyOption.ATOMIC_MOVE);
         } catch (IOException e) {
-            throw new ErikaIoException("Database write failed");
+            // Fallback to non-atomic move if ATOMIC_MOVE is unsupported
+            // Suggested by Claude Opus 4.6
+            try {
+                Files.move(storageTemp.toPath(), storage.toPath(),
+                        StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException ex) {
+                throw new ErikaIoException("Database write failed");
+            }
         }
         return load();
     }
