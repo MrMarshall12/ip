@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import erika.chatbot.Erika;
 import erika.exceptions.ErikaIoException;
+import erika.utilities.Ui;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -31,7 +32,9 @@ public class Gui extends Application {
             stage.setMinWidth(810);
             loader.<Anchor>getController().insertErika(erika);
             stage.show();
-        } catch (IOException | ErikaIoException e) {
+        } catch (ErikaIoException e) {
+            Ui.showInitializationErrorMessage(e);
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
