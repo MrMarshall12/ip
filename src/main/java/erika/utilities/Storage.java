@@ -103,13 +103,13 @@ public class Storage {
             isDone = items[1].equals("[X]");
             task = new Deadlines(items[3],
                     LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")))
-                    .setPriority(Priority.convertToPriority(items[2]));;
+                    .setPriority(Priority.convertToPriority(items[2]));
         } else if (isEvent(items)) {
             isDone = items[1].equals("[X]");
             task = new Events(items[3],
                     LocalDateTime.parse(items[4], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")),
                     LocalDateTime.parse(items[5], DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")))
-                    .setPriority(Priority.convertToPriority(items[2]));;
+                    .setPriority(Priority.convertToPriority(items[2]));
         } else {
             throw new ErikaIoException("Database file is probably corrupted or improperly formatted");
         }
@@ -125,8 +125,7 @@ public class Storage {
      */
     protected ArrayList<Task> load() throws ErikaIoException {
         ArrayList<Task> tasks = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(storage);
+        try (Scanner scanner = new Scanner(storage)) {
             while (scanner.hasNextLine()) {
                 String item = scanner.nextLine();
                 tasks.add(instantiateTask(item));
@@ -154,17 +153,9 @@ public class Storage {
         }
         try {
             Files.move(storageTemp.toPath(), storage.toPath(),
-                    StandardCopyOption.REPLACE_EXISTING,
-                    StandardCopyOption.ATOMIC_MOVE);
+                    StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
-            // Fallback to non-atomic move if ATOMIC_MOVE is unsupported
-            // Suggested by Claude Opus 4.6
-            try {
-                Files.move(storageTemp.toPath(), storage.toPath(),
-                        StandardCopyOption.REPLACE_EXISTING);
-            } catch (IOException ex) {
-                throw new ErikaIoException("Database write failed");
-            }
+            throw new ErikaIoException("Database write failed");
         }
         return load();
     }
