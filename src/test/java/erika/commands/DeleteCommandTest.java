@@ -16,6 +16,9 @@ public class DeleteCommandTest {
 
     /**
      * Tests execute method.
+     *
+     * Before running this test, ensure that the txt file under the data folder containing the task list
+     * is properly emptied or deleted.
      */
     @Test
     public void execute_nonExistentTask_exceptionThrown() {
