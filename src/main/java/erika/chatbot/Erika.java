@@ -4,6 +4,7 @@ import erika.commands.Command;
 import erika.exceptions.ErikaException;
 import erika.exceptions.ErikaIoException;
 import erika.utilities.Parser;
+import erika.utilities.Storage;
 import erika.utilities.TaskList;
 import erika.utilities.Ui;
 
@@ -20,7 +21,7 @@ public class Erika {
      * Instantiates an instance of Erika.
      */
     public Erika() throws ErikaIoException {
-        list = new TaskList();
+        list = new TaskList(new Storage());
         ui = new Ui();
     }
 

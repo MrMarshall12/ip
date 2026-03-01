@@ -16,15 +16,12 @@ public class DeleteCommandTest {
 
     /**
      * Tests execute method.
-     *
-     * Before running this test, ensure that the txt file under the data folder containing the task list
-     * is properly emptied or deleted.
      */
     @Test
     public void execute_nonExistentTask_exceptionThrown() {
         try {
             DeleteCommand deleteCommand = new DeleteCommand("delete 1");
-            TaskList taskList = new TaskList();
+            TaskList taskList = new TaskList(new StorageStub());
             Ui ui = new Ui();
             deleteCommand.execute(taskList, ui);
             fail();

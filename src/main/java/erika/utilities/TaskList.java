@@ -18,8 +18,8 @@ public class TaskList {
     /**
      * Instantiates an instance of TaskList.
      */
-    public TaskList() throws ErikaIoException {
-        database = new Storage();
+    public TaskList(Storage storage) throws ErikaIoException {
+        database = storage;
         tasks = database.load();
         tasks.sort(Comparator.comparing(Task::getPriority));
     }

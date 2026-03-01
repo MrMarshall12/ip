@@ -31,7 +31,7 @@ public class Storage {
     /**
      * Instantiates an instance of Storage.
      */
-    protected Storage() throws ErikaIoException {
+    public Storage() throws ErikaIoException {
         Path path = Paths.get("data", "ErikaDatabase.txt");
         Path pathTemp = Paths.get("data", "ErikaDatabaseTemp.tmp");
 
