@@ -13,7 +13,7 @@ import erika.utilities.Storage;
 public class StorageStub extends Storage {
 
     /**
-     * Provides a stub implementation of the Storage class.
+     * Instantiates a stub of the Storage class.
      */
     public StorageStub() throws ErikaIoException {
 
@@ -21,10 +21,9 @@ public class StorageStub extends Storage {
 
     /**
      * Provides a stub implementation of the store method.
-     *
-     * @throws ErikaIoException if the I/O fails.
      */
-    protected void store(Task task) throws ErikaIoException {
+    @Override
+    protected void store(Task task) {
 
     }
 
@@ -32,9 +31,9 @@ public class StorageStub extends Storage {
      * Provides a stub implementation of the load method.
      *
      * @return A list of Tasks stored in the storage file.
-     * @throws ErikaIoException if the I/O fails.
      */
-    protected ArrayList<Task> load() throws ErikaIoException {
+    @Override
+    protected ArrayList<Task> load() {
         ArrayList<Task> tasks = new ArrayList<>();
         return tasks;
     }
@@ -45,7 +44,8 @@ public class StorageStub extends Storage {
      * @return A new list of Tasks.
      * @throws ErikaIoException if the I/O fails.
      */
-    protected ArrayList<Task> overwrite(ArrayList<Task> tasks) throws ErikaIoException {
+    @Override
+    protected ArrayList<Task> overwrite(ArrayList<Task> tasks) {
         return load();
     }
 }
